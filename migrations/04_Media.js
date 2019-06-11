@@ -1,27 +1,45 @@
 'use strict';
 module.exports = {
   up: (queryInterface, Sequelize) => {
-    return queryInterface.createTable('media_outlet', {
+    return queryInterface.createTable('media', {
       id: {
         allowNull: false,
         autoIncrement: true,
         primaryKey: true,
         type: Sequelize.INTEGER
       },
-      title: {
+      name: {
         allowNull: false,
         type: Sequelize.STRING,
         unique: true
       },
-      type: {
+      type: { 
         allowNull: false,
-        type: Sequelize.STRING,
+        type: Sequelize.INTEGER,
+        references: {
+          model: 'media_type',
+          key: 'id'
+        },
+        onDelete: 'CASCADE'
+      },
+      content: { 
+        allowNull: false,
+        type: Sequelize.INTEGER,
+        references: {
+          model: 'media_content',
+          key: 'id'
+        },
+        onDelete: 'CASCADE'
+      },
+      coverage: { 
+        allowNull: false,
+        type: Sequelize.ENUM("local","regional","national","international"),
         unique: false
       },
       url: {
-        allowNull: false,
+        allowNull: true,
         type: Sequelize.STRING,
-        unique: true
+        unique: false
       },
       createdAt: {
         allowNull: false,
@@ -36,6 +54,6 @@ module.exports = {
     });
   },
   down: (queryInterface, Sequelize) => {
-    return queryInterface.dropTable('media_outlet');
+    return queryInterface.dropTable('media');
   }
 };

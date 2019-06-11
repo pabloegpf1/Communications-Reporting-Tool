@@ -1,14 +1,14 @@
 'use strict';
 module.exports = {
   up: (queryInterface, Sequelize) => {
-    return queryInterface.createTable('media_outlet_type', {
+    return queryInterface.createTable('media_type', {
       id: {
         allowNull: false,
         autoIncrement: true,
         primaryKey: true,
         type: Sequelize.INTEGER
       },
-      title: {
+      type: {
         allowNull: false,
         type: Sequelize.STRING,
         unique: true
@@ -26,6 +26,6 @@ module.exports = {
     });
   },
   down: (queryInterface, Sequelize) => {
-    return queryInterface.dropTable('media_outlet_type');
+    return queryInterface.dropTable('media_type');
   }
 };
