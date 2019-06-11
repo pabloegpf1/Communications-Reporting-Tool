@@ -1,17 +1,26 @@
 'use strict';
 module.exports = {
   up: (queryInterface, Sequelize) => {
-    return queryInterface.createTable('language', {
+    return queryInterface.createTable('tag', {
       id: {
         allowNull: false,
         autoIncrement: true,
         primaryKey: true,
         type: Sequelize.INTEGER
       },
-      title: {
+      publication: { 
+        allowNull: false,
+        type: Sequelize.INTEGER,
+        references: {
+          model: 'publication',
+          key: 'id'
+        },
+        onDelete: 'CASCADE'
+      },
+      tag: { 
         allowNull: false,
         type: Sequelize.STRING,
-        unique: true
+        unique: false
       },
       createdAt: {
         allowNull: false,
@@ -26,6 +35,6 @@ module.exports = {
     });
   },
   down: (queryInterface, Sequelize) => {
-    return queryInterface.dropTable('language');
+    return queryInterface.dropTable('tag');
   }
 };
