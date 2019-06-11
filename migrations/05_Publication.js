@@ -96,6 +96,11 @@ module.exports = {
         type: Sequelize.STRING,
         unique: false
       },
+      date: {
+        allowNull: false,
+        type: Sequelize.DATE,
+        unique:false
+      },
       createdAt: {
         allowNull: false,
         defaultValue: new Date(),

@@ -36,6 +36,11 @@ module.exports = {
         type: Sequelize.ENUM("local","regional","national","international"),
         unique: false
       },
+      format: { 
+        allowNull: false,
+        type: Sequelize.ENUM("online","paper","other"),
+        unique: false
+      },
       url: {
         allowNull: true,
         type: Sequelize.STRING,

@@ -1,13 +1,15 @@
 'use strict';
+require('dotenv').config();
 
 module.exports = {
   up: (queryInterface, Sequelize) => {
     return queryInterface.bulkInsert('users', [
     {
-        first_name: 'Pablo',
-        last_name: 'Escriva',
-        username: 'pabloegpf1',
-        password: '123456'
+      id: 0,
+      first_name: 'Admin',
+      last_name: 'Admin',
+      username: 'Admin',
+      password: process.env.ADMIN_PW //TEMPORAL!!!!
     }
 ]) 
   },

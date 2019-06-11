@@ -5,12 +5,98 @@
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
     <link rel='stylesheet' href='/stylesheets/style.css' />
   </head>
-  <body>
+<body>
     <nav class="navbar navbar-light bg-light">
       <a class="navbar-brand" href="#">Project Clipping</a>
     </nav>
-    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <form class="publication-form">
+      <h2>New Publication</h2>
+      <div class="form-group">
+        <label for="exampleFormControlInput1">Headline</label>
+        <textarea class="form-control" id="headline" rows="1"></textarea>
+      </div>
+      <div class="form-group">
+        <label for="exampleFormControlInput1">Summary</label>
+        <textarea class="form-control" id="summary" rows="3"></textarea>
+      </div>
+      <div class="row">
+        <div class="col">
+          <div class="form-group">
+            <label for="exampleFormControlSelect1">Media</label>
+            <select class="form-control" id="media">
+              <option value="1">twitter</option>
+              <option value="2">facebook</option>
+            </select>
+          </div>
+        </div>
+        <div class="col">
+          <div class="form-group">
+            <label for="exampleFormControlInput1">Media Section</label>
+            <input type="text" class="form-control" id="media_section">
+          </div>
+        </div>
+      </div>
+      <div class="form-group">
+        <label for="exampleFormControlInput1">Spokesperson</label>
+        <input type="text" class="form-control" id="spokesperson">
+      </div>
+      <div class="form-group">
+        <label for="exampleFormControlInput1">Comments</label>
+        <textarea class="form-control" id="comments" rows="2"></textarea>
+      </div>
+      <div class="form-group">
+        <label for="exampleFormControlSelect1">Language</label>
+        <select class="form-control" id="media">
+          <option value="1">Spanish</option>
+          <option value="2">English</option>
+          <option value="3">French</option>
+          <option value="4">German</option>
+          <option value="5">Italian</option>
+          <option value="6">Russian</option>
+          <option value="6">Greek</option>
+          <option value="6">Chinese</option>
+          <option value="6">Japanese</option>
+          <option value="6">Arabic</option>
+          <option value="6">Other</option>
+        </select>
+      </div>
+      <div class="row">
+          <div class="col">
+            <div class="form-check">
+              <input class="form-check-input" type="checkbox" value="" id="published">
+              <label class="form-check-label" for="defaultCheck1">
+                Published
+              </label>
+            </div>
+          </div>
+          <div class="col">
+            <div class="form-check">
+              <input class="form-check-input" type="checkbox" value="" id="has_video">
+              <label class="form-check-label" for="defaultCheck1">
+                Has video
+              </label>
+            </div>
+          </div>
+          <div class="col">
+            <div class="form-check">
+              <input class="form-check-input" type="checkbox" value="" id="statements">
+              <label class="form-check-label" for="defaultCheck1">
+                Statements
+              </label>
+            </div>
+          </div>
+          <div class="col">
+            <div class="form-check">
+              <input class="form-check-input" type="checkbox" value="" id="proactivity">
+              <label class="form-check-label" for="defaultCheck1">
+                  Proactivity
+              </label>
+            </div>
+          </div>
+        </div>
+    </form>
+<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
-  </body>
+</body>
 </html>
