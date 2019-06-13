@@ -1,5 +1,6 @@
 body {
   font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+  padding-bottom: 20px; 
 }
 
 a {
@@ -7,7 +8,8 @@ a {
 }
 
 .navbar {
-  height: 80px;
+  height: 60px;
+  color: blue;
 }
 
 table, th, td {
@@ -17,7 +19,7 @@ table, th, td {
 }
 
 .publication-form{
-  padding-left: 10%;
-  padding-right: 10%;
+  padding-left: 20%;
+  padding-right: 20%;
   padding-top: 30px;
 }
