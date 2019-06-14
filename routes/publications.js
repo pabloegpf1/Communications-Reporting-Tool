@@ -1,19 +1,29 @@
 var express = require('express');
 var router = express.Router();
 var Publication = require('../db/publication');
+var Media = require('../db/media');
 
 router.get('/', function(req,res){
     Publication.getPublications()
-    .then(data => res.send(data))
+    .then(publications => res.render('index',{
+        publications: publications
+    }))
     .catch(err => res.render('error',{message:"Error",error:err}))
 })
 
 router.get('/add', function(req,res){
-    res.render('newPublication')
+    Media.getMedias()
+    .then(medias =>{
+        res.render('newPublication',{
+            medias: medias
+        })
+    })
+    .catch(err => res.render('error',{message:"Error",error:err}))
 })
 
 router.post('/add', function(req,res){
     let newPublication = createPublicationFromRequest(req.body)
+    console.log(newPublication)
     Publication.addPublication(newPublication)
     .then(() => res.redirect('/publications'))
     .catch(err => res.render('error',{message:"Error",error:err}))

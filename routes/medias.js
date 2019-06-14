@@ -9,7 +9,17 @@ router.get('/', function(req,res){
 })
 
 router.get('/add', function(req,res){
-    res.render('newMedia')
+    Media.getMediaContents()
+    .then(contents =>{
+        Media.getMediaTypes()
+        .then(types => {
+            res.render('newMedia',{
+                contents: contents,
+                types: types
+            })
+        })
+    })
+    .catch(err => res.status(500).send(err))
 })
 
 router.post('/add', function(req,res){
@@ -23,7 +33,7 @@ router.post('/add', function(req,res){
     }
     console.log(media)
     Media.addMedia(media)
-    .then(() => res.redirect('/medias'))
+    .then(() => res.redirect('/publications/add'))
     .catch(err => res.status(500).send(err))
 })
 
@@ -37,10 +47,6 @@ router.post('/addContent', function(req,res){
     Media.addMediaContent(req.body.content)
     .then(() => res.redirect('/medias'))
     .catch(err => res.status(500).send(err))
-})
-
-router.get('/add', function(req,res){
-    res.render('newPublication')
 })
 
 module.exports = router;

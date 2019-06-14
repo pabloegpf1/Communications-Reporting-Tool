@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Stats</title>
+    <% include ./partials/css%>
+    <head>
+        <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+        <script type="text/javascript">
+            google.charts.load('current');   // Don't need to specify chart libraries!
+            google.charts.setOnLoadCallback(drawVisualization);
+    
+            function drawVisualization(type,data,options,id) {
+                var wrapper = new google.visualization.ChartWrapper({
+                    chartType: 'ColumnChart',
+                    dataTable: [['Jan', 'Feb', 'Mar', 'Apr', 'May', 'June', 'July', 'Aug', 'Sept', 'Oct', 'Nov', 'Dec'],
+                                [42, 19, 52, 30, 6, 27, 37,5,24,24,42,34]],
+                    options: {'title': 'SM posts by month'},
+                    containerId: 'SM posts by month'
+                });
+                wrapper.draw();
+            }
+        </script>
+    </head>
+<body>
+    <% include ./partials/navbar%>
+    <div class="chart-container">
+        <h2>Statistics</h2>
+        <div class="row">
+            <div class="col">
+                <div class="chart" id="SM posts by month"></div>
+            </div>
+            <div class="col">
+                <div id="vis_div"></div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col">
+                <div id="chart_div"></div>
+            </div>
+            <div class="col">
+                <div id="chart_div"></div>
+            </div>
+        </div>
+    </div>
+    
+    <% include ./partials/scripts%>
+</body>
+</html>

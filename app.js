@@ -11,6 +11,7 @@ const sequelize = new Sequelize(process.env.DB_URL);
 var indexRouter = require('./routes/index');
 var publicationsRouter = require('./routes/publications');
 var mediasRouter = require('./routes/medias');
+var statRouter = require('./routes/stats');
 
 var app = express();
 
@@ -27,6 +28,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 app.use('/', indexRouter);
 app.use('/publications', publicationsRouter);
 app.use('/medias', mediasRouter);
+app.use('/stats', statRouter);
 
 sequelize
   .authenticate()

@@ -7,8 +7,8 @@ exports.addMediaType = (type) => db.none('INSERT INTO media_type (type) VALUES (
 exports.addMediaContent = (content) => db.none('INSERT INTO media_content (content) VALUES ($1)',[content])
 //Read
 exports.getMedias = () => db.any('SELECT * FROM media')
-exports.getMediaContents = () => db.any('SELECT * FROM media_content')
-exports.getMediaTypes = () => db.any('SELECT * FROM media_type')
+exports.getMediaContents = () => db.any('SELECT id,content FROM media_content')
+exports.getMediaTypes = () => db.any('SELECT id,type FROM media_type')
 //Delete
 exports.deleteMedia = (media_id) => db.none('DELETE FROM media WHERE id=($1)',[media_id])
 exports.deleteMediaContent = (media_Content_id) => db.none('DELETE FROM media_content WHERE id=($1)',[media_Content_id])
