@@ -7,7 +7,7 @@ router.get('/', function(req,res){
     Publication.getPublications()
     .then(publications =>{
         console.log(publications)
-        res.render('index',{
+        res.render('latestPublications',{
             publications: publications
         })
     })
@@ -23,6 +23,18 @@ router.get('/add', function(req,res){
                 medias: medias,
                 types:types
             })
+        })
+    })
+    .catch(err => res.render('error',{message:"Error",error:err}))
+})
+
+router.get('/id/:id', function(req,res){
+    console.log(req.params.id)
+    Publication.getPublicationById(req.params.id)
+    .then(publication =>{
+        console.log(publication)
+        res.render('publicationDetails',{
+            publication: publication
         })
     })
     .catch(err => res.render('error',{message:"Error",error:err}))

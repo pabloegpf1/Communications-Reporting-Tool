@@ -7,7 +7,8 @@
 <body>
     <% include ./partials/navbar%>
     <div class="publication-table">
-        <h2>Latest Publications</h2>
+        <h2 style="float: left;">Latest Publications</h2>
+        <a style="float: right;" href="/publications/add" class="btn btn-success">New Publication</a>
         <table class="table table-striped">
             <thead>
               <tr>
@@ -22,7 +23,7 @@
             <tbody>
                 <% for(var i=0; i<publications.length; i++) {%>
                 <tr>
-                    <td><a href="/publications/<%= publications[i].id %>"><%= publications[i].headline %></a></td>
+                    <td><a href="/publications/id/<%= publications[i].id %>"><%= publications[i].headline %></a></td>
                     <td><%= publications[i].name %></td>
                     <td><%= publications[i].type %></td>
                     <td><%= publications[i].summary %></td>
