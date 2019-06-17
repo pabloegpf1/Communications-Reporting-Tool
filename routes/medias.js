@@ -1,6 +1,6 @@
 var express = require('express');
 var router = express.Router();
-var Media = require('../db/media');
+var Media = require('../queries/media');
 
 router.get('/', function(req,res){
     Media.getMedias()
@@ -25,11 +25,11 @@ router.get('/add', function(req,res){
 router.post('/add', function(req,res){
     let media = {
         name:req.body.name,
-        type:req.body.type,
+        media_type:req.body.media_type,
         content:req.body.content,
         coverage:req.body.coverage,
         format:req.body.format,
-        url:req.body.url
+        media_url:req.body.media_url
     }
     console.log(media)
     Media.addMedia(media)

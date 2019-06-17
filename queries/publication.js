@@ -4,7 +4,8 @@ const pgp = require('pg-promise')();
 //Create
 exports.addPublication = (publication) => db.none('INSERT INTO publication ($1:name) VALUES ($1:list)',[publication])
 //Read
-exports.getPublications = () => db.any('SELECT * FROM publication INNER JOIN media ON publication.media = media.id INNER JOIN media_type ON media.type = media_type.id ORDER BY publication.date DESC;')
+exports.getPublications = () => db.any('SELECT * FROM publication JOIN media ON publication.media = media.id JOIN media_type ON media.media_type = media_type.id JOIN publication_type ON publication.publication_type = publication_type.id ORDER BY publication.date DESC;')
+exports.getPublicationTypes = () => db.any('SELECT id,type FROM publication_type ORDER BY type DESC;')
 exports.getPublicationsById = id => db.one('SELECT * FROM publications WHERE id = $1',[id])
 exports.getPublicationsByDate = date => db.any('SELECT * FROM publications WHERE date = $1',[date])
 exports.getPublicationsByHeadline = string => db.any('SELECT * FROM publications WHERE headline LIKE %$1%',[string])

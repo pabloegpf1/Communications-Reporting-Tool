@@ -18,6 +18,15 @@ module.exports = {
         type: Sequelize.STRING,
         unique: false
       },
+      publication_type: { 
+        allowNull: false,
+        type: Sequelize.INTEGER,
+        references: {
+          model: 'publication_type',
+          key: 'id'
+        },
+        onDelete: 'CASCADE'
+      },
       added_by: { 
         allowNull: false,
         type: Sequelize.INTEGER,

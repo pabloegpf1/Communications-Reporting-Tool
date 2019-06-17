@@ -14,13 +14,13 @@
       </div>
       <div class="form-group">
           <label for="exampleFormControlInput1">URL (Optional)</label>
-          <input type="text" class="form-control" name="url">
+          <input type="text" class="form-control" name="media_url">
         </div>
       <div class="row">
         <div class="col">
           <div class="form-group">
             <label for="exampleFormControlSelect1">Type</label>
-            <select class="form-control" name="type">
+            <select class="form-control" name="media_type">
                 <% for(var i=0; i<types.length; i++) {%>
                     <option value="<%= types[i].id %>"><%= types[i].type %></option>
                 <% }%>
