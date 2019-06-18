@@ -1,13 +1,13 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Publications</title>
+    <title><%= pageTitle %></title>
     <% include ./partials/css%>
 </head>
 <body>
     <% include ./partials/navbar%>
     <div class="publication-table">
-        <h2 style="float: left;">Latest Publications</h2>
+        <h2 style="float: left;"><%= pageTitle %></h2>
         <a style="float: right;" href="/publications/add" class="btn btn-success">New Publication</a>
         <table class="table table-striped">
             <thead>
@@ -28,7 +28,7 @@
                     <td><%= publications[i].type %></td>
                     <td><%= publications[i].summary %></td>
                     <td><%= publications[i].date.toDateString() %></td>
-                    <td><a href="<%= publications[i].url %>"><%= publications[i].url %></a></td>
+                    <td><a href="<%= publications[i].url %>">URL</a></td>
                 </tr>
                 <% } %>
             </tbody>
