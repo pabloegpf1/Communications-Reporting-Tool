@@ -6,11 +6,14 @@
   </head>
 <body>
     <% include ./partials/navbar%>
-    <form class="publication-form" action="/medias/add" method="post">
+    <form class="publication-form" action="/medias/add" method="post" novalidate>
       <h2>New Media</h2>
       <div class="form-group">
         <label for="exampleFormControlInput1">Name</label>
-        <input type="text" class="form-control" name="name">
+        <input type="text" id="name" class="form-control" name="name" required>
+        <div class="invalid-feedback">
+          You must add the name of the media
+        </div>
       </div>
       <div class="form-group">
           <label for="exampleFormControlInput1">URL (Optional)</label>
@@ -20,7 +23,8 @@
         <div class="col">
           <div class="form-group">
             <label for="exampleFormControlSelect1">Type</label>
-            <select class="form-control" name="media_type">
+            <select class="form-control" name="media_type" required>
+                <option disabled selected value> -- select an option -- </option>
                 <% for(var i=0; i<types.length; i++) {%>
                     <option value="<%= types[i].id %>"><%= types[i].type %></option>
                 <% }%>
@@ -30,7 +34,8 @@
         <div class="col">
           <div class="form-group">
               <label for="exampleFormControlSelect1">Content</label>
-              <select class="form-control" name="content">
+              <select class="form-control" name="content" required>
+                  <option disabled selected value> -- select an option -- </option>
                   <% for(var i=0; i<contents.length; i++) {%>
                       <option value="<%= contents[i].id %>"><%= contents[i].content %></option>
                   <% }%>
@@ -42,7 +47,8 @@
           <div class="col">
               <div class="form-group">
                   <label for="exampleFormControlSelect1">Coverage</label>
-                  <select class="form-control" name="coverage">
+                  <select class="form-control" name="coverage" required>
+                    <option disabled selected value> -- select an option -- </option>
                     <option value="local">Local</option>
                     <option value="regional">Regional</option>
                     <option value="national">National</option>
@@ -53,7 +59,8 @@
             <div class="col">
                 <div class="form-group">
                     <label for="exampleFormControlSelect1">Format</label>
-                    <select class="form-control" name="format">
+                    <select class="form-control" name="format" required>
+                      <option disabled selected value> -- select an option -- </option>
                       <option value="online">Online</option>
                       <option value="paper">Paper</option>
                       <option value="other">Other</option>
@@ -64,6 +71,7 @@
     </div>
     <button type="submit" class="btn btn-success btn-lg" style="float: right; padding: 10px; width:20%; margin: 10px;">Create Media</a>
   </form>
+<% include ./partials/formValidationScript%>
 <% include ./partials/scripts%>
 </body>
 </html>
