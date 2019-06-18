@@ -48,8 +48,8 @@ router.post('/add', function(req,res){
     .catch(err => res.render('error',{message:"Error",error:err}))
 })
 
-router.post('/delete', function(req,res){
-    Publication.deletePublication(req.body.request_id)
+router.post('/delete/:id', function(req,res){
+    Publication.deletePublication(req.params.id)
     .then(() => res.redirect('/publications'))
     .catch(err => res.render('error',{message:"Error",error:err}))
 })
