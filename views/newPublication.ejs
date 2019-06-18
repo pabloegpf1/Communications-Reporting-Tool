@@ -1,14 +1,11 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>Project Clipping</title>
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-    <link rel='stylesheet' href='/stylesheets/style.css' />
+    <title>New Publication</title>
+    <% include ./partials/css%>
   </head>
 <body>
-    <nav class="navbar navbar-light bg-light">
-      <a class="navbar-brand" href="#">Project Clipping</a>
-    </nav>
+    <% include ./partials/navbar%>
     <form class="publication-form" action="/publications/add" method="post">
       <h2>New Publication</h2>
       <div class="form-group">
@@ -24,7 +21,9 @@
           <div class="form-group">
             <label for="exampleFormControlSelect1">Media (<a href='/medias/add'>Add new</a>)</label>
             <select class="form-control" name="media">
-              <option value="1">twitter</option>
+              <% for(var i=0; i<medias.length; i++) {%>
+                <option value="<%= medias[i].id %>"><%= medias[i].name %></option>
+              <% }%>
             </select>
           </div>
         </div>
@@ -43,32 +42,40 @@
         <label for="exampleFormControlInput1">Comments (Optional)</label>
         <textarea class="form-control" name="comments" rows="2"></textarea>
       </div>
-      <div class="form-group">
-        <label for="exampleFormControlSelect1">Language</label>
-        <select class="form-control" name="language">
-          <option value="spanish">Spanish</option>
-          <option value="english">English</option>
-          <option value="french">French</option>
-          <option value="german">German</option>
-          <option value="italian">Italian</option>
-          <option value="russian">Russian</option>
-          <option value="greek">Greek</option>
-          <option value="chinese">Chinese</option>
-          <option value="japanese">Japanese</option>
-          <option value="arabic">Arabic</option>
-          <option value="other">Other</option>
-        </select>
+      <div class="row" style="padding:10px">
+        <div class="col">
+          <div class="form-group">
+              <label for="exampleFormControlSelect1">Language</label>
+              <select class="form-control" name="language">
+                <option value="spanish">Spanish</option>
+                <option value="english">English</option>
+                <option value="french">French</option>
+                <option value="german">German</option>
+                <option value="italian">Italian</option>
+                <option value="russian">Russian</option>
+                <option value="greek">Greek</option>
+                <option value="chinese">Chinese</option>
+                <option value="japanese">Japanese</option>
+                <option value="arabic">Arabic</option>
+                <option value="other">Other</option>
+              </select>
+            </div>
+        </div>
+        <div class="col">
+            <div class="form-group">
+              <label for="exampleFormControlSelect1">Date Published</label>
+              <input type="date" class="form-control" name="date">
+            </div>
+        </div>
       </div>
       <div class="row" style="padding:10px">
-          <div class="col-sm-4">
+          <div class="col-sm-3">
             <div class="form-check">
               <input class="form-check-input" type="checkbox" value="true" name="published">
-              <label class="form-check-label form-check-label" for="defaultCheck1">
-                Published
-              </label>
+              <label class="form-check-label form-check-label" for="defaultCheck1">Published</label>
             </div>
           </div>
-          <div class="col-sm-4">
+          <div class="col-sm-3">
             <div class="form-check">
               <input class="form-check-input" type="checkbox" value="true" name="has_video">
               <label class="form-check-label" for="defaultCheck1">
@@ -76,7 +83,7 @@
               </label>
             </div>
           </div>
-          <div class="col-sm-4">
+          <div class="col-sm-3">
             <div class="form-check">
               <input class="form-check-input" type="checkbox" value="true" name="statements">
               <label class="form-check-label" for="defaultCheck1">
@@ -84,9 +91,7 @@
               </label>
             </div>
           </div>
-      </div>
-      <div class="row" style="padding:10px">
-        <div class="col-sm-4">
+        <div class="col-sm-3">
           <div class="form-check">
             <input class="form-check-input" type="checkbox" value="true" name="proactivity">
             <label class="form-check-label" for="defaultCheck1">
@@ -94,6 +99,18 @@
             </label>
           </div>
         </div>
+      </div>
+      <div class="row" style="padding:10px">
+        <div class="col-sm-4">
+            <div class="form-group">
+              <select class="form-control" name="publication_type">
+                <option selected value="0">Type of publication</option>
+                <% for(var i=0; i<types.length; i++) {%>
+                  <option value="<%= types[i].id %>"><%= types[i].type %></option>
+                <% }%>
+              </select>
+            </div>
+          </div>
         <div class="col-sm-4">
           <div class="form-group">
             <select class="form-control" name="pr_news">
@@ -133,8 +150,6 @@
     </div>
     <button type="submit"class="btn btn-success btn-lg" style="float: right; padding: 10px; width:20%; margin: 10px;">Submit</a>
   </form>
-<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
-<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+  <% include ./partials/scripts%>
 </body>
 </html>

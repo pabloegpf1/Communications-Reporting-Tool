@@ -3,23 +3,37 @@ body {
   padding-bottom: 20px; 
 }
 
-a {
-  color: #00B7FF;
-}
-
 .navbar {
   height: 60px;
-  color: blue;
 }
 
-table, th, td {
-  width: 50%;
-  border: 1px solid black;
-  border-collapse: collapse;
+h2 {
+  margin-bottom: 25px;
+}
+
+.link {
+  text-decoration: none;
 }
 
 .publication-form{
   padding-left: 20%;
   padding-right: 20%;
   padding-top: 30px;
+}
+
+.publication-table{
+  padding-left: 10%;
+  padding-right: 10%;
+  padding-top: 30px;
+}
+
+.chart-container{
+  padding-left: 10%;
+  padding-right: 10%;
+  padding-top: 30px;
+}
+
+.chart{
+  height: 300px;
+  width: 90%;
 }

@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Publication Details</title>
+    <% include ./partials/css%>
+  </head>
+<body>
+    <% include ./partials/navbar%>
+    <form class="publication-form" action="/publications/delete/<%= publication.id %>" method="post">
+      <h2>Details</h2>
+      <div class="form-group">
+        <label for="exampleFormControlInput1">Headline</label>
+        <input type="text" class="form-control" name="headline" value="<%= publication.headline %>" readonly>
+      </div>
+      <div class="form-group">
+        <label for="exampleFormControlInput1">Summary</label>
+        <input type="text" class="form-control" name="summary" rows="3" value="<%= publication.summary %>" readonly>
+      </div>
+      <div class="row">
+        <div class="col">
+          <div class="form-group">
+            <label for="exampleFormControlSelect1">Media (<a href='/medias/add'>Add new</a>)</label>
+            <input type="text" class="form-control" name="media_name" rows="1" value="<%= publication.name %>" readonly>
+          </div>
+        </div>
+        <div class="col">
+          <div class="form-group">
+            <label for="exampleFormControlInput1">Media Section (Optional)</label>
+            <input type="text" class="form-control" name="media_section" rows="1" value="<%= publication.media_section %>" readonly>
+          </div>
+        </div>
+      </div>
+      <div class="form-group">
+        <label for="exampleFormControlInput1">Spokesperson</label>
+        <input type="text" class="form-control" name="spokesperson" rows="1" value="<%= publication.spokesperson %>" readonly>
+      </div>
+      <div class="form-group">
+        <label for="exampleFormControlInput1">Comments (Optional)</label>
+        <textarea class="form-control" name="comments" rows="2" readonly><%= publication.comments %></textarea>
+      </div>
+      <div class="row" >
+        <div class="col">
+          <div class="form-group">
+              <label for="exampleFormControlSelect1">Language</label>
+              <input type="text" class="form-control" name="Language" rows="1" value="<%= publication.language %>" readonly>
+            </div>
+        </div>
+        <div class="col">
+            <div class="form-group">
+              <label for="exampleFormControlSelect1">Date Published</label>
+              <input type="text" class="form-control" name="date" rows="1" value="<%= publication.date.toDateString() %>" readonly>
+            </div>
+        </div>
+      </div>
+      <div class="row" style="padding:10px">
+          <div class="col-sm-3">
+            <div class="form-check">
+              <input class="form-check-input" type="checkbox" value="true" name="published" disabled="disabled"  <% if (publication.published){ %> checked <% } %> >
+              <label class="form-check-label form-check-label" for="defaultCheck1">Published</label>
+            </div>
+          </div>
+          <div class="col-sm-3">
+            <div class="form-check">
+              <input class="form-check-input" type="checkbox" value="true" name="has_video" disabled="disabled" <% if (publication.has_video){ %> checked <% } %> >
+              <label class="form-check-label" for="defaultCheck1">
+                Has video
+              </label>
+            </div>
+          </div>
+          <div class="col-sm-3">
+            <div class="form-check">
+              <input class="form-check-input" type="checkbox" value="true" name="statements" disabled="disabled" <% if (publication.statements){ %> checked <% } %> >
+              <label class="form-check-label" for="defaultCheck1">
+                Statements
+              </label>
+            </div>
+          </div>
+        <div class="col-sm-3">
+          <div class="form-check">
+            <input class="form-check-input" type="checkbox" value="true" name="proactivity" disabled="disabled" <% if (publication.proactivity){ %> checked <% } %> >
+            <label class="form-check-label" for="defaultCheck1">
+                Proactivity
+            </label>
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-sm-4">
+            <div class="form-group">
+              <label for="exampleFormControlSelect1">Type</label>
+              <input type="text" class="form-control" name="publication_type" rows="1" value="<%= publication.type %>" readonly>
+            </div>
+          </div>
+        <div class="col-sm-4">
+          <div class="form-group">
+            <label for="exampleFormControlSelect1">PR/NEWS</label>
+            <input type="text" class="form-control" name="pr_news" rows="1" value="<%= publication.pr_news %>" readonly>
+          </div>
+        </div>
+        <div class="col-sm-4">
+          <div class="form-group">
+            <label for="exampleFormControlSelect1">Photos</label>
+            <input type="text" class="form-control" name="photo_count" rows="1" value="<%= publication.photo_count %>" readonly>
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-sm-7">
+          <div class="form-group">
+            <label for="exampleFormControlInput1">Original URL</label>
+            <input type="text" class="form-control" name="url" rows="1" value="<%= publication.url %>" readonly>
+          </div>
+        </div>
+        <div class="col-sm-5">
+          <div class="form-group">
+            <label for="exampleFormControlInput1">Shortened URL</label>
+            <input type="text" class="form-control" name="shortened_url" rows="1" value="<%= publication.shortened_url %>" readonly>
+          </div>
+        </div>
+    </div>
+    <button type="submit"class="btn btn-danger btn-lg" style="float: right; padding: 10px; width:20%; margin: 10px;">Delete</a>
+  </form>
+  <% include ./partials/scripts%>
+</body>
+</html>
