@@ -19,7 +19,7 @@
       <div class="row">
         <div class="col">
           <div class="form-group">
-            <label for="exampleFormControlSelect1">Media (<a href='/medias/add'>Add new</a>)</label>
+            <label for="exampleFormControlSelect1">Media</label>
             <input type="text" class="form-control" name="media_name" rows="1" value="<%= publication.name %>" readonly>
           </div>
         </div>
@@ -52,7 +52,7 @@
             </div>
         </div>
       </div>
-      <div class="row" style="padding:10px">
+      <div class="row" style="margin-bottom:30px; margin-top:30px;text-align: center">
           <div class="col-sm-3">
             <div class="form-check">
               <input class="form-check-input" type="checkbox" value="true" name="published" disabled="disabled"  <% if (publication.published){ %> checked <% } %> >

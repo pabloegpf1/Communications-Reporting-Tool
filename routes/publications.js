@@ -7,7 +7,8 @@ router.get('/', function(req,res){
     Publication.getPublications()
     .then(publications =>{
         console.log(publications)
-        res.render('latestPublications',{
+        res.render('publications',{
+            pageTitle: 'Latest Publications',
             publications: publications
         })
     })
@@ -45,6 +46,18 @@ router.post('/add', function(req,res){
     console.log(newPublication)
     Publication.addPublication(newPublication)
     .then(() => res.redirect('/publications'))
+    .catch(err => res.render('error',{message:"Error",error:err}))
+})
+
+router.post('/search/', function(req,res){
+    Publication.getPublicationsByHeadline(req.body.string)
+    .then(publications =>{
+        console.log(publications)
+        res.render('publications',{
+            pageTitle: 'Search Results',
+            publications: publications
+        })
+    })
     .catch(err => res.render('error',{message:"Error",error:err}))
 })
 

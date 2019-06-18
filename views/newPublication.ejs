@@ -6,31 +6,44 @@
   </head>
 <body>
     <% include ./partials/navbar%>
-    <form class="publication-form" action="/publications/add" method="post">
+    <form class="publication-form" action="/publications/add" method="post" novalidate>
       <h2>New Publication</h2>
       <div class="form-group">
-        <label for="exampleFormControlInput1">Headline</label>
-        <input type="text" class="form-control" name="headline">
+        <label for="exampleFormControlInput1">Headline*</label>
+        <input type="text" class="form-control" name="headline" required>
+        <div class="invalid-feedback">
+          This field cannot be empty
+        </div>
       </div>
       <div class="form-group">
-        <label for="exampleFormControlInput1">Summary</label>
-        <textarea class="form-control" name="summary" rows="3"></textarea>
+        <label for="exampleFormControlInput1">Summary*</label>
+        <textarea class="form-control" name="summary" rows="3" required></textarea>
+        <div class="invalid-feedback">
+          Please add a short summary of the publication
+        </div>
       </div>
       <div class="row">
         <div class="col">
           <div class="form-group">
             <label for="exampleFormControlSelect1">Media (<a href='/medias/add'>Add new</a>)</label>
-            <select class="form-control" name="media">
+            <select class="form-control" name="media" required>
+              <option disabled selected value> -- select a media -- </option>
               <% for(var i=0; i<medias.length; i++) {%>
                 <option value="<%= medias[i].id %>"><%= medias[i].name %></option>
               <% }%>
             </select>
+            <div class="invalid-feedback">
+              Please choose one of the registered medias or add a new one
+            </div>
           </div>
         </div>
         <div class="col">
           <div class="form-group">
-            <label for="exampleFormControlInput1">Media Section (Optional)</label>
-            <input type="text" class="form-control" name="media_section">
+            <label for="exampleFormControlInput1">Media Section*</label>
+            <input type="text" class="form-control" name="media_section" required>
+            <div class="invalid-feedback">
+              Please specify the section of the media (Science,Technology,News...)
+            </div>
           </div>
         </div>
       </div>
@@ -39,14 +52,15 @@
         <input type="text" class="form-control" name="spokesperson">
       </div>
       <div class="form-group">
-        <label for="exampleFormControlInput1">Comments (Optional)</label>
+        <label for="exampleFormControlInput1">Comments</label>
         <textarea class="form-control" name="comments" rows="2"></textarea>
       </div>
-      <div class="row" style="padding:10px">
+      <div class="row">
         <div class="col">
           <div class="form-group">
-              <label for="exampleFormControlSelect1">Language</label>
-              <select class="form-control" name="language">
+              <label for="exampleFormControlSelect1">Language*</label>
+              <select class="form-control" name="language" required>
+                <option disabled selected value> -- select language -- </option>
                 <option value="spanish">Spanish</option>
                 <option value="english">English</option>
                 <option value="french">French</option>
@@ -59,70 +73,80 @@
                 <option value="arabic">Arabic</option>
                 <option value="other">Other</option>
               </select>
+              <div class="invalid-feedback">
+                Plase select the language of the publication (select other if multiple languages are used)
+              </div>
             </div>
         </div>
         <div class="col">
             <div class="form-group">
-              <label for="exampleFormControlSelect1">Date Published</label>
-              <input type="date" class="form-control" name="date">
+              <label for="exampleFormControlSelect1">Date Published*</label>
+              <input type="date" class="form-control" name="date" required>
+              <div class="invalid-feedback">
+                You must add the date when the publication was made
+              </div>
             </div>
         </div>
       </div>
-      <div class="row" style="padding:10px">
+      <div class="row" style="margin-bottom:30px; margin-top:30px;text-align: center">
           <div class="col-sm-3">
             <div class="form-check">
               <input class="form-check-input" type="checkbox" value="true" name="published">
-              <label class="form-check-label form-check-label" for="defaultCheck1">Published</label>
+              <label class="form-check-label form-check-label" for="defaultCheck1">Published*</label>
             </div>
           </div>
           <div class="col-sm-3">
             <div class="form-check">
               <input class="form-check-input" type="checkbox" value="true" name="has_video">
-              <label class="form-check-label" for="defaultCheck1">
-                Has video
-              </label>
+              <label class="form-check-label" for="defaultCheck1"> Has video*</label>
             </div>
           </div>
           <div class="col-sm-3">
             <div class="form-check">
               <input class="form-check-input" type="checkbox" value="true" name="statements">
-              <label class="form-check-label" for="defaultCheck1">
-                Statements
-              </label>
+              <label class="form-check-label" for="defaultCheck1">Statements*</label>
             </div>
           </div>
         <div class="col-sm-3">
           <div class="form-check">
             <input class="form-check-input" type="checkbox" value="true" name="proactivity">
-            <label class="form-check-label" for="defaultCheck1">
-                Proactivity
-            </label>
+            <label class="form-check-label" for="defaultCheck1">Proactivity*</label>
           </div>
         </div>
       </div>
-      <div class="row" style="padding:10px">
+      <div class="row" style="">
         <div class="col-sm-4">
             <div class="form-group">
-              <select class="form-control" name="publication_type">
-                <option selected value="0">Type of publication</option>
+              <label for="exampleFormControlSelect1">Type*</label>
+              <select class="form-control" name="publication_type" required>
+                <option disabled selected value> -- select an option -- </option>
                 <% for(var i=0; i<types.length; i++) {%>
                   <option value="<%= types[i].id %>"><%= types[i].type %></option>
                 <% }%>
               </select>
+              <div class="invalid-feedback">
+                Plase select the type of publication
+              </div>
             </div>
           </div>
         <div class="col-sm-4">
           <div class="form-group">
-            <select class="form-control" name="pr_news">
+            <label for="exampleFormControlSelect1">PR/NEWS*</label>
+            <select class="form-control" name="pr_news" required>
+              <option disabled selected value> -- select an option -- </option>
               <option value="pr">PR</option>
               <option value="news">News</option>
             </select>
+            <div class="invalid-feedback">
+              Please choose one of the options
+            </div>
           </div>
         </div>
         <div class="col-sm-4">
           <div class="form-group">
-            <select class="form-control" name="photo_count">
-              <option selected value="0">Number of photos</option>
+            <label for="exampleFormControlSelect1">Number of photos*</label>
+            <select class="form-control" name="photo_count" required>
+              <option disabled selected value> -- select an option -- </option>
               <option value="0">none</option>
               <option value="1">1</option>
               <option value="2">2</option>
@@ -131,14 +155,20 @@
               <option value="2">5</option>
               <option value="2">>5</option>
             </select>
+            <div class="invalid-feedback">
+              You must select the number of photos included in the publication
+            </div>
           </div>
         </div>
       </div>
       <div class="row">
         <div class="col-sm-7">
           <div class="form-group">
-            <label for="exampleFormControlInput1">Original URL</label>
-            <input type="text" class="form-control" name="url">
+            <label for="exampleFormControlInput1">Original URL*</label>
+            <input type="text" class="form-control" name="url" required>
+            <div class="invalid-feedback">
+              Please copy and paste the URL from the publication here
+            </div>
           </div>
         </div>
         <div class="col-sm-5">
@@ -148,8 +178,9 @@
           </div>
         </div>
     </div>
-    <button type="submit"class="btn btn-success btn-lg" style="float: right; padding: 10px; width:20%; margin: 10px;">Submit</a>
+    <button type="submit"class="btn btn-success btn-lg" style="float: right; padding: 10px; margin: 10px;">Create Publication</a>
   </form>
+  <% include ./partials/formValidationScript%>
   <% include ./partials/scripts%>
 </body>
 </html>
