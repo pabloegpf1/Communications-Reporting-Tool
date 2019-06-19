@@ -22,27 +22,32 @@
         </script>
     </head>
 <body>
-    <% include ./partials/navbar%>
-    <div class="chart-container">
-        <h2>Statistics (Work in progress)</h2>
-        <div class="row">
-            <div class="col">
-                <div class="chart" id="SM posts by month"></div>
+    <% if(admin == true) {%>
+    <%  include ./partials/navbarAdmin%>
+    <% }else{%>
+    <%  include ./partials/navbar%>
+    <% } %>
+    <div class="content">
+        <div class="chart-container">
+            <h2>Statistics (Work in progress)</h2>
+            <div class="row">
+                <div class="col">
+                    <div class="chart" id="SM posts by month"></div>
+                </div>
+                <div class="col">
+                    <div id="vis_div"></div>
+                </div>
             </div>
-            <div class="col">
-                <div id="vis_div"></div>
-            </div>
-        </div>
-        <div class="row">
-            <div class="col">
-                <div id="chart_div"></div>
-            </div>
-            <div class="col">
-                <div id="chart_div"></div>
+            <div class="row">
+                <div class="col">
+                    <div id="chart_div"></div>
+                </div>
+                <div class="col">
+                    <div id="chart_div"></div>
+                </div>
             </div>
         </div>
     </div>
-    
     <% include ./partials/scripts%>
 </body>
 </html>

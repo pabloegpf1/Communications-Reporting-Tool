@@ -15,7 +15,8 @@ router.get('/add', function(req,res){
         .then(types => {
             res.render('newMedia',{
                 contents: contents,
-                types: types
+                types: types,
+                admin: true
             })
         })
     })
