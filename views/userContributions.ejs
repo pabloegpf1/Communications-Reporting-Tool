@@ -12,6 +12,34 @@
     <% } %>
     <div class="content">
       <h2>My Contributions</h2>
+      <div class="publication-table">
+          <h2 style="float: left;"><%= pageTitle %></h2>
+          <a style="float: right;" href="/publication/add" class="btn btn-info">New Publication</a>
+          <table class="table table-striped" id="publications-table">
+              <thead>
+                <tr>
+                  <th width="35%" scope="col" onclick="sortTable(0,false)">Headline</th>
+                  <th width="10%" scope="col" onclick="sortTable(1,false)">Media</th>
+                  <th width="10%" scope="col" onclick="sortTable(2,false)">Type</th>
+                  <th width="25%" scope="col" onclick="sortTable(3,false)">Summary</th>
+                  <th width="15%" scope="col" onclick="sortTable(4,true)">Date</th>
+                  <th width="5%" scope="col">Link</th>
+                </tr>
+              </thead>
+              <tbody>
+                  <% for(var i=0; i<publications.length; i++) {%>
+                  <tr>
+                      <td style="text-overflow: ellipsis;white-space: nowrap;overflow: hidden;"><a href="/publications/id/<%= publications[i].id %>"><%= publications[i].headline %></a></td>
+                      <td><%= publications[i].name %></td>
+                      <td><%= publications[i].type %></td>
+                      <td><%= publications[i].summary %></td>
+                      <td><%= publications[i].date.toDateString() %></td>
+                      <td style="text-align: center"><a class="fas fa-external-link-alt" href="<%= publications[i].url %>" target="_blank" ></a></td>
+                  </tr>
+                  <% } %>
+              </tbody>
+            </table>
+      </div>
     </div>
     <% include ./partials/formValidationScript%>
     <% include ./partials/scripts%>

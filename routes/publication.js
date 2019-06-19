@@ -48,12 +48,12 @@ router.post('/add', function(req,res){
     let newPublication = createPublicationFromRequest(req.body)
     console.log(newPublication)
     Publication.addPublication(newPublication)
-    .then(() => res.redirect('/publications'))
+    .then(() => res.redirect('/publication'))
     .catch(err => res.render('error',{message:"Error",error:err}))
 })
 
 router.post('/search/', function(req,res){
-    Publication.getPublicationsByHeadline(req.body.string)
+    Publication.searchPublication(req.body.string)
     .then(publications =>{
         console.log(publications)
         res.render('publications',{
@@ -67,7 +67,7 @@ router.post('/search/', function(req,res){
 
 router.post('/delete/:id', function(req,res){
     Publication.deletePublication(req.params.id)
-    .then(() => res.redirect('/publications'))
+    .then(() => res.redirect('/publication'))
     .catch(err => res.render('error',{message:"Error",error:err}))
 })
 
