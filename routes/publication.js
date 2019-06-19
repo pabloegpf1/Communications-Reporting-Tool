@@ -9,7 +9,8 @@ router.get('/', function(req,res){
         console.log(publications)
         res.render('publications',{
             pageTitle: 'Latest Publications',
-            publications: publications
+            publications: publications,
+            admin: true
         })
     })
     .catch(err => res.render('error',{message:"Error",error:err}))
@@ -22,7 +23,8 @@ router.get('/add', function(req,res){
         .then(types =>{
             res.render('newPublication',{
                 medias: medias,
-                types:types
+                types:types,
+                admin: true
             })
         })
     })
@@ -35,7 +37,8 @@ router.get('/id/:id', function(req,res){
     .then(publication =>{
         console.log(publication)
         res.render('publicationDetails',{
-            publication: publication
+            publication: publication,
+            admin: true
         })
     })
     .catch(err => res.render('error',{message:"Error",error:err}))
@@ -55,7 +58,8 @@ router.post('/search/', function(req,res){
         console.log(publications)
         res.render('publications',{
             pageTitle: 'Search Results',
-            publications: publications
+            publications: publications,
+            admin: true
         })
     })
     .catch(err => res.render('error',{message:"Error",error:err}))

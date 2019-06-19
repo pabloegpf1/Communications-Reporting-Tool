@@ -9,8 +9,10 @@ const Sequelize = require('sequelize');
 const sequelize = new Sequelize(process.env.DB_URL);
 
 var indexRouter = require('./routes/index');
-var publicationsRouter = require('./routes/publications');
-var mediasRouter = require('./routes/medias');
+var publicationRouter = require('./routes/publication');
+var mediasRouter = require('./routes/media');
+var userRouter = require('./routes/user');
+var adminRouter = require('./routes/admin');
 var statRouter = require('./routes/stats');
 
 var app = express();
@@ -26,8 +28,10 @@ app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/', indexRouter);
-app.use('/publications', publicationsRouter);
-app.use('/medias', mediasRouter);
+app.use('/publication', publicationRouter);
+app.use('/media', mediasRouter);
+app.use('/user', userRouter);
+app.use('/admin', adminRouter);
 app.use('/stats', statRouter);
 
 sequelize

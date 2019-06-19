@@ -5,8 +5,13 @@
     <% include ./partials/css%>
   </head>
 <body>
-    <% include ./partials/navbar%>
-    <form class="publication-form" action="/medias/add" method="post" novalidate>
+  <% if(admin == true) {%>
+  <%  include ./partials/navbarAdmin%>
+  <% }else{%>
+  <%  include ./partials/navbar%>
+  <% } %>
+  <div class="content-form">
+    <form class="publication-form" action="/media/add" method="post" novalidate>
       <h2>New Media</h2>
       <div class="form-group">
         <label for="exampleFormControlInput1">Name</label>
@@ -44,33 +49,33 @@
         </div>
       </div>
       <div class="row">
+        <div class="col">
+            <div class="form-group">
+                <label for="exampleFormControlSelect1">Coverage</label>
+                <select class="form-control" name="coverage" required>
+                  <option disabled selected value> -- select an option -- </option>
+                  <option value="local">Local</option>
+                  <option value="regional">Regional</option>
+                  <option value="national">National</option>
+                  <option value="international">International</option>
+                </select>
+            </div>
+          </div>
           <div class="col">
               <div class="form-group">
-                  <label for="exampleFormControlSelect1">Coverage</label>
-                  <select class="form-control" name="coverage" required>
+                  <label for="exampleFormControlSelect1">Format</label>
+                  <select class="form-control" name="format" required>
                     <option disabled selected value> -- select an option -- </option>
-                    <option value="local">Local</option>
-                    <option value="regional">Regional</option>
-                    <option value="national">National</option>
-                    <option value="international">International</option>
+                    <option value="online">Online</option>
+                    <option value="paper">Paper</option>
+                    <option value="other">Other</option>
                   </select>
               </div>
             </div>
-            <div class="col">
-                <div class="form-group">
-                    <label for="exampleFormControlSelect1">Format</label>
-                    <select class="form-control" name="format" required>
-                      <option disabled selected value> -- select an option -- </option>
-                      <option value="online">Online</option>
-                      <option value="paper">Paper</option>
-                      <option value="other">Other</option>
-                    </select>
-                </div>
-              </div>
-        </div>
-    </div>
-    <button type="submit" class="btn btn-success" style="float: right; padding: 10px; margin: 10px;">Create Media</a>
-  </form>
+      </div>
+      <button type="submit" class="btn btn-success" style="float: right; padding: 10px; margin: 10px;">Create Media</a>
+    </form>
+  </div>
 <% include ./partials/formValidationScript%>
 <% include ./partials/scripts%>
 </body>
