@@ -3,7 +3,7 @@ var router = express.Router();
 var Media = require('../queries/media');
 
 router.get('/', function(req,res){
-    Media.getMedias()
+    Media.getMediaNames()
     .then(data => res.send(data))
     .catch(err => res.status(500).send(err))
 })

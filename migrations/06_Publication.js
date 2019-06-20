@@ -30,11 +30,12 @@ module.exports = {
       added_by: { 
         allowNull: false,
         type: Sequelize.INTEGER,
+        defaultValue: 0,
         references: {
           model: 'users',
           key: 'id'
         },
-        onDelete: 'NO ACTION'
+        onDelete: 'SET DEFAULT'
       },
       media: { 
         allowNull: false,

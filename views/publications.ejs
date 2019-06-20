@@ -12,7 +12,7 @@
     <% } %>
     <div class="content">
       <div class="publication-table">
-        <div class="row">
+        <div class="row row-title">
           <div class="col">
               <h2 style="float: left;"><%= title %></h2>
           </div>
@@ -23,11 +23,11 @@
           <table class="table table-striped table-bordered table-responsive-lg" id="publications-table">
               <thead>
                 <tr>
-                  <th width="35%" scope="col" onclick="sortTable(0,false)">Headline</th>
-                  <th width="10%" scope="col" onclick="sortTable(1,false)">Media</th>
-                  <th width="10%" scope="col" onclick="sortTable(2,false)">Type</th>
-                  <th width="25%" scope="col" onclick="sortTable(3,false)">Summary</th>
-                  <th width="15%" scope="col" onclick="sortTable(4,true)">Date</th>
+                  <th width="35%" scope="col" onclick="sortTable('publications-table',0,false)">Headline</th>
+                  <th width="10%" scope="col" onclick="sortTable('publications-table',1,false)">Media</th>
+                  <th width="10%" scope="col" onclick="sortTable('publications-table',2,false)">Type</th>
+                  <th width="25%" scope="col" onclick="sortTable('publications-table',3,false)">Summary</th>
+                  <th width="15%" scope="col" onclick="sortTable('publications-table',4,true)">Date</th>
                   <th width="5%" scope="col">Link</th>
                 </tr>
               </thead>

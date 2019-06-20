@@ -9,7 +9,7 @@ let baseQuery = ` p.id, p.headline, p.summary, p.media_section, p.spokesperson, 
 //Create
 exports.addPublication = publication => db.none('INSERT INTO publication ($1:name) VALUES ($1:list)',[publication])
 //Read
-exports.getPublications = () =>db.any (`SELECT $1:raw AND p.type = p_type.id ORDER BY date DESC`,[baseQuery])
+exports.getPublications = () => db.any (`SELECT $1:raw AND p.type = p_type.id ORDER BY date DESC`,[baseQuery])
 exports.getPublicationById = id => db.one(`SELECT $1:raw AND p.id = $2`,[baseQuery,id])
 exports.searchPublication = string =>  db.any(`SELECT $1:raw AND (unaccent(p.headline) ILIKE unaccent('%$2:value%') 
                                         OR unaccent(p.summary) ILIKE unaccent('%$2:value%')) ORDER BY date DESC`,[baseQuery,string])

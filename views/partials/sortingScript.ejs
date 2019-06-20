@@ -1,7 +1,7 @@
 <script>
-    function sortTable(n,isDate) {
+    function sortTable(tableID,n,isDate) {
         var table, rows, switching, i, x, y, shouldSwitch, dir, switchcount = 0;
-        table = document.getElementById("publications-table");
+        table = document.getElementById(tableID);
         switching = true;
         dir = "asc"; 
         while (switching) {
