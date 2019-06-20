@@ -8,7 +8,7 @@ router.get('/', function(req,res){
     .then(publications =>{
         console.log(publications)
         res.render('publications',{
-            pageTitle: 'Latest Publications',
+            title: 'Latest Publications',
             publications: publications,
             admin: true
         })
@@ -57,7 +57,7 @@ router.post('/search/', function(req,res){
     .then(publications =>{
         console.log(publications)
         res.render('publications',{
-            pageTitle: 'Search Results',
+            title: 'Search Results',
             publications: publications,
             admin: true
         })
@@ -89,7 +89,7 @@ const createPublicationFromRequest = function(data){
         proactivity: (data.proactivity === undefined) ? false : true,
         pr_news: data.pr_news,
         photo_count: data.photo_count,
-        publication_type: data.publication_type,
+        type: data.type,
         url: data.url,
         shortened_url: data.shortened_url,
         date: data.date

@@ -18,7 +18,7 @@ module.exports = {
         type: Sequelize.STRING,
         unique: false
       },
-      publication_type: { 
+      type: { 
         allowNull: false,
         type: Sequelize.INTEGER,
         references: {
@@ -30,11 +30,12 @@ module.exports = {
       added_by: { 
         allowNull: false,
         type: Sequelize.INTEGER,
+        defaultValue: 0,
         references: {
           model: 'users',
           key: 'id'
         },
-        onDelete: 'CASCADE'
+        onDelete: 'SET DEFAULT'
       },
       media: { 
         allowNull: false,
@@ -87,7 +88,7 @@ module.exports = {
       },
       pr_news: { 
         allowNull: false,
-        type: Sequelize.ENUM("pr","news"),
+        type: Sequelize.ENUM("PR","NEWS"),
         unique: false
       },
       photo_count: { 

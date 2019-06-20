@@ -15,7 +15,7 @@ module.exports = {
           model: 'publication',
           key: 'id'
         },
-        onDelete: 'CASCADE'
+        onDelete: 'NO ACTION'
       },
       tag: { 
         allowNull: false,
