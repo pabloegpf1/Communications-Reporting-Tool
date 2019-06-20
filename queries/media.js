@@ -1,5 +1,4 @@
 const db = require('./index');
-const pgp = require('pg-promise')();
 
 //Create
 exports.addMedia = (media) => db.none('INSERT INTO media ($1:name) VALUES ($1:list)',[media])

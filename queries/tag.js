@@ -1,5 +1,4 @@
 const db = require('./index');
-const pgp = require('pg-promise')();
 
 //Create
 exports.tagPublication = (publication_id,tag) => db.none('INSERT INTO tag (publication,tag) VALUES ($1,$2)',[publication_id,tag])
