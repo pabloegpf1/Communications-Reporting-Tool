@@ -54,3 +54,7 @@ td{
   height: 300px;
   width: 90%;
 }
+
+label{
+  float: left;
+}

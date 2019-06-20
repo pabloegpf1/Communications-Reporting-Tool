@@ -2,13 +2,14 @@ var express = require('express');
 var router = express.Router();
 var Publication = require('../queries/publication');
 
-router.get('/contributions', function(req,res) {
-    Publication.getPublicationById(0) //Admin (TODO)
+router.get('/contributions/', function(req,res) {
+    Publication.getPublicationsByUser(0) //Admin (TODO)
     .then(publications =>{
         console.log(publications)
-        res.render('userContributions',{
+        res.render('publications',{
             publications: publications,
-            admin: true
+            admin: true,
+            title: "My Contributions"
         })
     })
     .catch(err => res.render('error',{message:"Error",error:err}))

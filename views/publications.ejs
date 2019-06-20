@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title><%= pageTitle %></title>
+    <title><%= title %></title>
     <% include ./partials/css%>
 </head>
 <body>
@@ -12,9 +12,15 @@
     <% } %>
     <div class="content">
       <div class="publication-table">
-          <h2 style="float: left;"><%= pageTitle %></h2>
-          <a style="float: right;" href="/publication/add" class="btn btn-info">New Publication</a>
-          <table class="table table-striped table-bordered" id="publications-table">
+        <div class="row">
+          <div class="col">
+              <h2 style="float: left;"><%= title %></h2>
+          </div>
+          <div class="col">
+              <a style="float: right;" href="/publication/add" class="btn btn-info">New Publication</a>
+          </div>
+        </div>
+          <table class="table table-striped table-bordered table-responsive-lg" id="publications-table">
               <thead>
                 <tr>
                   <th width="35%" scope="col" onclick="sortTable(0,false)">Headline</th>

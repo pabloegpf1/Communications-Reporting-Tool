@@ -93,38 +93,37 @@
               </div>
           </div>
         </div>
-        <div class="row" style="margin-bottom:30px; margin-top:30px;text-align: center">
-            <div class="col-sm-3">
+        <div class="row" style="margin-bottom:30px; margin-top:30px;">
+            <div class="col">
               <div class="form-check">
                 <input class="form-check-input" type="checkbox" value="true" name="published">
                 <label class="form-check-label form-check-label" for="defaultCheck1">Published*</label>
               </div>
             </div>
-            <div class="col-sm-3">
+            <div class="col">
               <div class="form-check">
                 <input class="form-check-input" type="checkbox" value="true" name="has_video">
                 <label class="form-check-label" for="defaultCheck1"> Has video*</label>
               </div>
             </div>
-            <div class="col-sm-3">
+            <div class="col">
               <div class="form-check">
                 <input class="form-check-input" type="checkbox" value="true" name="statements">
                 <label class="form-check-label" for="defaultCheck1">Statements*</label>
               </div>
             </div>
-          <div class="col-sm-3">
+          <div class="col">
             <div class="form-check">
               <input class="form-check-input" type="checkbox" value="true" name="proactivity">
               <label class="form-check-label" for="defaultCheck1">Proactivity*</label>
             </div>
           </div>
         </div>
-        <div class="row" style="">
-          <div class="col-sm-4">
+        <div class="row">
+          <div class="col">
               <div class="form-group">
-                <label for="exampleFormControlSelect1">Type*</label>
-                <select class="form-control" name="publication_type" required>
-                  <option disabled selected value> -- select an option -- </option>
+                <select class="form-control" name="type" required>
+                  <option disabled selected value> -- Publication Type -- </option>
                   <% for(var i=0; i<types.length; i++) {%>
                     <option value="<%= types[i].id %>"><%= types[i].type %></option>
                   <% }%>
@@ -134,24 +133,22 @@
                 </div>
               </div>
             </div>
-          <div class="col-sm-4">
+          <div class="col">
             <div class="form-group">
-              <label for="exampleFormControlSelect1">PR/NEWS*</label>
               <select class="form-control" name="pr_news" required>
-                <option disabled selected value> -- select an option -- </option>
-                <option value="pr">PR</option>
-                <option value="news">News</option>
+                <option disabled selected value> -- PR/NEWS -- </option>
+                <option value="PR">PR</option>
+                <option value="NEWS">News</option>
               </select>
               <div class="invalid-feedback">
                 Please choose one of the options
               </div>
             </div>
           </div>
-          <div class="col-sm-4">
+          <div class="col">
             <div class="form-group">
-              <label for="exampleFormControlSelect1">Number of photos*</label>
               <select class="form-control" name="photo_count" required>
-                <option disabled selected value> -- select an option -- </option>
+                <option disabled selected value> -- Number of Photos -- </option>
                 <option value="0">none</option>
                 <option value="1">1</option>
                 <option value="2">2</option>

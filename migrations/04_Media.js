@@ -13,7 +13,7 @@ module.exports = {
         type: Sequelize.STRING,
         unique: true
       },
-      media_type: { 
+      type: { 
         allowNull: false,
         type: Sequelize.INTEGER,
         references: {
@@ -41,7 +41,7 @@ module.exports = {
         type: Sequelize.ENUM("online","paper","other"),
         unique: false
       },
-      media_url: {
+      url: {
         allowNull: true,
         type: Sequelize.STRING,
         unique: false

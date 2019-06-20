@@ -57,14 +57,14 @@
               </div>
           </div>
         </div>
-        <div class="row" style="margin-bottom:30px; margin-top:30px;text-align: center">
-            <div class="col-sm-3">
+        <div class="row" style="margin-bottom:30px; margin-top:30px;">
+            <div class="col">
               <div class="form-check">
                 <input class="form-check-input" type="checkbox" value="true" name="published" disabled="disabled"  <% if (publication.published){ %> checked <% } %> >
                 <label class="form-check-label form-check-label" for="defaultCheck1">Published</label>
               </div>
             </div>
-            <div class="col-sm-3">
+            <div class="col">
               <div class="form-check">
                 <input class="form-check-input" type="checkbox" value="true" name="has_video" disabled="disabled" <% if (publication.has_video){ %> checked <% } %> >
                 <label class="form-check-label" for="defaultCheck1">
@@ -72,7 +72,7 @@
                 </label>
               </div>
             </div>
-            <div class="col-sm-3">
+            <div class="col">
               <div class="form-check">
                 <input class="form-check-input" type="checkbox" value="true" name="statements" disabled="disabled" <% if (publication.statements){ %> checked <% } %> >
                 <label class="form-check-label" for="defaultCheck1">
@@ -80,7 +80,7 @@
                 </label>
               </div>
             </div>
-          <div class="col-sm-3">
+          <div class="col">
             <div class="form-check">
               <input class="form-check-input" type="checkbox" value="true" name="proactivity" disabled="disabled" <% if (publication.proactivity){ %> checked <% } %> >
               <label class="form-check-label" for="defaultCheck1">
@@ -90,19 +90,19 @@
           </div>
         </div>
         <div class="row">
-          <div class="col-sm-4">
+          <div class="col">
               <div class="form-group">
                 <label for="exampleFormControlSelect1">Type</label>
                 <input type="text" class="form-control" name="publication_type" rows="1" value="<%= publication.type %>" readonly>
               </div>
             </div>
-          <div class="col-sm-4">
+          <div class="col">
             <div class="form-group">
               <label for="exampleFormControlSelect1">PR/NEWS</label>
               <input type="text" class="form-control" name="pr_news" rows="1" value="<%= publication.pr_news %>" readonly>
             </div>
           </div>
-          <div class="col-sm-4">
+          <div class="col">
             <div class="form-group">
               <label for="exampleFormControlSelect1">Photos</label>
               <input type="text" class="form-control" name="photo_count" rows="1" value="<%= publication.photo_count %>" readonly>

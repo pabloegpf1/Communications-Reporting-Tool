@@ -18,7 +18,7 @@ module.exports = {
         type: Sequelize.STRING,
         unique: false
       },
-      publication_type: { 
+      type: { 
         allowNull: false,
         type: Sequelize.INTEGER,
         references: {
@@ -34,7 +34,7 @@ module.exports = {
           model: 'users',
           key: 'id'
         },
-        onDelete: 'CASCADE'
+        onDelete: 'NO ACTION'
       },
       media: { 
         allowNull: false,
@@ -87,7 +87,7 @@ module.exports = {
       },
       pr_news: { 
         allowNull: false,
-        type: Sequelize.ENUM("pr","news"),
+        type: Sequelize.ENUM("PR","NEWS"),
         unique: false
       },
       photo_count: { 

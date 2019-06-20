@@ -26,15 +26,15 @@ router.get('/add', function(req,res){
 router.post('/add', function(req,res){
     let media = {
         name:req.body.name,
-        media_type:req.body.media_type,
+        type:req.body.type,
         content:req.body.content,
         coverage:req.body.coverage,
         format:req.body.format,
-        media_url:req.body.media_url
+        url:req.body.url
     }
     console.log(media)
     Media.addMedia(media)
-    .then(() => res.redirect('/publications/add'))
+    .then(() => res.redirect('/publication/add'))
     .catch(err => res.status(500).send(err))
 })
 
