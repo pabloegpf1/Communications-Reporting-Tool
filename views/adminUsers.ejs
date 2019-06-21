@@ -5,11 +5,7 @@
     <% include ./partials/css%>
 </head>
 <body>
-    <% if(admin == true) {%>
-    <%  include ./partials/navbarAdmin%>
-    <% }else{%>
-    <%  include ./partials/navbar%>
-    <% } %>
+    <%- include('partials/navbar', {admin:admin}) %>
     <div class="content">
       <div class="publication-table">
         <div class="row row-title">

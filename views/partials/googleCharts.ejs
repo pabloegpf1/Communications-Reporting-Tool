@@ -1,0 +1,15 @@
+<script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+<script type="text/javascript">
+    google.charts.load('current');   
+    google.charts.setOnLoadCallback(drawVisualization);
+    function drawVisualization(type,data,options,id) {
+        var wrapper = new google.visualization.ChartWrapper({
+            chartType: 'ColumnChart',
+            dataTable: [['Jan', 'Feb', 'Mar', 'Apr', 'May', 'June', 'July', 'Aug', 'Sept', 'Oct', 'Nov', 'Dec'],
+                        [42, 19, 52, 30, 6, 27, 37,5,24,24,42,34]],
+            options: {'title': 'SM posts by month','backgroundColor':'transparent','height':'400','width':'100%'},
+            containerId: 'SM posts by month'
+        });
+        wrapper.draw();
+    }
+</script>

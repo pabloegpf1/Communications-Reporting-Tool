@@ -5,11 +5,7 @@
     <% include ./partials/css%>
   </head>
 <body>
-  <% if(admin == true) {%>
-  <%  include ./partials/navbarAdmin%>
-  <% }else{%>
-  <%  include ./partials/navbar%>
-  <% } %>
+  <%- include('partials/navbar', {admin:admin}) %>
   <div class="content-form">
     <form class="publication-form" action="/media/add" method="post" novalidate>
       <h2>New Media</h2>
