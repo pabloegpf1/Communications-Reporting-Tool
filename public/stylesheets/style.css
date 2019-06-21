@@ -24,6 +24,10 @@ body {
   vertical-align: baseline;
 }
 
+.graphs{
+  margin:30px;
+}
+
 .navbar {
   background-color:#2A3F54;
   box-shadow: 0px 1px 10px 1px rgba(77,77,77,1);
