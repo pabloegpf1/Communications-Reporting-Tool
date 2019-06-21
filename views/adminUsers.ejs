@@ -13,7 +13,7 @@
               <h2 style="float: left;"><%= title %></h2>
           </div>
           <div class="col">
-              <a style="float: right;" href="/publication/add" class="btn btn-info">Add User</a>
+              <a style="float: right;" href="/admin/add-user" class="btn btn-info">Add User</a>
           </div>
         </div>
           <table class="table table-striped table-bordered table-responsive-lg" id="publications-table">
@@ -22,8 +22,8 @@
                   <th scope="col" onclick="sortTable(0,false)">First name</th>
                   <th scope="col" onclick="sortTable(1,false)">Last Name</th>
                   <th scope="col" onclick="sortTable(2,false)">Username</th>
-                  <th scope="col">Contributions</th>
-                  <th scope="col">Actions</th>
+                  <th scope="col" style="text-align:center">Contributions</th>
+                  <th scope="col" style="text-align:center" >Actions</th>
                 </tr>
               </thead>
               <tbody>
@@ -36,7 +36,11 @@
                       <td style="text-align: center">
                         <div class="row">
                           <div class="col">
-                              <a class="fas fa-user-cog" style="color:green;" href="contributions/<%= users[i].id %>" ></a>
+                          <% if(users[i].admin == true){ %>
+                            <a class="fas fa-user-cog" style="color:green;" href="change-status/<%= users[i].id %>" ></a>
+                          <%}else{%>
+                            <a class="fas fa-user-cog" style="color:orange;" href="change-status/<%= users[i].id %>" ></a>
+                          <%}%>
                           </div>
                           <div class="col">
                               <a class="fas fa-trash-alt" style="color:red;" href="delete-user/<%= users[i].id %>" ></a>

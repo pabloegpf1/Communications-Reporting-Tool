@@ -70,6 +70,18 @@ router.get('/contributions/:id', function(req,res) {
     .catch(err => res.render('error',{message:"Error",error:err}))
 });
 
+router.get('/add-user/', function(req,res) {
+    res.render('newUser',{
+        admin:true
+    })
+});
+
+router.get('/change-status/:id', function(req,res) {
+    Users.changeStatus(req.params.id)
+    .then(()=>res.redirect('/admin/users'))
+    .catch(err => res.render('error',{message:"Error",error:err}))
+});
+
 router.get('/delete-user/:id', function(req,res) {
     Users.deleteUser(req.params.id)
     .then(()=>res.redirect('/admin/users'))
