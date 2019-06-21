@@ -30,7 +30,7 @@
               <tbody>
                   <% for(var i=0; i<publications.length; i++) {%>
                   <tr>
-                      <td style="text-overflow: ellipsis;white-space: nowrap;overflow: hidden;"><a href="/publication/id/<%= publications[i].id %>"><%= publications[i].headline %></a></td>
+                      <td style="text-overflow: ellipsis;white-space: nowrap;overflow: hidden;"><a href="/publication/<%= publications[i].id %>"><%= publications[i].headline %></a></td>
                       <td><%= publications[i].name %></td>
                       <td><%= publications[i].type %></td>
                       <td><%= publications[i].summary %></td>
@@ -40,6 +40,15 @@
                   <% } %>
               </tbody>
             </table>
+          <nav aria-label="Page navigation example">
+            <ul class="pagination">
+              <li class="page-item"><a class="page-link" href="#">Previous</a></li>
+              <li class="page-item"><a class="page-link" href="#">1</a></li>
+              <li class="page-item"><a class="page-link" href="#">2</a></li>
+              <li class="page-item"><a class="page-link" href="#">3</a></li>
+              <li class="page-item"><a class="page-link" href="#">Next</a></li>
+            </ul>
+          </nav>
       </div>
     </div>
     <% include ./partials/sortingScript%>

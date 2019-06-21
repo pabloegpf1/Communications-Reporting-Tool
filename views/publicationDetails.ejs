@@ -6,8 +6,7 @@
   </head>
 <body>
     <%- include('partials/navbar', {admin:admin}) %>
-    <div class="content">
-      <form class="publication-form" action="/publication/delete/<%= publication.id %>" method="post">
+    <div class="content-form">
         <h2>Details</h2>
         <div class="form-group">
           <label for="exampleFormControlInput1">Headline</label>
@@ -119,8 +118,8 @@
             </div>
           </div>
       </div>
-      <button type="submit"class="btn btn-danger btn-lg" style="float: right; padding: 10px; width:20%; margin: 10px;">Delete</a>
-    </form>
+      <a style="float: left; padding: 10px; width:20%; margin: 10px;" href="/publication/delete/<%= publication.id %>" class="btn btn-danger btn-lg">Delete</a>
+      <a style="float: right; padding: 10px; width:20%; margin: 10px;" href="/publication/edit/<%= publication.id %>"  class="btn btn-info btn-lg">Edit</a>
   </div>
   <% include ./partials/scripts%>
 </body>

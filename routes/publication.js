@@ -31,16 +31,34 @@ router.get('/add', function(req,res){
     .catch(err => res.render('error',{message:"Error",error:err}))
 })
 
-router.get('/id/:id', function(req,res){
-    console.log(req.params.id)
+router.get('/:id', function(req,res){
     Publication.getPublicationById(req.params.id)
     .then(publication =>{
-        console.log(publication)
         res.render('publicationDetails',{
             publication: publication,
             admin: true
         })
     })
+    .catch(err => res.render('error',{message:"Error",error:err}))
+})
+
+router.get('/edit/:id', function(req,res){
+    Media.getMedias()
+    .then(medias =>{
+        Publication.getPublicationTypes()
+        .then(types =>{
+            Publication.getPublicationById(req.params.id)
+            .then(publication =>{
+                console.log(publication)
+                res.render('editPublication',{
+                    publication: publication,
+                    medias: medias,
+                    types:types,
+                    admin: true
+                })
+            })
+        })
+    })  
     .catch(err => res.render('error',{message:"Error",error:err}))
 })
 
