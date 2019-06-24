@@ -8,8 +8,9 @@ router.get('/', function(req,res) {
             {
                 type:'ColumnChart',
                 data: [
-                    ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'],
-                    [42, 19, 52, 30, 6, 27, 37,5,24,24,42,34]
+                    ['Month','Impacts'],
+                    ['January',42], ['February',19], ['March',52], ['April',30], ['May',6], ['June',27], ['July',37], ['August',5], ['September',24],
+                    ['October',24], ['November',42], ['December',34]
                 ],
                 options: {'title': 'SM posts by month','backgroundColor':'transparent','height':'400'},
                 containerId: 'SM posts by month'
