@@ -1,7 +1,7 @@
 var express = require('express');
 var router = express.Router();
-var Publication = require('../queries/publication');
-var Media = require('../queries/media');
+var Publication = require('../Models/queries/publication');
+var Media = require('../Models/queries/media');
 
 router.get('/', function(req,res){
     Publication.getPublications()

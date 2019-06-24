@@ -1,6 +1,6 @@
 var express = require('express');
 var router = express.Router();
-var Media = require('../queries/media');
+var Media = require('../Models/queries/media');
 
 router.get('/', function(req,res){
     Media.getMediaNames()

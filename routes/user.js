@@ -1,7 +1,7 @@
 var express = require('express');
 var router = express.Router();
-var Publication = require('../queries/publication');
-var User = require('../queries/users');
+var Publication = require('../Models/queries/publication');
+var User = require('../Models/queries/users');
 
 router.get('/contributions/', function(req,res) {
     Publication.getPublicationsByUser(0) //Admin (TODO)

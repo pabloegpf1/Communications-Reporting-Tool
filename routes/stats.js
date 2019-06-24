@@ -1,5 +1,6 @@
 var express = require('express');
 var router = express.Router();
+var Stats = require('../Models/queries/stats');
 
 router.get('/', function(req,res) {
     res.render('stats',{

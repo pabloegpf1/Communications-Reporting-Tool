@@ -1,8 +1,8 @@
 var express = require('express');
 var router = express.Router();
-var Users = require('../queries/users');
-var Publication = require('../queries/publication');
-var Medias = require('../queries/media');
+var Users = require('../Models/queries/users');
+var Publication = require('../Models/queries/publication');
+var Medias = require('../Models/queries/media');
 
 router.get('/users', function(req,res) {
     Users.getUsers()
