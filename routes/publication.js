@@ -6,7 +6,6 @@ var Media = require('../queries/media');
 router.get('/', function(req,res){
     Publication.getPublications()
     .then(publications =>{
-        console.log(publications)
         res.render('publications',{
             title: 'Latest Publications',
             publications: publications,
@@ -80,6 +79,14 @@ router.post('/search/', function(req,res){
             admin: true
         })
     })
+    .catch(err => res.render('error',{message:"Error",error:err}))
+})
+
+router.post('/edit/:id', function(req,res){
+    let newPublication = createPublicationFromRequest(req.body)
+    console.log(newPublication)
+    Publication.updatePublication(newPublication,req.params.id)
+    .then(() => res.redirect('/publication'))
     .catch(err => res.render('error',{message:"Error",error:err}))
 })
 
