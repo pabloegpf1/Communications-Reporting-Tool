@@ -1,7 +1,7 @@
 const db = require('./index');
 const pgp = require('pg-promise')();
 
-let baseQuery = ` p.id, p.headline, p.summary, p.media_section, p.spokesperson, p.comments, p.language, p.date, p.published, p.has_video, 
+let baseQuery = ` p.id, p.headline, p.summary, p.media_section, p.spokesperson, p.comments, p.language, p.date, p.uploaded, p.has_video, 
                         p.statements, p.proactivity, p.type as publication_type, p.pr_news, p.photo_count, p.url, p.shortened_url, m.name, m.id as media_id, 
                         m_t.type, m_t.id as media_type_id, m_c.id as media_content_id, m_c.content 
                         FROM publication p, publication_type p_type, media m, media_type m_t,media_content m_c 

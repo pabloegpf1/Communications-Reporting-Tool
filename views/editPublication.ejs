@@ -92,8 +92,8 @@
         <div class="row" style="margin-bottom:30px; margin-top:30px;">
             <div class="col">
               <div class="form-check">
-                <input class="form-check-input" type="checkbox" value="true" name="published" <% if(publication.published){ %> checked <%}%> >
-                <label class="form-check-label form-check-label" for="defaultCheck1">Published*</label>
+                <input class="form-check-input" type="checkbox" value="true" name="uploaded" <% if(publication.uploaded){ %> checked <%}%> >
+                <label class="form-check-label form-check-label" for="defaultCheck1">Uploaded*</label>
               </div>
             </div>
             <div class="col">
@@ -176,7 +176,8 @@
             </div>
           </div>
       </div>
-      <button type="submit"class="btn btn-success" style="float: right; padding: 10px; margin: 10px;">Submit Changes</a>
+      <a class="btn btn-danger btn-lg" style="float: left; padding: 10px; width:25%; margin: 10px; width:30%" href="/publications/" >Cancel</a>
+      <button type="submit"class="btn btn-success btn-lg" style="float: right; padding: 10px; margin: 10px;width:30%">Submit Changes</a>
     </form>
   </div>
   <% include ./partials/formValidationScript%>
