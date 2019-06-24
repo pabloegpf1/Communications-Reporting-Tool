@@ -15,6 +15,18 @@ router.get('/', function(req,res){
     .catch(err => res.render('error',{message:"Error",error:err}))
 })
 
+router.get('/type/:id', function(req,res){
+    Publication.getPublicationsByType()
+    .then(publications =>{
+        res.render('publications',{
+            title: 'Latest Publications',
+            publications: publications,
+            admin: true
+        })
+    })
+    .catch(err => res.render('error',{message:"Error",error:err}))
+})
+
 router.get('/add', function(req,res){
     Media.getMedias()
     .then(medias =>{
@@ -54,8 +66,7 @@ router.get('/edit/:id', function(req,res){
                     publication: publication,
                     medias: medias,
                     types:types,
-                    admin: true,
-                    edit: true
+                    admin: true
                 })
             })
         })
@@ -67,7 +78,7 @@ router.post('/add', function(req,res){
     let newPublication = createPublicationFromRequest(req.body)
     console.log(newPublication)
     Publication.addPublication(newPublication)
-    .then(() => res.redirect('/publication'))
+    .then(() => res.redirect('/publications'))
     .catch(err => res.render('error',{message:"Error",error:err}))
 })
 
@@ -88,13 +99,13 @@ router.post('/edit/:id', function(req,res){
     let newPublication = createPublicationFromRequest(req.body)
     console.log(newPublication)
     Publication.updatePublication(newPublication,req.params.id)
-    .then(() => res.redirect('/publication'))
+    .then(() => res.redirect('/publications'))
     .catch(err => res.render('error',{message:"Error",error:err}))
 })
 
 router.post('/delete/:id', function(req,res){
     Publication.deletePublication(req.params.id)
-    .then(() => res.redirect('/publication'))
+    .then(() => res.redirect('/publications'))
     .catch(err => res.render('error',{message:"Error",error:err}))
 })
 

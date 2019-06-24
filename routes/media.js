@@ -34,7 +34,7 @@ router.post('/add', function(req,res){
     }
     console.log(media)
     Media.addMedia(media)
-    .then(() => res.redirect('/publication/add'))
+    .then(() => res.redirect('/publications/add'))
     .catch(err => res.status(500).send(err))
 })
 
