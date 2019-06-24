@@ -48,12 +48,14 @@ router.get('/edit/:id', function(req,res){
         .then(types =>{
             Publication.getPublicationById(req.params.id)
             .then(publication =>{
-                console.log(publication)
+                var date = new Date(publication.date.toDateString())
+                publication.date = date.getFullYear() + '-'+ ('0' + (date.getMonth()+1)).slice(-2) + '-'+ ('0' + date.getDate()).slice(-2)
                 res.render('editPublication',{
                     publication: publication,
                     medias: medias,
                     types:types,
-                    admin: true
+                    admin: true,
+                    edit: true
                 })
             })
         })

@@ -21,12 +21,7 @@ exports.getPublicationsByUser = user_id => db.any('SELECT $1:raw AND added_by = 
 exports.getPublicationsBySpokesperson = spokesperson => db.any('SELECT * FROM publication AND spokesperson = $2',[spokesperson,user_id])
 exports.getPublicationsWithVideo = has_video => db.any('SELECT * FROM publication WHERE has_video = $1',[has_video])
 //Update
-exports.updatePublication = (publication,id) =>{
-    let query = pgp.as.format('UPDATE SET $1:name = $1:list FROM $2',[publication,id])
-    let query2 = pgp.helpers.update(publication, null, 'publication') + 'WHERE id = '+id;
-    console.log(query2)
-    return db.none(query2)
-} 
+exports.updatePublication = (publication,id) =>db.none(pgp.helpers.update(publication, null, 'publication') + 'WHERE id = '+id)
 //Delete
 exports.deletePublication = (publication_id) => db.none('DELETE FROM publication WHERE id=($1)',[publication_id])
 
