@@ -3,7 +3,8 @@
   "version": "0.0.0",
   "private": true,
   "scripts": {
-    "start": "node ./bin/www"
+    "start": "node ./bin/www",
+    "undo-migrations": "sequelize-cli db:migrate:undo:all --options-path=Models/config/settings.js"
   },
   "dependencies": {
     "bootstrap": "^4.3.1",
