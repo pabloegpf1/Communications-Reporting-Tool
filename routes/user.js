@@ -1,36 +1,23 @@
 var express = require('express');
 var router = express.Router();
-var Publication = require('../queries/publication');
-var User = require('../queries/users');
+var UserController = require('../Controllers/users')
 
-router.get('/contributions/', function(req,res) {
-    Publication.getPublicationsByUser(0) //Admin (TODO)
-    .then(publications =>{
-        console.log(publications)
-        res.render('publications',{
-            publications: publications,
-            admin: true,
-            title: "My Contributions"
-        })
-    })
-    .catch(err => res.render('error',{message:"Error",error:err}))
+// GET Requests
+router.get('/contributions/', function(request,response) {
+    UserController.showContributionsByUser(request,response)
 });
 
-router.post('/add', function(req,res) {
-    console.log(req.body)
-    User.addUser(req.body)
-    .then(()=>res.redirect('/')) //TODO: if admin go to user dashboard
-    .catch(err => res.render('error',{message:"Error",error:err}))
+router.get('/edit', function(request,response) {
+    UserController.editUser(request,response)
 });
 
-router.get('/edit', function(req,res) {
-    res.render('userInfo',{
-        admin:true
-    })
+router.get('/sign-out', function(request,response) {
+    UserController.signOut(response)
 });
 
-router.get('/sign-out', function(req,res) {
-    res.redirect('/')
+// POST Requests
+router.post('/add', function(request,response) {
+    UserController.addUser(request,response)
 });
 
 module.exports = router;

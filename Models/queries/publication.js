@@ -1,6 +1,7 @@
 const db = require('./index');
+const pgp = require('pg-promise')();
 
-let baseQuery = ` p.id, p.headline, p.summary, p.media_section, p.spokesperson, p.comments, p.language, p.date, p.published, p.has_video, 
+let baseQuery = ` p.id, p.headline, p.summary, p.media_section, p.spokesperson, p.comments, p.language, p.date, p.uploaded, p.has_video, 
                         p.statements, p.proactivity, p.type as publication_type, p.pr_news, p.photo_count, p.url, p.shortened_url, m.name, m.id as media_id, 
                         m_t.type, m_t.id as media_type_id, m_c.id as media_content_id, m_c.content 
                         FROM publication p, publication_type p_type, media m, media_type m_t,media_content m_c 
@@ -20,7 +21,7 @@ exports.getPublicationsByUser = user_id => db.any('SELECT $1:raw AND added_by = 
 exports.getPublicationsBySpokesperson = spokesperson => db.any('SELECT * FROM publication AND spokesperson = $2',[spokesperson,user_id])
 exports.getPublicationsWithVideo = has_video => db.any('SELECT * FROM publication WHERE has_video = $1',[has_video])
 //Update
-exports.editPublication = publication => db.none('UPDATE SET $1:name = $1.value FROM $2',[publication,id])
+exports.updatePublication = (publication,id) =>db.none(pgp.helpers.update(publication, null, 'publication') + 'WHERE id = '+id)
 //Delete
 exports.deletePublication = (publication_id) => db.none('DELETE FROM publication WHERE id=($1)',[publication_id])
 

@@ -66,7 +66,7 @@ module.exports = {
         type: Sequelize.ENUM("spanish","english","french","german","italian","russian","greek","chinese","japanese","arabic","other"),
         unique: false
       },
-      published: { 
+      uploaded: { 
         allowNull: false,
         type: Sequelize.BOOLEAN,
         unique: false

@@ -25,10 +25,10 @@ app.use(bodyParser.json());
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
-app.use(express.static(path.join(__dirname, 'public')));
+app.use(express.static(path.join(__dirname, 'views/public')));
 
 app.use('/', indexRouter);
-app.use('/publication', publicationRouter);
+app.use('/publications', publicationRouter);
 app.use('/media', mediasRouter);
 app.use('/user', userRouter);
 app.use('/admin', adminRouter);

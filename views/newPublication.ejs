@@ -7,7 +7,7 @@
 <body>
     <%- include('partials/navbar', {admin:admin}) %>
     <div class="content-form">
-      <form class="publication-form" action="/publication/add" method="post" novalidate>
+      <form class="publication-form" action="/publications/add" method="post" novalidate>
         <h2>New Publication</h2>
         <div class="form-group">
           <label for="exampleFormControlInput1">Headline*</label>
@@ -92,8 +92,8 @@
         <div class="row" style="margin-bottom:30px; margin-top:30px;">
             <div class="col">
               <div class="form-check">
-                <input class="form-check-input" type="checkbox" value="true" name="published">
-                <label class="form-check-label form-check-label" for="defaultCheck1">Published*</label>
+                <input class="form-check-input" type="checkbox" value="true" name="uploaded">
+                <label class="form-check-label form-check-label" for="defaultCheck1">Uploaded*</label>
               </div>
             </div>
             <div class="col">
@@ -148,10 +148,10 @@
                 <option value="0">none</option>
                 <option value="1">1</option>
                 <option value="2">2</option>
-                <option value="2">3</option>
-                <option value="2">4</option>
-                <option value="2">5</option>
-                <option value="2">>5</option>
+                <option value="3">3</option>
+                <option value="4">4</option>
+                <option value="5">5</option>
+                <option value="6">>5</option>
               </select>
               <div class="invalid-feedback">
                 You must select the number of photos included in the publication
@@ -176,7 +176,8 @@
             </div>
           </div>
       </div>
-      <button type="submit"class="btn btn-success" style="float: right; padding: 10px; margin: 10px;">Create Publication</a>
+      <a class="btn btn-danger btn-lg" style="float: left; padding: 10px; width:25%; margin: 10px; width:30%" href="/publications/" >Cancel</a>
+      <button type="submit"class="btn btn-success btn-lg" style="float: right; padding: 10px; margin: 10px; width:30%">Create Publication</a>
     </form>
   </div>
   <% include ./partials/formValidationScript%>
