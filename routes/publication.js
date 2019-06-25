@@ -1,6 +1,6 @@
 var express = require('express');
 var router = express.Router();
-var PublicationController = require('../Controllers/publications')
+var PublicationController = require('../controllers/publications')
 
 //GET Requests
 router.get('/', function(request,response){

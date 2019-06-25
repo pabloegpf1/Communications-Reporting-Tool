@@ -1,4 +1,4 @@
-var Media = require('../Models/queries/media');
+var Media = require('../models/queries/media');
 
 exports.showMediaNames = (response) => {
     Media.getMediaNames()

@@ -1,6 +1,6 @@
 var express = require('express');
 var router = express.Router();
-var AdminController = require('../Controllers/admin')
+var AdminController = require('../controllers/admin')
 
 //GET Requests
 router.get('/users', function(request,response) {

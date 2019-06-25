@@ -1,4 +1,4 @@
-var Stats = require('../Models/queries/stats');
+var Stats = require('../models/queries/stats');
 
 exports.showCharts = (request,response) => {
     response.render('stats',{

@@ -1,6 +1,6 @@
 var express = require('express');
 var router = express.Router();
-var MediaController = require('../Controllers/media')
+var MediaController = require('../controllers/media')
 
 // GET Requests
 router.get('/', function(request,response){
