@@ -1,53 +1,27 @@
 var express = require('express');
 var router = express.Router();
-var Media = require('../Models/queries/media');
+var MediaController = require('../Controllers/media')
 
-router.get('/', function(req,res){
-    Media.getMediaNames()
-    .then(data => res.send(data))
-    .catch(err => res.status(500).send(err))
+// GET Requests
+router.get('/', function(request,response){
+    MediaController.showMediaNames(response)
 })
 
-router.get('/add', function(req,res){
-    Media.getMediaContents()
-    .then(contents =>{
-        Media.getMediaTypes()
-        .then(types => {
-            res.render('newMedia',{
-                contents: contents,
-                types: types,
-                admin: true
-            })
-        })
-    })
-    .catch(err => res.status(500).send(err))
+router.get('/add', function(request,response){
+    MediaController.showNewMediaForm(response)
 })
 
-router.post('/add', function(req,res){
-    let media = {
-        name:req.body.name,
-        type:req.body.type,
-        content:req.body.content,
-        coverage:req.body.coverage,
-        format:req.body.format,
-        url:req.body.url
-    }
-    console.log(media)
-    Media.addMedia(media)
-    .then(() => res.redirect('/publications/add'))
-    .catch(err => res.status(500).send(err))
+// POST Requests
+router.post('/add', function(request,response){
+    MediaController.addMedia(request,response)
 })
 
-router.post('/addType', function(req,res){
-    Media.addMediaType(req.body.type)
-    .then(() => res.redirect('/medias'))
-    .catch(err => res.status(500).send(err))
+router.post('/addType', function(request,response){
+    MediaController.addMediaType(request,response)
 })
 
-router.post('/addContent', function(req,res){
-    Media.addMediaContent(req.body.content)
-    .then(() => res.redirect('/medias'))
-    .catch(err => res.status(500).send(err))
+router.post('/addContent', function(request,response){
+    MediaController.addMediaContent(request,response)
 })
 
 module.exports = router;
