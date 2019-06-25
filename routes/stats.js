@@ -1,6 +1,6 @@
 var express = require('express');
 var router = express.Router();
-var StatController = require('../Controllers/stats')
+var StatController = require('../controllers/stats')
 
 //GET Requests
 router.get('/', function(request,response) {

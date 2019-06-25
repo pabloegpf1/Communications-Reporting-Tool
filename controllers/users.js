@@ -1,5 +1,5 @@
-var Publication = require('../Models/queries/publication');
-var User = require('../Models/queries/users');
+var Publication = require('../models/queries/publication');
+var User = require('../models/queries/users');
 
 exports.showContributionsByUser = (request,response) => {
     Publication.getPublicationsByUser(0) //Admin (TODO)

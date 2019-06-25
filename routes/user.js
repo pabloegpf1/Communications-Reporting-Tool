@@ -1,6 +1,6 @@
 var express = require('express');
 var router = express.Router();
-var UserController = require('../Controllers/users')
+var UserController = require('../controllers/users')
 
 // GET Requests
 router.get('/contributions/', function(request,response) {

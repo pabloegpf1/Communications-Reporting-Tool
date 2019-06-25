@@ -1,5 +1,5 @@
-var Publication = require('../Models/queries/publication');
-var Media = require('../Models/queries/media');
+var Publication = require('../models/queries/publication');
+var Media = require('../models/queries/media');
 
 exports.showPublications = (request,response) =>{
     Publication.getPublications()
