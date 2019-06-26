@@ -1,12 +1,13 @@
+const bcrypt = require('bcrypt');
 var Publication = require('../models/queries/publication');
 var User = require('../models/queries/users');
 
 exports.showContributionsByUser = (request,response) => {
-    Publication.getPublicationsByUser(0) //Admin (TODO)
+    Publication.getPublicationsByUser(request.user.id) 
     .then(publications =>{
         response.render('publications',{
             publications: publications,
-            admin: true,
+            admin: request.user.admin,
             title: "My Contributions"
         })
     })
@@ -14,17 +15,31 @@ exports.showContributionsByUser = (request,response) => {
 }
 
 exports.addUser = (request,response) => {
-    User.addUser(request.body)
-    .then(() => response.redirect('/')) //TODO: if admin go to user dashboard
+    let encrypted_pw = bcrypt.hashSync(request.body.password, 9)
+    console.log(request.body)
+    User.addUser({
+        first_name: request.body.first_name,
+        last_name: request.body.last_name,
+        username: request.body.username,
+        password: encrypted_pw,
+        admin: (request.body.admin === undefined) ? false : true,
+    })
+    .then(() => {
+        if(request.user.admin == true){
+            response.redirect('/admin/users')
+        }else{
+            response.redirect('/publications')
+        }})
     .catch(err => response.render('error',{message:"Error",error:err}))
 }
 
 exports.editUser = (request,response) => {
     response.render('userInfo',{
-        admin:true
+        admin: request.user.admin,
     })
 }
 
-exports.signOut = (response) => {
+exports.signOut = (request,response) => {
+    request.logout()
     response.redirect('/')
 }

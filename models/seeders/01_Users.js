@@ -1,5 +1,6 @@
 'use strict';
 require('dotenv').config();
+const bcrypt = require('bcrypt');
 
 module.exports = {
   up: (queryInterface, Sequelize) => {
@@ -9,7 +10,8 @@ module.exports = {
       first_name: 'Admin',
       last_name: 'Admin',
       username: 'Admin',
-      password: process.env.ADMIN_PW //TEMPORAL!!!!
+      admin: true,
+      password: bcrypt.hashSync(process.env.ADMIN_PW, 9)
     }
 ]) 
   },

@@ -14,7 +14,7 @@ exports.showNewMediaForm = (response) => {
             response.render('newMedia',{
                 contents: contents,
                 types: types,
-                admin: true
+                admin: request.user.admin,
             })
         })
     })

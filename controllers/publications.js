@@ -7,7 +7,7 @@ exports.showPublications = (request,response) =>{
         response.render('publications',{
             title: 'Latest Publications',
             publications: publications,
-            admin: true
+            admin: request.user.admin,
         })
     })
     .catch(err => response.render('error',{message:"Error",error:err}))
@@ -19,7 +19,7 @@ exports.showPublicationsByType = (request,response) =>{
         response.render('publications',{
             title: 'Latest Publications',
             publications: publications,
-            admin: true
+            admin: request.user.admin,
         })
     })
     .catch(err => response.render('error',{message:"Error",error:err}))
@@ -33,7 +33,7 @@ exports.showNewPublicationForm = (request,response) =>{
             response.render('newPublication',{
                 medias: medias,
                 types:types,
-                admin: true
+                admin: request.user.admin,
             })
         })
     })
@@ -45,7 +45,7 @@ exports.showPublicationDetails = (request,response) =>{
     .then(publication =>{
         response.render('publicationDetails',{
             publication: publication,
-            admin: true
+            admin: request.user.admin,
         })
     })
     .catch(err => res.render('error',{message:"Error",error:err}))
@@ -64,7 +64,7 @@ exports.showEditPublicationForm = (request,response) =>{
                     publication: publication,
                     medias: medias,
                     types:types,
-                    admin: true
+                    admin: request.user.admin,
                 })
             })
         })
@@ -73,7 +73,7 @@ exports.showEditPublicationForm = (request,response) =>{
 }
 
 exports.addPublication = (request,response) =>{
-    let newPublication = createPublicationFromRequest(request.body)
+    let newPublication = createPublicationFromRequest(request.body,request.user.id)
     Publication.addPublication(newPublication)
     .then(() => response.redirect('/publications'))
     .catch(err => response.render('error',{message:"Error",error:err}))
@@ -85,7 +85,7 @@ exports.searchPublication = (request,response) =>{
         response.render('publications',{
             title: 'Search Results',
             publications: publications,
-            admin: true
+            admin: request.user.admin,
         })
     })
     .catch(err => res.render('error',{message:"Error",error:err}))
@@ -104,9 +104,9 @@ exports.deletePublication = (request,response) =>{
     .catch(err => response.render('error',{message:"Error",error:err}))
 }
 
-const createPublicationFromRequest = function(data){
+const createPublicationFromRequest = function(data,user_id){
     return publication = {
-        added_by: 0,
+        added_by: user_id,
         headline: data.headline,
         summary: data.summary,
         media: data.media, 
