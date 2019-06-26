@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>New User</title>
+    <% include ./partials/css%>
+  </head>
+<body>
+  <div class="content-form">
+  	<% if (authMessage.length > 0) { %>
+    <div class="alert alert-danger">
+      <%= authMessage %>
+    </div>
+  	<% } %>
+    <form class="publication-form" action="/user/login" method="post" novalidate>
+      <h2>Login</h2>
+      <div class="form-group">
+        <label for="exampleFormControlInput1">Username</label>
+        <input type="text" id="username" class="form-control" name="username" required>
+      </div>
+      <div class="form-group">
+        <label for="exampleFormControlInput1">Password</label>
+        <input type="password" id="password" class="form-control" name="password" required>
+      </div>
+      <button type="submit" class="btn btn-success" style="float: right; padding: 10px; margin: 10px;">Login</a>
+    </form>
+  </div>
+<% include ./partials/formValidationScript%>
+<% include ./partials/scripts%>
+</body>
+</html>

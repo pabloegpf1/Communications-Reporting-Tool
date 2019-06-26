@@ -7,6 +7,10 @@ var logger = require('morgan');
 var dotenv = require('dotenv').config()
 const Sequelize = require('sequelize');
 const sequelize = new Sequelize(process.env.DB_URL);
+const passport = require('passport');
+const LocalStrategy = require('passport-local').Strategy;
+const session = require('express-session');
+const flash = require('connect-flash');
 
 var indexRouter = require('./routes/index');
 var publicationRouter = require('./routes/publication');
@@ -21,11 +25,19 @@ app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'ejs');
 
 app.use(logger('dev'));
-app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({ extended: true }));
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, '/views/public')));
+app.use(session({
+  secret: 'secret',
+  saveUninitialized: true,
+  resave: true
+}));
+app.use(passport.initialize());
+app.use(passport.session());
+app.use(flash()); 
 
 app.use('/', indexRouter);
 app.use('/publications', publicationRouter);
@@ -43,7 +55,8 @@ sequelize
     console.error('Unable to connect to the database:', err);
   });
 
-
+require('./controllers/userAuth.js')(passport, LocalStrategy);
+ 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
   next(createError(404));

@@ -1,6 +1,12 @@
 var Publication = require('../models/queries/publication');
 var User = require('../models/queries/users');
 
+exports.showLoginForn = (request,response) => {
+    User.addUser(request.body)
+    .then(() => response.redirect('/')) //TODO: if admin go to user dashboard
+    .catch(err => response.render('error',{message:"Error",error:err}))
+}
+
 exports.showContributionsByUser = (request,response) => {
     Publication.getPublicationsByUser(0) //Admin (TODO)
     .then(publications =>{
