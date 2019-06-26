@@ -1,3 +1,4 @@
+const bcrypt = require('bcrypt');
 var User = require('../models/queries/users');
 
 module.exports = function(passport, LocalStrategy){
@@ -16,7 +17,7 @@ module.exports = function(passport, LocalStrategy){
         User.getUserByUsername(username)
         .then((user) => {
           if (!user) { return done(null, false, req.flash("authMessage", 'Incorrect username.')) }
-          if (user.password != password) { return done(null, false, req.flash("authMessage", 'Incorrect password.'))}
+          if (bcrypt.compareSync(password, user.password) == false) { return done(null, false, req.flash("authMessage", 'Incorrect password.'))}
           return done(null, user);
         })
         .catch((error) =>  done(null, false, req.flash("authMessage", 'User not found.')));

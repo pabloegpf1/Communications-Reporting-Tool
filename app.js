@@ -1,10 +1,10 @@
-var createError = require('http-errors');
-var express = require('express');
-var path = require('path');
+const createError = require('http-errors');
+const express = require('express');
+const path = require('path');
 const bodyParser = require('body-parser');
-var cookieParser = require('cookie-parser');
-var logger = require('morgan');
-var dotenv = require('dotenv').config()
+const cookieParser = require('cookie-parser');
+const logger = require('morgan');
+const dotenv = require('dotenv').config()
 const Sequelize = require('sequelize');
 const sequelize = new Sequelize(process.env.DB_URL);
 const passport = require('passport');
