@@ -5,7 +5,7 @@ var Medias = require('../models/queries/media');
 exports.showUsers = (request,response) =>{
     Users.getUsers()
     .then(users=>response.render('adminUsers',{
-        admin:true,
+        admin: request.user.admin,
         title: "Users",
         users: users
     }))
@@ -15,7 +15,7 @@ exports.showUsers = (request,response) =>{
 exports.showPublicationSettings = (request,response) =>{
     Publication.getPublicationTypes()
     .then(types => response.render('publicationSettings',{
-        admin:true,
+        admin: request.user.admin,
         title: "Publication Settings",
         publicationTypes: types,
     }))
@@ -25,7 +25,7 @@ exports.showPublicationSettings = (request,response) =>{
 exports.showMediaSettings = (request,response) =>{
     Medias.getAll()
     .then(data => response.render('mediaSettings',{
-        admin:true,
+        admin: request.user.admin,
         title: "Media Settings",
         medias: data[0],
         mediaTypes: data[1],
@@ -40,7 +40,7 @@ exports.showContributionsByUser = (request,response) =>{
         console.log(publications)
         response.render('publications',{
             publications: publications,
-            admin: true,
+            admin: request.user.admin,
             title: "User Contributions"
         })
     })
@@ -49,7 +49,7 @@ exports.showContributionsByUser = (request,response) =>{
 
 exports.showNewUserForm = (request,response) =>{
     response.render('newUser',{
-        admin:true
+        admin: request.user.admin,
     })
 }
 

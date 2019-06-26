@@ -10,9 +10,16 @@
     <div class="alert alert-danger">
       <%= authMessage %>
     </div>
-  	<% } %>
+    <% } %>
     <form class="publication-form" action="/user/login" method="post" novalidate>
-      <h2>Login</h2>
+    <div class="row">
+      <div class="col">
+        <h2 style="float:left">Login</h2>
+      </div>
+      <div class="col">
+        <a class="navbar-brand" style="float:right"><i class="far fa-newspaper"></i> News Clipping</a>
+      </div>
+    </div>
       <div class="form-group">
         <label for="exampleFormControlInput1">Username</label>
         <input type="text" id="username" class="form-control" name="username" required>

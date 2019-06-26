@@ -2,7 +2,7 @@ var Stats = require('../models/queries/stats');
 
 exports.showCharts = (request,response) => {
     response.render('stats',{
-        admin: true,
+        admin: request.user.admin,
         charts:[
             {
                 type:'ColumnChart',

@@ -2,25 +2,30 @@ var express = require('express');
 var router = express.Router();
 var MediaController = require('../controllers/media')
 
+function loggedIn(request, response, next) {
+    if (request.user) next();
+    else response.redirect('/');
+}
+
 // GET Requests
-router.get('/', function(request,response){
+router.get('/', loggedIn,function(request,response){
     MediaController.showMediaNames(response)
 })
 
-router.get('/add', function(request,response){
+router.get('/add', loggedIn, function(request,response){
     MediaController.showNewMediaForm(response)
 })
 
 // POST Requests
-router.post('/add', function(request,response){
+router.post('/add', loggedIn, function(request,response){
     MediaController.addMedia(request,response)
 })
 
-router.post('/addType', function(request,response){
+router.post('/addType', loggedIn, function(request,response){
     MediaController.addMediaType(request,response)
 })
 
-router.post('/addContent', function(request,response){
+router.post('/addContent', loggedIn, function(request,response){
     MediaController.addMediaContent(request,response)
 })
 
