@@ -1,12 +1,12 @@
 var Media = require('../models/queries/media');
 
-exports.showMediaNames = (response) => {
+exports.showMediaNames = (request,response) => {
     Media.getMediaNames()
     .then(data => response.send(data))
     .catch(err => response.status(500).send(err))
 }
 
-exports.showNewMediaForm = (response) => {
+exports.showNewMediaForm = (request,response) => {
     Media.getMediaContents()
     .then(contents =>{
         Media.getMediaTypes()

@@ -9,11 +9,11 @@ function loggedIn(request, response, next) {
 
 // GET Requests
 router.get('/', loggedIn,function(request,response){
-    MediaController.showMediaNames(response)
+    MediaController.showMediaNames(request,response)
 })
 
 router.get('/add', loggedIn, function(request,response){
-    MediaController.showNewMediaForm(response)
+    MediaController.showNewMediaForm(request,response)
 })
 
 // POST Requests
