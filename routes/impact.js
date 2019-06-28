@@ -1,6 +1,6 @@
 var express = require('express');
 var router = express.Router();
-var PublicationController = require('../controllers/publications')
+var ImpactController = require('../controllers/impact')
 
 function loggedIn(request, response, next) {
     if (request.user) next();
@@ -9,40 +9,40 @@ function loggedIn(request, response, next) {
 
 //GET Requests
 router.get('/', loggedIn, function(request,response){
-    PublicationController.showPublications(request,response)
+    ImpactController.showImpacts(request,response)
 })
 
 router.get('/type/:id', loggedIn, function(request,response){
-    PublicationController.getPublicationTypes(request,response)
+    ImpactController.getImpactTypes(request,response)
 })
 
 router.get('/add', loggedIn, function(request,response){
-    PublicationController.showNewPublicationForm(request,response)
+    ImpactController.showNewImpactForm(request,response)
 })
 
 router.get('/:id', loggedIn, function(request,response){
-    PublicationController.showPublicationDetails(request,response)
+    ImpactController.showImpactDetails(request,response)
 })
 
 router.get('/edit/:id', loggedIn, function(request,response){
-    PublicationController.showEditPublicationForm(request,response)
+    ImpactController.showEditImpactForm(request,response)
 })
 
 router.get('/delete/:id', loggedIn, function(request,response){
-    PublicationController.deletePublication(request,response)
+    ImpactController.deleteImpact(request,response)
 })
 
 //POST Requests
 router.post('/add', loggedIn, function(request,response){
-    PublicationController.addPublication(request,response)
+    ImpactController.addImpact(request,response)
 })
 
 router.post('/search/', loggedIn, function(request,response){
-    PublicationController.searchPublication(request,response)
+    ImpactController.searchImpact(request,response)
 })
 
 router.post('/edit/:id', loggedIn, function(request,response){
-    PublicationController.editPublication(request,response)
+    ImpactController.editImpact(request,response)
 })
 
 module.exports = router;

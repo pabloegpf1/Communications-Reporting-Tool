@@ -1,26 +1,26 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>Edit Publication</title>
+    <title>Edit Impact</title>
     <% include ./partials/css%>
   </head>
 <body>
     <%- include('partials/navbar', {admin:admin}) %>
     <div class="content-form">
-      <form class="publication-form" action="/publications/edit/<%= publication.id %>" method="post" novalidate>
-        <h2>Edit Publication</h2>
+      <form class="impact-form" action="/impacts/edit/<%= impact.id %>" method="post" novalidate>
+        <h2>Edit impact</h2>
         <div class="form-group">
           <label for="exampleFormControlInput1">Headline*</label>
-          <input type="text" class="form-control" name="headline" value="<%= publication.headline %>" required>
+          <input type="text" class="form-control" name="headline" value="<%= impact.headline %>" required>
           <div class="invalid-feedback">
             This field cannot be empty
           </div>
         </div>
         <div class="form-group">
           <label for="exampleFormControlInput1">Summary*</label>
-          <textarea class="form-control" name="summary" rows="3" required><%= publication.summary %></textarea>
+          <textarea class="form-control" name="summary" rows="3" required><%= impact.summary %></textarea>
           <div class="invalid-feedback">
-            Please add a short summary of the publication
+            Please add a short summary of the impact
           </div>
         </div>
         <div class="row">
@@ -28,7 +28,7 @@
             <div class="form-group">
               <label for="exampleFormControlSelect1">Media (<a href='/media/add'>Add new</a>)</label>
               <select class="form-control" name="media" required>
-                <option selected value="<%= publication.media_id %>"><%= publication.name %></option>
+                <option selected value="<%= impact.media_id %>"><%= impact.name %></option>
                 <% for(var i=0; i<medias.length; i++) {%>
                   <option value="<%= medias[i].id %>"><%= medias[i].name %></option>
                 <% }%>
@@ -41,7 +41,7 @@
           <div class="col">
             <div class="form-group">
               <label for="exampleFormControlInput1">Media Section*</label>
-              <input type="text" class="form-control" name="media_section" value="<%= publication.media_section %>" required>
+              <input type="text" class="form-control" name="media_section" value="<%= impact.media_section %>" required>
               <div class="invalid-feedback">
                 Please specify the section of the media (Science,Technology,News...)
               </div>
@@ -50,41 +50,33 @@
         </div>
         <div class="form-group">
           <label for="exampleFormControlInput1">Spokesperson</label>
-          <input type="text" class="form-control" name="spokesperson" value="<%= publication.spokesperson %>">
+          <input type="text" class="form-control" name="spokesperson" value="<%= impact.spokesperson %>">
         </div>
         <div class="form-group">
           <label for="exampleFormControlInput1">Comments</label>
-          <textarea class="form-control" name="comments" rows="2"><%= publication.comments %></textarea>
+          <textarea class="form-control" name="comments" rows="2"><%= impact.comments %></textarea>
         </div>
         <div class="row">
           <div class="col">
             <div class="form-group">
                 <label for="exampleFormControlSelect1">Language*</label>
                 <select class="form-control" name="language" required>
-                  <option selected value="<%= publication.language %>"><%= publication.language %></option>
-                  <option value="spanish">Spanish</option>
-                  <option value="english">English</option>
-                  <option value="french">French</option>
-                  <option value="german">German</option>
-                  <option value="italian">Italian</option>
-                  <option value="russian">Russian</option>
-                  <option value="greek">Greek</option>
-                  <option value="chinese">Chinese</option>
-                  <option value="japanese">Japanese</option>
-                  <option value="arabic">Arabic</option>
-                  <option value="other">Other</option>
+                  <option selected value="<%= impact.language %>"><%= impact.language %></option>
+                  <option value="Spanish">Spanish</option>
+                  <option value="English">English</option>
+                  <option value="Other">Other</option>
                 </select>
                 <div class="invalid-feedback">
-                  Plase select the language of the publication (select other if multiple languages are used)
+                  Plase select the language of the impact (select other if multiple languages are used)
                 </div>
               </div>
           </div>
           <div class="col">
               <div class="form-group">
                 <label for="exampleFormControlSelect1">Date Published*</label>
-                <input type="date" class="form-control" name="date" value="<%= publication.date %>" required>
+                <input type="date" class="form-control" name="date" value="<%= impact.date %>" required>
                 <div class="invalid-feedback">
-                  You must add the date when the publication was made
+                  You must add the date when the impact was made
                 </div>
               </div>
           </div>
@@ -92,25 +84,25 @@
         <div class="row" style="margin-bottom:30px; margin-top:30px;">
             <div class="col">
               <div class="form-check">
-                <input class="form-check-input" type="checkbox" value="true" name="uploaded" <% if(publication.uploaded){ %> checked <%}%> >
+                <input class="form-check-input" type="checkbox" value="true" name="uploaded" <% if(impact.uploaded){ %> checked <%}%> >
                 <label class="form-check-label form-check-label" for="defaultCheck1">Uploaded*</label>
               </div>
             </div>
             <div class="col">
               <div class="form-check">
-                <input class="form-check-input" type="checkbox" value="true" name="has_video" <% if (publication.has_video){ %> checked <% } %>>
+                <input class="form-check-input" type="checkbox" value="true" name="has_video" <% if (impact.has_video){ %> checked <% } %>>
                 <label class="form-check-label" for="defaultCheck1"> Has video*</label>
               </div>
             </div>
             <div class="col">
               <div class="form-check">
-                <input class="form-check-input" type="checkbox" value="true" name="statements"  <% if (publication.statements){ %> checked <% } %> >
+                <input class="form-check-input" type="checkbox" value="true" name="statements"  <% if (impact.statements){ %> checked <% } %> >
                 <label class="form-check-label" for="defaultCheck1">Statements*</label>
               </div>
             </div>
           <div class="col">
             <div class="form-check">
-              <input class="form-check-input" type="checkbox" value="true" name="proactivity" <% if (publication.proactivity){ %> checked <% } %>>
+              <input class="form-check-input" type="checkbox" value="true" name="proactivity" <% if (impact.proactivity){ %> checked <% } %>>
               <label class="form-check-label" for="defaultCheck1">Proactivity*</label>
             </div>
           </div>
@@ -119,32 +111,20 @@
           <div class="col">
               <div class="form-group">
                 <select class="form-control" name="type" required>
-                  <option selected value="<%= publication.publication_type %>"> <%= publication.type %> </option>
+                  <option selected value="<%= impact.impact_type %>"> <%= impact.type %> </option>
                   <% for(var i=0; i<types.length; i++) {%>
                     <option value="<%= types[i].id %>"><%= types[i].type %></option>
                   <% }%>
                 </select>
                 <div class="invalid-feedback">
-                  Plase select the type of publication
+                  Plase select the type of impact
                 </div>
               </div>
             </div>
           <div class="col">
             <div class="form-group">
-              <select class="form-control" name="pr_news" required>
-                <option selected value="<%= publication.pr_news %>"> <%= publication.pr_news %> </option>
-                <option value="PR">PR</option>
-                <option value="NEWS">News</option>
-              </select>
-              <div class="invalid-feedback">
-                Please choose one of the options
-              </div>
-            </div>
-          </div>
-          <div class="col">
-            <div class="form-group">
               <select class="form-control" name="photo_count" required>
-                <option selected value="<%= publication.photo_count %>"> <%= publication.photo_count %> </option>
+                <option selected value="<%= impact.photo_count %>"> <%= impact.photo_count %> </option>
                 <option value="0">none</option>
                 <option value="1">1</option>
                 <option value="2">2</option>
@@ -154,7 +134,7 @@
                 <option value="6">>5</option>
               </select>
               <div class="invalid-feedback">
-                You must select the number of photos included in the publication
+                You must select the number of photos included in the impact
               </div>
             </div>
           </div>
@@ -163,20 +143,20 @@
           <div class="col-sm-7">
             <div class="form-group">
               <label for="exampleFormControlInput1">Original URL*</label>
-              <input type="text" class="form-control" name="url" required value="<%= publication.url %>">
+              <input type="text" class="form-control" name="url" required value="<%= impact.url %>">
               <div class="invalid-feedback">
-                Please copy and paste the URL from the publication here
+                Please copy and paste the URL from the impact here
               </div>
             </div>
           </div>
           <div class="col-sm-5">
             <div class="form-group">
               <label for="exampleFormControlInput1">Shortened URL</label>
-              <input type="text" class="form-control" name="shortened_url" value="<%= publication.shortened_url %>">
+              <input type="text" class="form-control" name="shortened_url" value="<%= impact.shortened_url %>">
             </div>
           </div>
       </div>
-      <a class="btn btn-danger btn-lg" style="float: left; padding: 10px; width:25%; margin: 10px; width:30%" href="/publications/" >Cancel</a>
+      <a class="btn btn-danger btn-lg" style="float: left; padding: 10px; width:25%; margin: 10px; width:30%" href="/impacts/" >Cancel</a>
       <button type="submit"class="btn btn-success btn-lg" style="float: right; padding: 10px; margin: 10px;width:30%">Submit Changes</a>
     </form>
   </div>

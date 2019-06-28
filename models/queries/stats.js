@@ -1,5 +1,4 @@
-const db = require('./index');
-const pgp = require('pg-promise')();
+const db = require('./db-connection');
 
 exports.getPublicationByMonth = () => 
 db.any(

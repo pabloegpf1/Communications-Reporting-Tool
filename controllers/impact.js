@@ -1,38 +1,39 @@
-var Publication = require('../models/queries/publication');
+var Impact = require('../models/queries/impact');
+var Dissemination = require('../models/queries/dissemination');
 var Media = require('../models/queries/media');
 
-exports.showPublications = (request,response) =>{
-    Publication.getPublications()
-    .then(publications =>{
-        response.render('publications',{
-            title: 'Latest Publications',
-            publications: publications,
+exports.showImpacts = (request,response) =>{
+    Impact.getImpacts()
+    .then(impacts =>{
+        response.render('impacts',{
+            title: 'Latest Impacts',
+            impacts: impacts,
             admin: request.user.admin,
         })
     })
     .catch(err => response.render('error',{message:"Error",error:err}))
 }
 
-exports.showPublicationsByType = (request,response) =>{
-    Publication.getPublicationsByType(request.params.id)
-    .then(publications =>{
-        response.render('publications',{
-            title: 'Latest Publications',
-            publications: publications,
+exports.showImpactsByType = (request,response) =>{
+    Impact.getImpactsByType(request.params.id)
+    .then(impacts =>{
+        response.render('impacts',{
+            title: 'Impacts',
+            impacts: impacts,
             admin: request.user.admin,
         })
     })
     .catch(err => response.render('error',{message:"Error",error:err}))
 }
 
-exports.showNewPublicationForm = (request,response) =>{
+exports.showNewImpactForm = (request,response) =>{
     Media.getMedias()
     .then(medias =>{
-        Publication.getPublicationTypes()
-        .then(types =>{
-            response.render('newPublication',{
+        Dissemination.getDisseminations()
+        .then(disseminations =>{
+            response.render('newImpact',{
                 medias: medias,
-                types:types,
+                disseminations:disseminations,
                 admin: request.user.admin,
             })
         })
@@ -40,28 +41,28 @@ exports.showNewPublicationForm = (request,response) =>{
     .catch(err => res.render('error',{message:"Error",error:err}))
 }
 
-exports.showPublicationDetails = (request,response) =>{
-    Publication.getPublicationById(request.params.id)
-    .then(publication =>{
-        response.render('publicationDetails',{
-            publication: publication,
+exports.showImpactDetails = (request,response) =>{
+    Impact.getImpactById(request.params.id)
+    .then(impact =>{
+        response.render('impactDetails',{
+            impact: impact,
             admin: request.user.admin,
         })
     })
     .catch(err => res.render('error',{message:"Error",error:err}))
 }
 
-exports.showEditPublicationForm = (request,response) =>{
+exports.showEditImpactForm = (request,response) =>{
     Media.getMedias()
     .then(medias =>{
-        Publication.getPublicationTypes()
+        Impact.getImpactTypes()
         .then(types =>{
-            Publication.getPublicationById(request.params.id)
-            .then(publication =>{
-                var date = new Date(publication.date.toDateString())
-                publication.date = date.getFullYear() + '-'+ ('0' + (date.getMonth()+1)).slice(-2) + '-'+ ('0' + date.getDate()).slice(-2)
-                response.render('editPublication',{
-                    publication: publication,
+            Impact.getImpactById(request.params.id)
+            .then(impact =>{
+                var date = new Date(impact.date.toDateString())
+                impact.date = date.getFullYear() + '-'+ ('0' + (date.getMonth()+1)).slice(-2) + '-'+ ('0' + date.getDate()).slice(-2)
+                response.render('editImpact',{
+                    impact: impact,
                     medias: medias,
                     types:types,
                     admin: request.user.admin,
@@ -72,14 +73,14 @@ exports.showEditPublicationForm = (request,response) =>{
     .catch(err => response.render('error',{message:"Error",error:err}))
 }
 
-exports.addPublication = (request,response) =>{
+exports.addImpact = (request,response) =>{
     let newPublication = createPublicationFromRequest(request.body,request.user.id)
     Publication.addPublication(newPublication)
     .then(() => response.redirect('/publications'))
     .catch(err => response.render('error',{message:"Error",error:err}))
 }
 
-exports.searchPublication = (request,response) =>{
+exports.searchImpact = (request,response) =>{
     Publication.searchPublication(request.body.string)
     .then(publications =>{
         response.render('publications',{
@@ -91,20 +92,20 @@ exports.searchPublication = (request,response) =>{
     .catch(err => res.render('error',{message:"Error",error:err}))
 }
 
-exports.editPublication = (request,response) =>{
+exports.editImpact = (request,response) =>{
     let newPublication = createPublicationFromRequest(request.body)
     Publication.updatePublication(newPublication,request.params.id)
     .then(() => response.redirect('/publications'))
     .catch(err => response.render('error',{message:"Error",error:err}))
 }
 
-exports.deletePublication = (request,response) =>{
+exports.deleteImpact = (request,response) =>{
     Publication.deletePublication(request.params.id)
     .then(() => response.redirect('/publications'))
     .catch(err => response.render('error',{message:"Error",error:err}))
 }
 
-const createPublicationFromRequest = function(data,user_id){
+const createImpactFromRequest = function(data,user_id){
     return publication = {
         added_by: user_id,
         headline: data.headline,

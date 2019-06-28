@@ -1,14 +1,14 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>New Publication</title>
+    <title>New Impact</title>
     <% include ./partials/css%>
   </head>
 <body>
     <%- include('partials/navbar', {admin:admin}) %>
     <div class="content-form">
       <form class="publication-form" action="/publications/add" method="post" novalidate>
-        <h2>New Publication</h2>
+        <h2>New Impact</h2>
         <div class="form-group">
           <label for="exampleFormControlInput1">Headline*</label>
           <input type="text" class="form-control" name="headline" required>
@@ -62,17 +62,9 @@
                 <label for="exampleFormControlSelect1">Language*</label>
                 <select class="form-control" name="language" required>
                   <option disabled selected value> -- select language -- </option>
-                  <option value="spanish">Spanish</option>
-                  <option value="english">English</option>
-                  <option value="french">French</option>
-                  <option value="german">German</option>
-                  <option value="italian">Italian</option>
-                  <option value="russian">Russian</option>
-                  <option value="greek">Greek</option>
-                  <option value="chinese">Chinese</option>
-                  <option value="japanese">Japanese</option>
-                  <option value="arabic">Arabic</option>
-                  <option value="other">Other</option>
+                  <option value="Spanish">Spanish</option>
+                  <option value="English">English</option>
+                  <option value="Other">Other</option>
                 </select>
                 <div class="invalid-feedback">
                   Plase select the language of the publication (select other if multiple languages are used)

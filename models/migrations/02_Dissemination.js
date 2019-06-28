@@ -1,40 +1,41 @@
 'use strict';
 module.exports = {
   up: (queryInterface, Sequelize) => {
-    return queryInterface.createTable('media', {
+    return queryInterface.createTable('dissemination', {
       id: {
         allowNull: false,
         autoIncrement: true,
         primaryKey: true,
         type: Sequelize.INTEGER
       },
-      name: {
+      headline: {
         allowNull: false,
         type: Sequelize.STRING,
         unique: false
       },
-      type: { 
+      summary: {
+        allowNull: false,
+        type: Sequelize.STRING,
+        unique: true
+      },
+      added_by: { 
         allowNull: false,
         type: Sequelize.INTEGER,
+        defaultValue: 0,
         references: {
-          model: 'media_type',
+          model: 'users',
           key: 'id'
         },
-        onDelete: 'CASCADE'
+        onDelete: 'SET DEFAULT'
       },
-      content: { 
+      pr_news: { 
         allowNull: false,
-        type: Sequelize.ENUM("General Interest","Specialised"),
+        type: Sequelize.ENUM("PR","NEWS"),
         unique: false
       },
-      coverage: { 
+      date: {
         allowNull: false,
-        type: Sequelize.ENUM("Local","Regional","National","International"),
-        unique: false
-      },
-      format: { 
-        allowNull: false,
-        type: Sequelize.ENUM("Online","Paper","Other"),
+        type: Sequelize.DATE,
         unique: false
       },
       url: {
@@ -55,6 +56,6 @@ module.exports = {
     });
   },
   down: (queryInterface, Sequelize) => {
-    return queryInterface.dropTable('media');
+    return queryInterface.dropTable('dissemination');
   }
 };

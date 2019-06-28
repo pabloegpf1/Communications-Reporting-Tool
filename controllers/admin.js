@@ -1,5 +1,5 @@
 var Users = require('../models/queries/users');
-var Publication = require('../models/queries/publication');
+var Publication = require('../models/queries/impact');
 var Medias = require('../models/queries/media');
 
 exports.showUsers = (request,response) =>{

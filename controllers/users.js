@@ -1,5 +1,5 @@
 const bcrypt = require('bcrypt');
-var Publication = require('../models/queries/publication');
+var Publication = require('../models/queries/impact');
 var User = require('../models/queries/users');
 
 exports.showContributionsByUser = (request,response) => {
