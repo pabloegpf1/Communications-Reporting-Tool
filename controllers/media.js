@@ -7,15 +7,11 @@ exports.showMediaNames = (request,response) => {
 }
 
 exports.showNewMediaForm = (request,response) => {
-    Media.getMediaContents()
-    .then(contents =>{
-        Media.getMediaTypes()
-        .then(types => {
-            response.render('newMedia',{
-                contents: contents,
-                types: types,
-                admin: request.user.admin,
-            })
+    Media.getMediaTypes()
+    .then(types => {
+        response.render('newMedia',{
+            types: types,
+            admin: request.user.admin,
         })
     })
     .catch(err => response.status(500).send(err))

@@ -6,7 +6,7 @@ exports.showImpacts = (request,response) =>{
     Impact.getImpacts()
     .then(impacts =>{
         response.render('impacts',{
-            title: 'Latest Impacts',
+            title: 'Impacts',
             impacts: impacts,
             admin: request.user.admin,
         })
@@ -27,14 +27,18 @@ exports.showImpactsByType = (request,response) =>{
 }
 
 exports.showNewImpactForm = (request,response) =>{
-    Media.getMedias()
-    .then(medias =>{
-        Dissemination.getDisseminations()
-        .then(disseminations =>{
-            response.render('newImpact',{
-                medias: medias,
-                disseminations:disseminations,
-                admin: request.user.admin,
+    Impact.getImpactTypes()
+    .then(types => {
+        Media.getMedias()
+        .then(medias =>{
+            Dissemination.getDisseminations()
+            .then(disseminations =>{
+                response.render('newImpact',{
+                    types:types,
+                    medias: medias,
+                    disseminations:disseminations,
+                    admin: request.user.admin,
+                })
             })
         })
     })
@@ -53,39 +57,43 @@ exports.showImpactDetails = (request,response) =>{
 }
 
 exports.showEditImpactForm = (request,response) =>{
-    Media.getMedias()
-    .then(medias =>{
-        Impact.getImpactTypes()
-        .then(types =>{
-            Impact.getImpactById(request.params.id)
-            .then(impact =>{
-                var date = new Date(impact.date.toDateString())
-                impact.date = date.getFullYear() + '-'+ ('0' + (date.getMonth()+1)).slice(-2) + '-'+ ('0' + date.getDate()).slice(-2)
-                response.render('editImpact',{
-                    impact: impact,
-                    medias: medias,
-                    types:types,
-                    admin: request.user.admin,
+    Dissemination.getDisseminations()
+    .then(disseminations => {
+        Media.getMedias()
+        .then(medias =>{
+            Impact.getImpactTypes()
+            .then(types =>{
+                Impact.getImpactById(request.params.id)
+                .then(impact =>{
+                    var date = new Date(impact.date.toDateString())
+                    impact.date = date.getFullYear() + '-'+ ('0' + (date.getMonth()+1)).slice(-2) + '-'+ ('0' + date.getDate()).slice(-2)
+                    response.render('editImpact',{
+                        disseminations:disseminations,
+                        impact: impact,
+                        medias: medias,
+                        types:types,
+                        admin: request.user.admin,
+                    })
                 })
             })
         })
-    })  
+    })
     .catch(err => response.render('error',{message:"Error",error:err}))
 }
 
 exports.addImpact = (request,response) =>{
-    let newPublication = createPublicationFromRequest(request.body,request.user.id)
-    Publication.addPublication(newPublication)
-    .then(() => response.redirect('/publications'))
+    let newImpact = createImpactFromRequest(request.body,request.user.id)
+    Impact.addImpact(newImpact)
+    .then(() => response.redirect('/impacts'))
     .catch(err => response.render('error',{message:"Error",error:err}))
 }
 
 exports.searchImpact = (request,response) =>{
-    Publication.searchPublication(request.body.string)
-    .then(publications =>{
-        response.render('publications',{
+    Impact.searchImpact(request.body.string)
+    .then(impacts =>{
+        response.render('impacts',{
             title: 'Search Results',
-            publications: publications,
+            impacts: impacts,
             admin: request.user.admin,
         })
     })
@@ -93,23 +101,24 @@ exports.searchImpact = (request,response) =>{
 }
 
 exports.editImpact = (request,response) =>{
-    let newPublication = createPublicationFromRequest(request.body)
-    Publication.updatePublication(newPublication,request.params.id)
-    .then(() => response.redirect('/publications'))
+    let newImpact = createImpactFromRequest(request.body,request.user.id)
+    console.log(newImpact)
+    Impact.updateImpact(newImpact,request.params.id)
+    .then(() => response.redirect('/impacts'))
     .catch(err => response.render('error',{message:"Error",error:err}))
 }
 
 exports.deleteImpact = (request,response) =>{
-    Publication.deletePublication(request.params.id)
-    .then(() => response.redirect('/publications'))
+    Impact.deleteImpact(request.params.id)
+    .then(() => response.redirect('/impacts'))
     .catch(err => response.render('error',{message:"Error",error:err}))
 }
 
 const createImpactFromRequest = function(data,user_id){
-    return publication = {
+    return impact = {
         added_by: user_id,
         headline: data.headline,
-        summary: data.summary,
+        dissemination: data.dissemination,
         media: data.media, 
         media_section: data.media_section,
         spokesperson: data.spokesperson,
@@ -119,7 +128,6 @@ const createImpactFromRequest = function(data,user_id){
         has_video: (data.has_video === undefined) ? false : true,
         statements: (data.statements === undefined) ? false : true,
         proactivity: (data.proactivity === undefined) ? false : true,
-        pr_news: data.pr_news,
         photo_count: data.photo_count,
         type: data.type,
         url: data.url,

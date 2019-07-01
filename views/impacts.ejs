@@ -20,9 +20,9 @@
               <thead>
                 <tr>
                   <th width="35%" scope="col" onclick="sortTable('impacts-table',0,false)">Headline</th>
-                  <th width="10%" scope="col" onclick="sortTable('impacts-table',1,false)">Media</th>
+                  <th width="15%" scope="col" onclick="sortTable('impacts-table',1,false)">Media</th>
                   <th width="10%" scope="col" onclick="sortTable('impacts-table',2,false)">Type</th>
-                  <th width="25%" scope="col" onclick="sortTable('impacts-table',3,false)">Summary</th>
+                  <th width="20%" scope="col" onclick="sortTable('impacts-table',3,false)">Summary</th>
                   <th width="15%" scope="col" onclick="sortTable('impacts-table',4,true)">Date</th>
                   <th width="5%" scope="col">Link</th>
                 </tr>
@@ -31,7 +31,7 @@
                   <% for(var i=0; i<impacts.length; i++) {%>
                   <tr>
                       <td style="text-overflow: ellipsis;white-space: nowrap;overflow: hidden;"><a href="/impacts/<%= impacts[i].id %>"><%= impacts[i].headline %></a></td>
-                      <td><%= impacts[i].name %></td>
+                      <td><%= impacts[i].media_name %></td>
                       <td><%= impacts[i].type %></td>
                       <td><%= impacts[i].summary %></td>
                       <td><%= impacts[i].date.toDateString() %></td>

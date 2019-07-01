@@ -17,34 +17,42 @@
           </div>
         </div>
         <div class="form-group">
+          <label for="exampleFormControlInput1">Dissemination*</label>
+          <select class="form-control" name="dissemination" data-style="btn-light" data-show-subtext="true" data-live-search="true" required>
+            <option disabled selected value> <%= impact.dissemination_headline %> </option>
+            <% for(var i=0; i<disseminations.length; i++) {%>
+              <option value="<%= disseminations[i].id %>"><%= disseminations[i].headline %></option>
+            <% }%>
+          </select>
+          <div class="invalid-feedback">
+            You must select the dissemination which the impact refers to.
+          </div>
+        </div>
+        <div class="form-group">
           <label for="exampleFormControlInput1">Summary*</label>
           <textarea class="form-control" name="summary" rows="3" required><%= impact.summary %></textarea>
           <div class="invalid-feedback">
             Please add a short summary of the impact
           </div>
         </div>
-        <div class="row">
-          <div class="col">
-            <div class="form-group">
-              <label for="exampleFormControlSelect1">Media (<a href='/media/add'>Add new</a>)</label>
-              <select class="form-control" name="media" required>
-                <option selected value="<%= impact.media_id %>"><%= impact.name %></option>
-                <% for(var i=0; i<medias.length; i++) {%>
-                  <option value="<%= medias[i].id %>"><%= medias[i].name %></option>
-                <% }%>
-              </select>
-              <div class="invalid-feedback">
-                Please choose one of the registered medias or add a new one
-              </div>
+        <div class="form-row">
+          <div class="form-group col">
+            <label for="exampleFormControlSelect1">Media (<a href='/media/add'>Add new</a>)</label>
+            <select class="form-control" name="media" required>
+              <option selected value="<%= impact.media_id %>"><%= impact.media_name %></option>
+              <% for(var i=0; i<medias.length; i++) {%>
+                <option value="<%= medias[i].id %>"><%= medias[i].name %></option>
+              <% }%>
+            </select>
+            <div class="invalid-feedback">
+              Please choose one of the registered medias or add a new one
             </div>
           </div>
-          <div class="col">
-            <div class="form-group">
-              <label for="exampleFormControlInput1">Media Section*</label>
-              <input type="text" class="form-control" name="media_section" value="<%= impact.media_section %>" required>
-              <div class="invalid-feedback">
-                Please specify the section of the media (Science,Technology,News...)
-              </div>
+          <div class="form-group col">
+            <label for="exampleFormControlInput1">Media Section*</label>
+            <input type="text" class="form-control" name="media_section" value="<%= impact.media_section %>" required>
+            <div class="invalid-feedback">
+              Please specify the section of the media (Science,Technology,News...)
             </div>
           </div>
         </div>
@@ -57,7 +65,7 @@
           <textarea class="form-control" name="comments" rows="2"><%= impact.comments %></textarea>
         </div>
         <div class="row">
-          <div class="col">
+          <div class="form-group col">
             <div class="form-group">
                 <label for="exampleFormControlSelect1">Language*</label>
                 <select class="form-control" name="language" required>
@@ -71,7 +79,7 @@
                 </div>
               </div>
           </div>
-          <div class="col">
+          <div class="form-group col">
               <div class="form-group">
                 <label for="exampleFormControlSelect1">Date Published*</label>
                 <input type="date" class="form-control" name="date" value="<%= impact.date %>" required>
@@ -81,7 +89,7 @@
               </div>
           </div>
         </div>
-        <div class="row" style="margin-bottom:30px; margin-top:30px;">
+        <div class="row" style="margin:20px;">
             <div class="col">
               <div class="form-check">
                 <input class="form-check-input" type="checkbox" value="true" name="uploaded" <% if(impact.uploaded){ %> checked <%}%> >
@@ -107,7 +115,7 @@
             </div>
           </div>
         </div>
-        <div class="row">
+        <div class="form-row">
           <div class="col">
               <div class="form-group">
                 <select class="form-control" name="type" required>

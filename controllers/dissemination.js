@@ -5,7 +5,7 @@ exports.showDisseminations = (request,response) =>{
     Dissemination.getDisseminations()
     .then(disseminations =>{
         response.render('disseminations',{
-            title: 'Latest Disseminations',
+            title: 'Disseminations',
             disseminations: disseminations,
             admin: request.user.admin,
         })
@@ -43,7 +43,7 @@ exports.showDisseminationDetails = (request,response) =>{
         response.render('disseminationDetails',{
             dissemination: dissemination,
             admin: request.user.admin,
-        })
+        })  
     })
     .catch(err => res.render('error',{message:"Error",error:err}))
 }
@@ -69,11 +69,11 @@ exports.addDissemination = (request,response) =>{
 }
 
 exports.searchDissemination = (request,response) =>{
-    Publication.searchPublication(request.body.string)
-    .then(publications =>{
-        response.render('publications',{
+    Dissemination.searchDissemination(request.body.string)
+    .then(disseminations =>{
+        response.render('disseminations',{
             title: 'Search Results',
-            publications: publications,
+            disseminations: disseminations,
             admin: request.user.admin,
         })
     })
