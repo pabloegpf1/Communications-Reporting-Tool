@@ -36,10 +36,9 @@ exports.showMediaSettings = (request,response) =>{
 
 exports.showContributionsByUser = (request,response) =>{
     Impact.getImpactsByUser(request.params.id)
-    .then(Impacts =>{
-        console.log(Impacts)
-        response.render('Impacts',{
-            Impacts: Impacts,
+    .then(impacts =>{
+        response.render('impacts',{
+            impacts: impacts,
             admin: request.user.admin,
             title: "User Contributions"
         })
