@@ -1,5 +1,5 @@
 var Users = require('../models/queries/users');
-var Publication = require('../models/queries/impact');
+var Impact = require('../models/queries/impact');
 var Medias = require('../models/queries/media');
 
 exports.showUsers = (request,response) =>{
@@ -12,12 +12,12 @@ exports.showUsers = (request,response) =>{
     .catch(err => response.status(500).send(err))
 }
 
-exports.showPublicationSettings = (request,response) =>{
-    Publication.getPublicationTypes()
-    .then(types => response.render('publicationSettings',{
+exports.showImpactSettings = (request,response) =>{
+    Impact.getImpactTypes()
+    .then(types => response.render('ImpactSettings',{
         admin: request.user.admin,
-        title: "Publication Settings",
-        publicationTypes: types,
+        title: "Impact Settings",
+        impactTypes: types,
     }))
     .catch(err => response.status(500).send(err))
 }
@@ -35,11 +35,11 @@ exports.showMediaSettings = (request,response) =>{
 }
 
 exports.showContributionsByUser = (request,response) =>{
-    Publication.getPublicationsByUser(request.params.id)
-    .then(publications =>{
-        console.log(publications)
-        response.render('publications',{
-            publications: publications,
+    Impact.getImpactsByUser(request.params.id)
+    .then(Impacts =>{
+        console.log(Impacts)
+        response.render('Impacts',{
+            Impacts: Impacts,
             admin: request.user.admin,
             title: "User Contributions"
         })

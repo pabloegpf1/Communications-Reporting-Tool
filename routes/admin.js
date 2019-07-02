@@ -12,8 +12,8 @@ router.get('/users',isAdmin, function(request,response) {
     AdminController.showUsers(request,response)
 });
 
-router.get('/publication-settings',isAdmin, function(request,response) {
-    AdminController.showPublicationSettings(request,response)
+router.get('/impact-settings',isAdmin, function(request,response) {
+    AdminController.showImpactSettings(request,response)
 });
 
 router.get('/media-settings',isAdmin, function(request,response) {

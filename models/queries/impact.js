@@ -16,6 +16,7 @@ exports.searchImpact = string =>  db.any(`SELECT $1:raw AND (unaccent(i.headline
 exports.getImpactTypes = () => db.any('SELECT id,type FROM impact_type')
 exports.getImpactsByMedia = media => db.any('SELECT * FROM impact WHERE media = $1',[media])
 exports.getImpactsByUser = user_id => db.any('SELECT $1:raw AND i.added_by = $2',[baseQuery,user_id])
+exports.getImpactsByType = type => db.any('SELECT $1:raw AND i.type = $2',[baseQuery,type])
 //Update
 exports.updateImpact = (impact,id) =>db.none(pgp.helpers.update(impact, null, 'impact') + 'WHERE id = '+id)
 //Delete

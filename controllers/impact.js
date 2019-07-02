@@ -68,7 +68,7 @@ exports.showEditImpactForm = (request,response) =>{
                     var date = new Date(impact.date.toDateString())
                     impact.date = date.getFullYear() + '-'+ ('0' + (date.getMonth()+1)).slice(-2) + '-'+ ('0' + date.getDate()).slice(-2)
                     response.render('editImpact',{
-                        disseminations:disseminations,
+                        disseminations: disseminations,
                         impact: impact,
                         medias: medias,
                         types:types,

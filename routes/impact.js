@@ -13,7 +13,7 @@ router.get('/', loggedIn, function(request,response){
 })
 
 router.get('/type/:id', loggedIn, function(request,response){
-    ImpactController.getImpactTypes(request,response)
+    ImpactController.showImpactsByType(request,response)
 })
 
 router.get('/add', loggedIn, function(request,response){
