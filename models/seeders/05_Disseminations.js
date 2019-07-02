@@ -2,9 +2,9 @@
 
 module.exports = {
   up: (queryInterface, Sequelize) => {
+    queryInterface.sequelize.query('ALTER SEQUENCE dissemination_id_seq RESTART WITH 1')
     return queryInterface.bulkInsert('dissemination', [
       {
-        id: 1,
         added_by: 0,
         headline: 'Detectar y detener a los saboteadores del espectro',
         summary: 'Socrates project',
@@ -13,7 +13,6 @@ module.exports = {
         url: 'https://www.networks.imdea.org/es/printpdf/7573'
       },
       {
-        id: 2,
         added_by: 0,
         headline: 'Vía libre para el uso de ondas milimétricas con la tecnología  5G',
         summary: 'mm waves and 5G technology',
@@ -22,7 +21,6 @@ module.exports = {
         url: 'https://www.networks.imdea.org/es/printpdf/7220'
       },
       {
-        id: 3,
         added_by: 0,
         headline: 'Investigadores de la UC3M e IMDEA Networks presentan sus novedades sobre 5G en el Mobile World Congress 2018',
         summary: 'IMDEA Networks and UC3M at MWC 2018',
@@ -31,7 +29,6 @@ module.exports = {
         url: 'https://www.networks.imdea.org/es/printpdf/7289'
       },
       {
-        id: 4,
         added_by: 0,
         headline: 'IMDEA Networks participa en el primer máster sobre 5G del mundo',
         summary: `First 5G master's degree`,
@@ -40,7 +37,6 @@ module.exports = {
         url: 'https://www.networks.imdea.org/es/actualidad/noticias/2018/imdea-networks-participa-primer-master-sobre-5g-mundo'
       },
       {
-        id: 5,
         added_by: 0,
         headline: 'Una investigación analizará la influencia de los algoritmos en la publicidad online',
         summary: 'My Bubble project',
@@ -49,7 +45,6 @@ module.exports = {
         url: 'https://www.networks.imdea.org/es/printpdf/7274'
       },
       {
-        id: 6,
         added_by: 0,
         headline: 'Miles de aplicaciones móviles para niños pueden estar violando su privacidad',
         summary: 'Apps for children might be violating their privacy',
@@ -58,7 +53,6 @@ module.exports = {
         url: 'https://www.networks.imdea.org/es/printpdf/7357'
       },
       {
-        id: 7,
         added_by: 0,
         headline: 'Procesamiento dinámico en redes 5G',
         summary: 'Industrial PhD-Telcaria',
@@ -67,7 +61,6 @@ module.exports = {
         url: 'https://www.networks.imdea.org/es/actualidad/noticias/2018/procesamiento-dinamico-redes-5g'
       },
       {
-        id: 8,
         added_by: 0,
         headline: 'Desarrollan una solución de red de transporte flexible y dinámica para las comunicaciones 5G',
         summary: 'Crosshaul Final Review',
@@ -76,7 +69,6 @@ module.exports = {
         url: 'https://www.networks.imdea.org/es/printpdf/7405'
       },
       {
-        id: 9,
         added_by: 0,
         headline: 'Desarrollan una herramienta que muestra la brecha de género en Facebook',
         summary: 'Facebook gender divide',
@@ -85,7 +77,6 @@ module.exports = {
         url: 'https://www.networks.imdea.org/es/actualidad/noticias/2018/desarrollan-una-herramienta-que-muestra-brecha-genero-facebook'
       },
       {
-        id: 10,
         added_by: 0,
         headline: 'Un sistema de posicionamiento impulsa la futura innovación inalámbrica',
         summary: 'WiSHFUL Project',
