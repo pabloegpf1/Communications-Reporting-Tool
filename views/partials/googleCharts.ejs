@@ -6,7 +6,7 @@
     <% for(var i=0; i < charts.length; i++) {%>
         var wrapper = new google.visualization.ChartWrapper({
             chartType: <%- JSON.stringify(charts[i].type)%>,
-            dataTable: google.visualization.arrayToDataTable(<%- JSON.stringify(charts[i].data)%>),
+            dataTable: new google.visualization.DataTable(<%- JSON.stringify(charts[i].data)%>),
             options: <%- JSON.stringify(charts[i].options)%>,
             containerId: <%- JSON.stringify(charts[i].containerId)%>
         });

@@ -1,10 +1,10 @@
 const db = require('./db-connection');
 
-exports.getPublicationByMonth = () => 
+exports.getImpactsByMonth = () => 
 db.any(
-    `select to_char(date,'Mon') as mon,
+    `select to_char(date,'FMMonth') as month,
     extract(year from date) as yyyy,
     count("id") as "Impacts"
-    from publication
+    from impact
     group by 1,2
-`)
+    `)
