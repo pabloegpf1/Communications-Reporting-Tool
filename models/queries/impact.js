@@ -12,7 +12,7 @@ exports.addImpact = impact => db.none('INSERT INTO impact ($1:name) VALUES ($1:l
 //Read
 exports.getImpacts = () => db.any (`SELECT $1:raw ORDER BY date DESC`,[baseQuery])
 exports.getImpactById = id => db.one(`SELECT $1:raw AND i.id = $2`,[baseQuery,id])
-exports.searchImpact = string =>  db.any(`SELECT $1:raw AND (unaccent(i.headline) ILIKE unaccent('%$2:value%')) ORDER BY date DESC`,[baseQuery,string])
+exports.searchImpact = string =>  db.any(`SELECT $1:raw AND (unaccent(d.summary) ILIKE unaccent('%$2:value%')) ORDER BY date DESC`,[baseQuery,string])
 exports.getImpactTypes = () => db.any('SELECT id,type FROM impact_type')
 exports.getImpactsByMedia = media => db.any('SELECT * FROM impact WHERE media = $1',[media])
 exports.getImpactsByUser = user_id => db.any('SELECT $1:raw AND i.added_by = $2',[baseQuery,user_id])
