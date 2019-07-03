@@ -9,21 +9,24 @@
   <div class="content-form">
     <form class="publication-form" action="/media/add" method="post" novalidate>
       <h2>New Media</h2>
+      
       <div class="form-group">
-        <label for="exampleFormControlInput1">Name</label>
+        <label for="exampleFormControlInput1">Name*</label>
         <input type="text" id="name" class="form-control" name="name" required>
         <div class="invalid-feedback">
           You must add the name of the media
         </div>
       </div>
+      
       <div class="form-group">
-          <label for="exampleFormControlInput1">URL (Optional)</label>
+          <label for="exampleFormControlInput1">URL</label>
           <input type="text" class="form-control" name="url">
         </div>
+
       <div class="row">
-        <div class="col">
+        <div class="form-group col">
           <div class="form-group">
-            <label for="exampleFormControlSelect1">Type</label>
+            <label for="exampleFormControlSelect1">Type*</label>
             <select class="form-control" name="type" required>
                 <option disabled selected value> -- select an option -- </option>
                 <% for(var i=0; i<types.length; i++) {%>
@@ -32,32 +35,45 @@
             </select>
           </div>
         </div>
+
+        <div class="form-group col">
+          <div class="form-group">
+            <label for="exampleFormControlSelect1">Content*</label>
+            <select class="form-control" name="content" required>
+              <option disabled selected value> -- select an option -- </option>
+              <option value="General Interest">General Interest</option>
+              <option value="Specialised">Specialised</option>
+            </select>
+          </div>
+        </div>
       </div>
+
       <div class="row">
-        <div class="col">
+        <div class="form-group col">
             <div class="form-group">
-                <label for="exampleFormControlSelect1">Coverage</label>
+                <label for="exampleFormControlSelect1">Coverage*</label>
                 <select class="form-control" name="coverage" required>
                   <option disabled selected value> -- select an option -- </option>
-                  <option value="local">Local</option>
-                  <option value="regional">Regional</option>
-                  <option value="national">National</option>
-                  <option value="international">International</option>
+                  <option value="Local">Local</option>
+                  <option value="Regional">Regional</option>
+                  <option value="National">National</option>
+                  <option value="International">International</option>
                 </select>
             </div>
           </div>
-          <div class="col">
+          <div class="form-group col">
               <div class="form-group">
-                  <label for="exampleFormControlSelect1">Format</label>
+                  <label for="exampleFormControlSelect1">Format*</label>
                   <select class="form-control" name="format" required>
                     <option disabled selected value> -- select an option -- </option>
-                    <option value="online">Online</option>
-                    <option value="paper">Paper</option>
-                    <option value="other">Other</option>
+                    <option value="Online">Online</option>
+                    <option value="Paper">Paper</option>
+                    <option value="Other">Other</option>
                   </select>
               </div>
             </div>
       </div>
+      
       <button type="submit" class="btn btn-success" style="float: right; padding: 10px; margin: 10px;">Create Media</a>
     </form>
   </div>

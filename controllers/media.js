@@ -27,7 +27,7 @@ exports.addMedia = (request,response) => {
         url:request.body.url
     }
     Media.addMedia(media)
-    .then(() => response.redirect('/publications/add'))
+    .then(() => response.redirect('/impacts/add'))
     .catch(err => response.status(500).send(err))
 }
 
