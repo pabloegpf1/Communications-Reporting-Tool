@@ -14,7 +14,8 @@ exports.getImpacts = () => db.any (`SELECT $1:raw ORDER BY date DESC`,[baseQuery
 exports.getImpactById = id => db.one(`SELECT $1:raw AND i.id = $2`,[baseQuery,id])
 exports.searchImpact = string =>  db.any(`SELECT $1:raw AND (unaccent(d.summary) ILIKE unaccent('%$2:value%')) ORDER BY date DESC`,[baseQuery,string])
 exports.getImpactTypes = () => db.any('SELECT id,type FROM impact_type')
-exports.getImpactsByMedia = media => db.any('SELECT * FROM impact WHERE media = $1',[media])
+exports.getImpactsByMedia = media_id => db.any('SELECT * FROM impact WHERE media = $1',[media_id])
+exports.getImpactsByDissemination = dissemination_id => db.any('SELECT $1:raw AND i.dissemination = $2',[baseQuery,dissemination_id])
 exports.getImpactsByUser = user_id => db.any('SELECT $1:raw AND i.added_by = $2',[baseQuery,user_id])
 exports.getImpactsByType = type => db.any('SELECT $1:raw AND i.type = $2',[baseQuery,type])
 //Update

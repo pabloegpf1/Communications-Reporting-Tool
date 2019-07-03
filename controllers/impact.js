@@ -26,6 +26,18 @@ exports.showImpactsByType = (request,response) =>{
     .catch(err => response.render('error',{message:"Error",error:err}))
 }
 
+exports.showImpactsByDissemination = (request,response) =>{
+    Impact.getImpactsByDissemination(request.params.id)
+    .then(impacts =>{
+        response.render('impacts',{
+            title: 'Impacts',
+            impacts: impacts,
+            admin: request.user.admin,
+        })
+    })
+    .catch(err => response.render('error',{message:"Error",error:err}))
+}
+
 exports.showNewImpactForm = (request,response) =>{
     Impact.getImpactTypes()
     .then(types => {

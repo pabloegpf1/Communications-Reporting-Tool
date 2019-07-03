@@ -20,10 +20,11 @@
               <thead>
                 <tr>
                   <th width="35%" scope="col" onclick="sortTable('impacts-table',0,false)">Headline</th>
-                  <th width="25%" scope="col" onclick="sortTable('impacts-table',1,false)">Summary</th>
-                  <th width="10%" scope="col" onclick="sortTable('impacts-table',2,false)">PR/NEWS</th>
-                  <th width="15%" scope="col" onclick="sortTable('impacts-table',3,true)">Date</th>
-                  <th width="5%" scope="col">Link</th>
+                  <th width="23%" scope="col" onclick="sortTable('impacts-table',1,false)">Summary</th>
+                  <th width="8%" scope="col" onclick="sortTable('impacts-table',2,false)">PR/NEWS</th>
+                  <th width="14%" scope="col" onclick="sortTable('impacts-table',3,true)">Date</th>
+                  <th width="7.5%" scope="col">Impacts</th>
+                  <th width="7.5%" scope="col">Link</th>
                 </tr>
               </thead>
               <tbody>
@@ -33,6 +34,7 @@
                       <td><%= disseminations[i].summary %></td>
                       <td><%= disseminations[i].pr_news %></td>
                       <td><%= disseminations[i].date.toDateString() %></td>
+                      <td style="text-align: center"><a class="fas fa-list" href="impacts/dissemination/<%= disseminations[i].id %>"></a></td>
                       <td style="text-align: center"><a class="fas fa-external-link-alt" href="<%= disseminations[i].url %>" target="_blank" ></a></td>
                   </tr>
                   <% } %>
