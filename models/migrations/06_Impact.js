@@ -1,7 +1,7 @@
 'use strict';
 module.exports = {
   up: (queryInterface, Sequelize) => {
-    return queryInterface.createTable('publication', {
+    return queryInterface.createTable('impact', {
       id: {
         allowNull: false,
         autoIncrement: true,
@@ -13,16 +13,11 @@ module.exports = {
         type: Sequelize.STRING,
         unique: false
       },
-      summary: {
-        allowNull: false,
-        type: Sequelize.STRING,
-        unique: false
-      },
       type: { 
         allowNull: false,
         type: Sequelize.INTEGER,
         references: {
-          model: 'publication_type',
+          model: 'impact_type',
           key: 'id'
         },
         onDelete: 'CASCADE'
@@ -56,6 +51,15 @@ module.exports = {
         type: Sequelize.STRING,
         unique: false
       },
+      dissemination: { 
+        allowNull: false,
+        type: Sequelize.INTEGER,
+        references: {
+          model: 'dissemination',
+          key: 'id'
+        },
+        onDelete: 'RESTRICT'
+      },
       comments: {
         allowNull: true,
         type: Sequelize.STRING,
@@ -63,7 +67,7 @@ module.exports = {
       },
       language: { 
         allowNull: false,
-        type: Sequelize.ENUM("spanish","english","french","german","italian","russian","greek","chinese","japanese","arabic","other"),
+        type: Sequelize.ENUM("Spanish","English","Other"),
         unique: false
       },
       uploaded: { 
@@ -86,11 +90,6 @@ module.exports = {
         type: Sequelize.BOOLEAN,
         unique: false
       },
-      pr_news: { 
-        allowNull: false,
-        type: Sequelize.ENUM("PR","NEWS"),
-        unique: false
-      },
       photo_count: { 
         allowNull: false,
         type: Sequelize.INTEGER,
@@ -99,7 +98,7 @@ module.exports = {
       url: {
         allowNull: false,
         type: Sequelize.STRING,
-        unique: false
+        unique: true
       },
       shortened_url: {
         allowNull: true,
@@ -124,6 +123,6 @@ module.exports = {
     });
   },
   down: (queryInterface, Sequelize) => {
-    return queryInterface.dropTable('publication');
+    return queryInterface.dropTable('impact');
   }
 };

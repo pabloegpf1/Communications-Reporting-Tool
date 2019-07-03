@@ -28,7 +28,7 @@ router.post('/add', loggedIn, function(request,response) {
 
 router.post('/login',
 	passport.authenticate('local', {
-		successRedirect: '/publications',
+		successRedirect: '/impacts',
 		failureRedirect: '/',
 		failureFlash: true
 	})

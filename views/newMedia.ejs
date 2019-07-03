@@ -32,17 +32,6 @@
             </select>
           </div>
         </div>
-        <div class="col">
-          <div class="form-group">
-              <label for="exampleFormControlSelect1">Content</label>
-              <select class="form-control" name="content" required>
-                  <option disabled selected value> -- select an option -- </option>
-                  <% for(var i=0; i<contents.length; i++) {%>
-                      <option value="<%= contents[i].id %>"><%= contents[i].content %></option>
-                  <% }%>
-              </select>
-          </div>
-        </div>
       </div>
       <div class="row">
         <div class="col">

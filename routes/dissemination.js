@@ -1,6 +1,6 @@
 var express = require('express');
 var router = express.Router();
-var PublicationController = require('../controllers/publications')
+var DisseminationController = require('../controllers/dissemination')
 
 function loggedIn(request, response, next) {
     if (request.user) next();
@@ -9,40 +9,40 @@ function loggedIn(request, response, next) {
 
 //GET Requests
 router.get('/', loggedIn, function(request,response){
-    PublicationController.showPublications(request,response)
+    DisseminationController.showDisseminations(request,response)
 })
 
 router.get('/type/:id', loggedIn, function(request,response){
-    PublicationController.getPublicationTypes(request,response)
+    DisseminationController.getDisseminationTypes(request,response)
 })
 
 router.get('/add', loggedIn, function(request,response){
-    PublicationController.showNewPublicationForm(request,response)
+    DisseminationController.showNewDisseminationForm(request,response)
 })
 
 router.get('/:id', loggedIn, function(request,response){
-    PublicationController.showPublicationDetails(request,response)
+    DisseminationController.showDisseminationDetails(request,response)
 })
 
 router.get('/edit/:id', loggedIn, function(request,response){
-    PublicationController.showEditPublicationForm(request,response)
+    DisseminationController.showEditDisseminationForm(request,response)
 })
 
 router.get('/delete/:id', loggedIn, function(request,response){
-    PublicationController.deletePublication(request,response)
+    DisseminationController.deleteDissemination(request,response)
 })
 
 //POST Requests
 router.post('/add', loggedIn, function(request,response){
-    PublicationController.addPublication(request,response)
+    DisseminationController.addDissemination(request,response)
 })
 
 router.post('/search/', loggedIn, function(request,response){
-    PublicationController.searchPublication(request,response)
+    DisseminationController.searchDissemination(request,response)
 })
 
 router.post('/edit/:id', loggedIn, function(request,response){
-    PublicationController.editPublication(request,response)
+    DisseminationController.editDissemination(request,response)
 })
 
 module.exports = router;

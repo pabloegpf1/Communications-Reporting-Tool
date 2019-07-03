@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>Publication Settings</title>
+    <title>Impact Settings</title>
     <% include ./partials/css%>
   </head>
 <body>
@@ -12,10 +12,10 @@
       </div>
       <div class="row row-title">
         <div class="col">
-          <h3 style="float: left;">Publication Types</h3>
+          <h3 style="float: left;">Impact Types</h3>
         </div>
         <div class="col">
-          <a style="float: right;" href="/publications/add" class="btn btn-info">Add Publication Type</a>
+          <a style="float: right;" href="/impacts/add" class="btn btn-info">Add Impact Type</a>
         </div>
       </div>
       <div class="row">
@@ -23,16 +23,16 @@
           <thead>
             <tr>
               <th scope="col" onclick="sortTable('publications-table',0,false)">Type</th>
-              <th scope="col" style="text-align:center">Publications</th>
+              <th scope="col" style="text-align:center">Impacts</th>
               <th scope="col" style="text-align:center">Actions</th>
             </tr>
           </thead>
           <tbody>
-              <% for(var i=0; i<publicationTypes.length; i++) {%>
+              <% for(var i=0; i<impactTypes.length; i++) {%>
               <tr>
-                <td><%= publicationTypes[i].type %></td>
-                <td style="text-align: center"><a class="fas fa-list" href="/publications/type/<%= publicationTypes[i].id %>" ></a></td>
-                <td style="text-align: center"><a class="fas fa-trash-alt" style="color:red;" href="/publications/delete-type/<%= publicationTypes[i].id %>" ></a></td>
+                <td><%= impactTypes[i].type %></td>
+                <td style="text-align: center"><a class="fas fa-list" href="/impacts/type/<%= impactTypes[i].id %>" ></a></td>
+                <td style="text-align: center"><a class="fas fa-trash-alt" style="color:red;" href="/impacts/delete-type/<%= impactTypes[i].id %>" ></a></td>
               </tr>
               <% } %>
           </tbody>

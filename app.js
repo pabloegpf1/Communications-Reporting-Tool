@@ -13,7 +13,8 @@ const session = require('express-session');
 const flash = require('connect-flash');
 
 var indexRouter = require('./routes/index');
-var publicationRouter = require('./routes/publication');
+var impactRouter = require('./routes/impact');
+var disseminationRouter = require('./routes/dissemination');
 var mediasRouter = require('./routes/media');
 var userRouter = require('./routes/user');
 var adminRouter = require('./routes/admin');
@@ -41,7 +42,8 @@ app.use(passport.session());
 app.use(flash()); 
 
 app.use('/', indexRouter);
-app.use('/publications', publicationRouter);
+app.use('/impacts', impactRouter);
+app.use('/disseminations', disseminationRouter);
 app.use('/media', mediasRouter);
 app.use('/user', userRouter);
 app.use('/admin', adminRouter);

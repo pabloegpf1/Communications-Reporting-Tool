@@ -1,4 +1,4 @@
-const db = require('./index');
+const db = require('./db-connection');
 
 //Create
 exports.addUser = (user) => db.none('INSERT INTO users ($1:name) VALUES ($1:list)',[user])

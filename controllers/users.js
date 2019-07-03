@@ -1,12 +1,12 @@
 const bcrypt = require('bcrypt');
-var Publication = require('../models/queries/publication');
+var Impact = require('../models/queries/impact');
 var User = require('../models/queries/users');
 
 exports.showContributionsByUser = (request,response) => {
-    Publication.getPublicationsByUser(request.user.id) 
-    .then(publications =>{
-        response.render('publications',{
-            publications: publications,
+    Impact.getImpactsByUser(request.user.id) 
+    .then(impacts =>{
+        response.render('impacts',{
+            impacts: impacts,
             admin: request.user.admin,
             title: "My Contributions"
         })
