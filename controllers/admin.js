@@ -14,7 +14,7 @@ exports.showUsers = (request,response) =>{
 
 exports.showImpactSettings = (request,response) =>{
     Impact.getImpactTypes()
-    .then(types => response.render('ImpactSettings',{
+    .then(types => response.render('impactSettings',{
         admin: request.user.admin,
         title: "Impact Settings",
         impactTypes: types,

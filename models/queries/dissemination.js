@@ -6,8 +6,7 @@ exports.addDissemination = dissemination => db.none('INSERT INTO dissemination (
 //Read
 exports.getDisseminations = () => db.any (`SELECT id, headline, summary, date, added_by, pr_news, url FROM dissemination d ORDER BY date DESC`)
 exports.getDisseminationById = id => db.one(`SELECT id, headline, summary, date, added_by, pr_news, url FROM dissemination d WHERE id = $1`,[id])
-exports.searchDissemination = string =>  db.any(`SELECT id, headline, summary, date, added_by, pr_news, url FROM dissemination WHERE (unaccent(headline) ILIKE unaccent('%$1:value%') 
-                                        OR unaccent(summary) ILIKE unaccent('%$1:value%')) ORDER BY date DESC`,[string])
+exports.searchDissemination = string =>  db.any(`SELECT id, headline, summary, date, added_by, pr_news, url FROM dissemination WHERE unaccent(summary) ILIKE unaccent('%$1:value%') ORDER BY date DESC`,[string])
 exports.getDisseminationsByUser = user_id => db.any('SELECT id, headline, summary, date, added_by, pr_news, url FROM dissemination WHERE added_by = $1',[user_id])
 //Update
 exports.updateDissemination = (dissemination,id) => {
