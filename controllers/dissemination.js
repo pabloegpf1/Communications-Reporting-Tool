@@ -71,7 +71,7 @@ exports.searchDissemination = (request,response) =>{
             admin: request.user.admin,
         })
     })
-    .catch(err => res.render('error',{message:"Error",error:err}))
+    .catch(err => response.render('error',{message:"Error",error:err}))
 }
 
 exports.editDissemination = (request,response) =>{
