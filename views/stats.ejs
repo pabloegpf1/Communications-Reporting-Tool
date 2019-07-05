@@ -3,36 +3,12 @@
 <head>
     <title>Stats</title>
     <% include ./partials/css%>
-    <%- include('partials/googleCharts', {charts:charts}) %>
 </head>
 <body>
-    <%- include('partials/navbar', {admin:admin}) %>
-    <div class="content">
-        <div class="chart-container">
-            <div class="row row-title">
-                <div class="col">
-                    <h2 style="float: left;">Statistics</h2>
-                </div>
-                <div class="col">
-                    <a style="float: right;" href="/publications/add" class="btn btn-info">Download Data (.csv)</a>
-                </div>
-            </div>
-        <div class="row graphs">
-            <div class="col">
-                <div class="chart" id="SM posts by month"></div>
-            </div>
-            <div class="col">
-                <div class="chart" id="Media Content"></div>
-            </div>
-        </div>
-        <div class="row graphs">
-            <div class="col">
-                <div id="Impacts by language"></div>
-            </div>
-            <div class="col">
-                <div id="National, international, local"></div>
-            </div>
-        </div>
+<%- include('partials/navbar', {admin:admin}) %>
+<div class="content">
+    <h2 style="float: left;">Stats</h2>
+        <iframe src="https://app.powerbi.com/view?r=eyJrIjoiOTA1YTIzNGQtMDBjZC00YjFlLWI3NjMtYmU2NzAzNTA2NTRkIiwidCI6ImFhYWVkZDAyLTNmYjAtNDZlOC04ZjNkLTQwMGZlYmJiZTRkZSIsImMiOjh9" frameborder="0" allowFullScreen="true"></iframe>
     </div>
 <% include ./partials/scripts%>
 </body>
