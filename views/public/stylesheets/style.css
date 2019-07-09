@@ -65,3 +65,10 @@ td{
 label{
   float: left;
 }
+
+iframe {
+  display: block;       
+  background: #000;
+  height: 100vh;        /* Viewport-relative units */
+  width: 100%;
+}
