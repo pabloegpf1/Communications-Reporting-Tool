@@ -8,7 +8,7 @@ router.get('/', function(request,response) {
     })
 });
 
-router.get('/pdf', function(request,response) {
+router.get("/download-annual-communications-report", function(request,response) {
     Document.createPDF(request,response)
 });
 
