@@ -11,9 +11,17 @@
       <li class="nav-item active">
         <a class="nav-link" href="/disseminations">Disseminations</a>
       </li>
-      <li class="nav-item active">
-        <a class="nav-link" href="/stats">Stats</a>
-      </li>
+      <li class="nav-item dropdown active">
+          <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            Stats
+          </a>
+          <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+            <a class="dropdown-item" href="/stats">Dashboard</a>
+            <a class="dropdown-item" href="http://172.16.1.173:5000/" target="blank">Access to Metabase</a>
+            <div class="dropdown-divider"></div>
+            <a class="dropdown-item" href="/pdf">Annual Communications Report</a>
+          </div>
+        </li>
       <li class="nav-item dropdown active">
         <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
           User
@@ -27,17 +35,17 @@
       </li>
       <% if(admin == true) {%>
         <li class="nav-item dropdown active">
-            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-              Admin
-            </a>
-            <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-              <a class="dropdown-item" href="/admin/users">Users</a>
-              <div class="dropdown-divider"></div>
-              <a class="dropdown-item" href="/admin/impact-settings">Impact Settings</a>
-              <a class="dropdown-item" href="/admin/media-settings">Media Settings</a>
-            </div>
-          </li>
-        <% } %>
+          <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            Admin
+          </a>
+          <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+            <a class="dropdown-item" href="/admin/users">Users</a>
+            <div class="dropdown-divider"></div>
+            <a class="dropdown-item" href="/admin/impact-settings">Impact Settings</a>
+            <a class="dropdown-item" href="/admin/media-settings">Media Settings</a>
+          </div>
+        </li>
+      <% } %>
     </ul>
     <form class="form-inline my-2 my-lg-0" action="/disseminations/search" method="post">
       <input class="form-control mr-sm-2" type="search" name="string" placeholder="Search by summary" aria-label="Search">
