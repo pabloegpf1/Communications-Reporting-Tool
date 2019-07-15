@@ -12,8 +12,4 @@ router.get('/pdf', function(request,response) {
     Document.createPDF(request,response)
 });
 
-router.post('/pdf', function(request,response) {
-    Document.downloadPDF(request,response)
-});
-
 module.exports = router;

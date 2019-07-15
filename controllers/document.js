@@ -4,7 +4,7 @@ PDFDocument = require('pdfkit');
 
 exports.createPDF = (request,response) =>{
     doc = new PDFDocument;
-    const writeStream = fs.createWriteStream('documents/output.pdf')
+    const writeStream = fs.createWriteStream("documents/"+ new Date().getFullYear() +"-IMDEA-NETWORKS-Annual-Communications-Report.pdf")
     doc.pipe(writeStream);
 
     //PDF CONTENTS
@@ -39,10 +39,6 @@ exports.createPDF = (request,response) =>{
     //END OF CONTENTS
     doc.end();
     writeStream.on('finish', () => { 
-        response.redirect('/impacts')
+        response.download("documents/"+ new Date().getFullYear() +"-IMDEA-NETWORKS-Annual-Communications-Report.pdf")
     });
-}
-
-exports.downloadPDF = (request,response) =>{
-    response.download("documents/output.pdf") 
 }
