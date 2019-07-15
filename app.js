@@ -11,6 +11,7 @@ const passport = require('passport');
 const LocalStrategy = require('passport-local').Strategy;
 const session = require('express-session');
 const flash = require('connect-flash');
+//const PDFDocument = require('pdfkit');
 
 var indexRouter = require('./routes/index');
 var impactRouter = require('./routes/impact');
@@ -25,6 +26,7 @@ var app = express();
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'ejs');
 
+//app.use(PDFDocument);
 app.use(logger('dev'));
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(express.json());
