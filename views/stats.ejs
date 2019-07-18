@@ -1,19 +1,18 @@
 <!DOCTYPE html>
 <html>
-<head>
-    <title>Stats</title>
-    <% include ./partials/css%>
-</head>
-<body>
-<%- include('partials/navbar', {admin:admin}) %>
-    <iframe
-    src="http://172.16.1.173:5000/public/dashboard/de657cde-e586-49df-977d-0e3094ee88f1"
-    frameborder="0"
-    width="800"
-    height="600"
-    allowtransparency
-></iframe>
-<% include ./partials/scripts%>
-</body>
+	<head>
+		<title>Stats</title>
+		<% include ./partials/css%>
+	</head>
+	<body>
+		<%- include('partials/navbar', {admin:admin}) %>
+		<iframe
+			src="http://172.16.1.173:5000/public/dashboard/de657cde-e586-49df-977d-0e3094ee88f1"
+			frameborder="0"
+			width="800"
+			height="600"
+			allowtransparency
+		></iframe>
+		<% include ./partials/scripts%>
+	</body>
 </html>
-

@@ -1,43 +1,43 @@
-'use strict';
+"use strict";
 
 module.exports = {
   up: (queryInterface, Sequelize) => {
-    return queryInterface.bulkInsert('impact_type', [
+    return queryInterface.bulkInsert("impact_type", [
       {
         id: 1,
-        type: 'Article'
+        type: "Article"
       },
       {
         id: 2,
-        type: 'Column'
+        type: "Column"
       },
       {
         id: 3,
-        type: 'Interview'
+        type: "Interview"
       },
       {
         id: 4,
-        type: 'News'
+        type: "News"
       },
       {
         id: 5,
-        type: 'News Brief'
+        type: "News Brief"
       },
       {
         id: 6,
-        type: 'Podcast'
+        type: "Podcast"
       },
       {
         id: 7,
-        type: 'Press Release'
+        type: "Press Release"
       },
       {
         id: 8,
-        type: 'Video'
+        type: "Video"
       }
-    ]) 
+    ]);
   },
   down: (queryInterface, Sequelize) => {
-    return queryInterface.bulkDelete('impact_type', null, {});
+    return queryInterface.bulkDelete("impact_type", null, {});
   }
 };
