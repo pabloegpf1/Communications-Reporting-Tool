@@ -4,7 +4,7 @@ const path = require('path');
 const bodyParser = require('body-parser');
 const cookieParser = require('cookie-parser');
 const logger = require('morgan');
-const dotenv = require('dotenv').config()
+const dotenv = require('dotenv').config();
 const Sequelize = require('sequelize');
 const sequelize = new Sequelize(process.env.DB_URL);
 const passport = require('passport');
@@ -34,14 +34,16 @@ app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, '/views/public')));
 app.use('/favicon.ico', express.static('images/favicon.ico'));
-app.use(session({
-  secret: 'secret',
-  saveUninitialized: true,
-  resave: true
-}));
+app.use(
+	session({
+		secret: 'secret',
+		saveUninitialized: true,
+		resave: true
+	})
+);
 app.use(passport.initialize());
 app.use(passport.session());
-app.use(flash()); 
+app.use(flash());
 
 app.use('/', indexRouter);
 app.use('/impacts', impactRouter);
@@ -52,30 +54,30 @@ app.use('/admin', adminRouter);
 app.use('/stats', statRouter);
 
 sequelize
-  .authenticate()
-  .then(() => {
-    console.log('Connection has been established successfully.');
-  })
-  .catch(err => {
-    console.error('Unable to connect to the database:', err);
-  });
+	.authenticate()
+	.then(() => {
+		console.log('Connection has been established successfully.');
+	})
+	.catch(err => {
+		console.error('Unable to connect to the database:', err);
+	});
 
 require('./controllers/userAuth.js')(passport, LocalStrategy);
- 
+
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
-  next(createError(404));
+	next(createError(404));
 });
 
 // error handler
 app.use(function(err, req, res, next) {
-  // set locals, only providing error in development
-  res.locals.message = err.message;
-  res.locals.error = req.app.get('env') === 'development' ? err : {};
+	// set locals, only providing error in development
+	res.locals.message = err.message;
+	res.locals.error = req.app.get('env') === 'development' ? err : {};
 
-  // render the error page
-  res.status(err.status || 500);
-  res.render('error');
+	// render the error page
+	res.status(err.status || 500);
+	res.render('error');
 });
 
 module.exports = app;

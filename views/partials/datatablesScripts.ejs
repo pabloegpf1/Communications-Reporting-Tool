@@ -1,0 +1,13 @@
+<script>
+    $.fn.dataTable.moment( 'D/M/YYYY' );
+    $('#impacts-table').DataTable( {
+      paging: true,
+      searching: true,
+      ordering: true,
+      "columnDefs": [ {
+          "targets": 'no-sort',
+          "orderable": false,
+        }
+    ]
+    } );
+  </script>
