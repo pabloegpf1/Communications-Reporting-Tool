@@ -1,140 +1,147 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <title>Impact Details</title>
-    <% include ./partials/css%>
-  </head>
-<body>
-  <%- include('partials/navbar', {admin:admin}) %>
-  <div class="content-form">
-    <h2>Details</h2>
-    <div class="form-group">
-      <label for="exampleFormControlInput1">Headline</label>
-      <input type="text" class="form-control" name="headline" value="<%= impact.headline %>" readonly>
-    </div>
-    <div class="row">
-      <div class="col">
-        <div class="form-group">
-          <label for="exampleFormControlSelect1">Media</label>
-          <input type="text" class="form-control" name="media_name" rows="1" value="<%= impact.media_name %>" readonly>
-        </div>
-      </div>
-      <div class="col">
-        <div class="form-group">
-          <label for="exampleFormControlInput1">Media Section (Optional)</label>
-          <input type="text" class="form-control" name="media_section" rows="1" value="<%= impact.media_section %>" readonly>
-        </div>
-      </div>
-    </div>
-    <div class="form-group">
-      <label for="exampleFormControlInput1">Spokesperson</label>
-      <input type="text" class="form-control" name="spokesperson" rows="1" value="<%= impact.spokesperson %>" readonly>
-    </div>
-    <div class="form-group">
-      <label for="exampleFormControlInput1">Comments</label>
-      <textarea class="form-control" name="comments" rows="2" readonly><%= impact.comments %></textarea>
-    </div>
-    <div class="row" >
-      <div class="col">
-        <div class="form-group">
-            <label for="exampleFormControlSelect1">Language</label>
-            <input type="text" class="form-control" name="Language" rows="1" value="<%= impact.language %>" readonly>
-          </div>
-      </div>
-      <div class="col">
-          <div class="form-group">
-            <label for="exampleFormControlSelect1">Date Published</label>
-            <input type="text" class="form-control" name="date" rows="1" value="<%= impact.date.toDateString() %>" readonly>
-          </div>
-      </div>
-    </div>
-    <div class="row" style="margin-bottom:30px; margin-top:30px;">
-        <div class="col">
-          <div class="form-check">
-            <input class="form-check-input" type="checkbox" value="true" name="uploaded" disabled="disabled"  <% if (impact.uploaded){ %> checked <% } %> >
-            <label class="form-check-label form-check-label" for="defaultCheck1">Uploaded</label>
-          </div>
-        </div>
-        <div class="col">
-          <div class="form-check">
-            <input class="form-check-input" type="checkbox" value="true" name="has_video" disabled="disabled" <% if (impact.has_video){ %> checked <% } %> >
-            <label class="form-check-label" for="defaultCheck1">
-              Has video
-            </label>
-          </div>
-        </div>
-        <div class="col">
-          <div class="form-check">
-            <input class="form-check-input" type="checkbox" value="true" name="statements" disabled="disabled" <% if (impact.statements){ %> checked <% } %> >
-            <label class="form-check-label" for="defaultCheck1">
-              Statements
-            </label>
-          </div>
-        </div>
-      <div class="col">
-        <div class="form-check">
-          <input class="form-check-input" type="checkbox" value="true" name="proactivity" disabled="disabled" <% if (impact.proactivity){ %> checked <% } %> >
-          <label class="form-check-label" for="defaultCheck1">
-              Proactivity
-          </label>
-        </div>
-      </div>
-    </div>
-    <h3 style="margin-top: 30px">Dissemination</h3>
-    <div class="form-group">
-      <label for="exampleFormControlSelect1">Dissemination Headline</label>
-      <input type="text" class="form-control" name="dissemination_title" rows="1" value="<%= impact.dissemination_headline %>" readonly>
-    </div>
-    <div class="row">
-      <div class="col">
-        <div class="form-group">
-          <label for="exampleFormControlInput1">Summary</label>
-          <input type="text" class="form-control" name="summary" rows="3" value="<%= impact.summary %>" readonly>
-        </div>
-      </div>
-      <div class="col">
-        <div class="form-group">
-          <label for="exampleFormControlSelect1">PR/NEWS</label>
-          <input type="text" class="form-control" name="pr_news" rows="1" value="<%= impact.pr_news %>" readonly>
-        </div>
-      </div>
-    </div>
-    <h3 style="margin-top: 30px">Media</h3>
-    <div class="form-group">
-      <label for="exampleFormControlSelect1">Media name</label>
-      <input type="text" class="form-control" name="media_name" rows="1" value="<%= impact.media_name %>" readonly>
-    </div>
-    <div class="row">
-    <div class="col">
-        <div class="form-group">
-          <label for="exampleFormControlSelect1">Type</label>
-          <input type="text" class="form-control" name="impact_type" rows="1" value="<%= impact.type %>" readonly>
-        </div>
-      </div>
-    <div class="col">
-      <div class="form-group">
-        <label for="exampleFormControlSelect1">Photos</label>
-        <input type="text" class="form-control" name="photo_count" rows="1" value="<%= impact.photo_count %>" readonly>
-      </div>
-    </div>
-  </div>
-  <div class="row">
-    <div class="col">
-      <div class="form-group">
-        <label for="exampleFormControlInput1">Original URL</label>
-        <input type="text" class="form-control" name="url" rows="1" value="<%= impact.url %>" readonly>
-      </div>
-    </div>
-    <div class="col">
-      <div class="form-group">
-        <label for="exampleFormControlInput1">Shortened URL</label>
-        <input type="text" class="form-control" name="shortened_url" rows="1" value="<%= impact.shortened_url %>" readonly>
-      </div>
-    </div>
-  </div>
-  <a style="float: left; padding: 10px; width:20%; margin: 10px; width:30%" href="/impacts/delete/<%= impact.id %>" class="btn btn-danger btn-lg">Delete</a>
-  <a style="float: right; padding: 10px; width:20%; margin: 10px; width:30%" href="/impacts/edit/<%= impact.id %>"  class="btn btn-info btn-lg">Edit</a>
-  </div>
-  <% include ./partials/scripts%>
-</body>
+	<head>
+		<title>Impact Details</title>
+		<% include ./partials/css%>
+	</head>
+	<body>
+		<%- include('partials/navbar', {admin:admin}) %>
+		<div class="content-form">
+			<h2>Details</h2>
+			<div class="form-group">
+				<label for="exampleFormControlInput1">Headline</label>
+				<input type="text" class="form-control" name="headline" value="<%= impact.headline %>" readonly />
+			</div>
+			<div class="row">
+				<div class="col">
+					<div class="form-group">
+						<label for="exampleFormControlSelect1">Media</label>
+						<input type="text" class="form-control" name="media_name" rows="1" value="<%= impact.media_name %>" readonly />
+					</div>
+				</div>
+				<div class="col">
+					<div class="form-group">
+						<label for="exampleFormControlInput1">Media Section (Optional)</label>
+						<input type="text" class="form-control" name="media_section" rows="1" value="<%= impact.media_section %>" readonly />
+					</div>
+				</div>
+			</div>
+			<div class="form-group">
+				<label for="exampleFormControlInput1">Spokesperson</label>
+				<input type="text" class="form-control" name="spokesperson" rows="1" value="<%= impact.spokesperson %>" readonly />
+			</div>
+			<div class="form-group">
+				<label for="exampleFormControlInput1">Comments</label>
+				<textarea class="form-control" name="comments" rows="2" readonly><%= impact.comments %></textarea>
+			</div>
+			<div class="row">
+				<div class="col">
+					<div class="form-group">
+						<label for="exampleFormControlSelect1">Language</label>
+						<input type="text" class="form-control" name="Language" rows="1" value="<%= impact.language %>" readonly />
+					</div>
+				</div>
+				<div class="col">
+					<div class="form-group">
+						<label for="exampleFormControlSelect1">Date Published</label>
+						<input type="text" class="form-control" name="date" rows="1" value="<%= impact.date.toDateString() %>" readonly />
+					</div>
+				</div>
+			</div>
+			<div class="row" style="margin-bottom:30px; margin-top:30px;">
+				<div class="col">
+					<div class="form-check">
+						<input class="form-check-input" type="checkbox" value="true" name="uploaded" disabled="disabled"  <% if (impact.uploaded){ %> checked <% } %> >
+						<label class="form-check-label form-check-label" for="defaultCheck1">Uploaded</label>
+					</div>
+				</div>
+				<div class="col">
+					<div class="form-check">
+						<input class="form-check-input" type="checkbox" value="true" name="has_video" disabled="disabled" <% if (impact.has_video){ %> checked <% } %> >
+						<label class="form-check-label" for="defaultCheck1">
+							Has video
+						</label>
+					</div>
+				</div>
+				<div class="col">
+					<div class="form-check">
+						<input class="form-check-input" type="checkbox" value="true" name="statements" disabled="disabled" <% if (impact.statements){ %> checked <% } %> >
+						<label class="form-check-label" for="defaultCheck1">
+							Statements
+						</label>
+					</div>
+				</div>
+				<div class="col">
+					<div class="form-check">
+						<input class="form-check-input" type="checkbox" value="true" name="proactivity" disabled="disabled" <% if (impact.proactivity){ %> checked <% } %> >
+						<label class="form-check-label" for="defaultCheck1">
+							Proactivity
+						</label>
+					</div>
+				</div>
+			</div>
+			<h3 style="margin-top: 30px">Dissemination</h3>
+			<div class="form-group">
+				<label for="exampleFormControlSelect1">Dissemination Headline</label>
+				<input type="text" class="form-control" name="dissemination_title" rows="1" value="<%= impact.dissemination_headline %>" readonly />
+			</div>
+			<div class="row">
+				<div class="col">
+					<div class="form-group">
+						<label for="exampleFormControlInput1">Summary</label>
+						<input type="text" class="form-control" name="summary" rows="3" value="<%= impact.summary %>" readonly />
+					</div>
+				</div>
+				<div class="col">
+					<div class="form-group">
+						<label for="exampleFormControlSelect1">PR/NEWS</label>
+						<input type="text" class="form-control" name="pr_news" rows="1" value="<%= impact.pr_news %>" readonly />
+					</div>
+				</div>
+			</div>
+			<h3 style="margin-top: 30px">Media</h3>
+			<div class="form-group">
+				<label for="exampleFormControlSelect1">Media name</label>
+				<input type="text" class="form-control" name="media_name" rows="1" value="<%= impact.media_name %>" readonly />
+			</div>
+			<div class="row">
+				<div class="col">
+					<div class="form-group">
+						<label for="exampleFormControlSelect1">Type</label>
+						<input type="text" class="form-control" name="impact_type" rows="1" value="<%= impact.type %>" readonly />
+					</div>
+				</div>
+				<div class="col">
+					<div class="form-group">
+						<label for="exampleFormControlSelect1">Photos</label>
+						<input type="text" class="form-control" name="photo_count" rows="1" value="<%= impact.photo_count %>" readonly />
+					</div>
+				</div>
+			</div>
+			<div class="row">
+				<div class="col">
+					<div class="form-group">
+						<label for="exampleFormControlInput1">Original URL</label>
+						<input type="text" class="form-control" name="url" rows="1" value="<%= impact.url %>" readonly />
+					</div>
+				</div>
+				<div class="col">
+					<div class="form-group">
+						<label for="exampleFormControlInput1">Shortened URL</label>
+						<input type="text" class="form-control" name="shortened_url" rows="1" value="<%= impact.shortened_url %>" readonly />
+					</div>
+				</div>
+			</div>
+			<a
+				style="float: left; padding: 10px; width:20%; margin: 10px; width:30%"
+				href="/impacts/delete/<%= impact.id %>"
+				class="btn btn-danger btn-lg"
+				>Delete</a
+			>
+			<a style="float: right; padding: 10px; width:20%; margin: 10px; width:30%" href="/impacts/edit/<%= impact.id %>" class="btn btn-info btn-lg"
+				>Edit</a
+			>
+		</div>
+		<% include ./partials/scripts%>
+	</body>
 </html>
