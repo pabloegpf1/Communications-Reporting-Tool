@@ -10,6 +10,7 @@ let baseQuery = `i.id, i.headline, i.media_section, i.spokesperson, i.comments, 
 //Create
 exports.addImpact = impact =>
   db.none("INSERT INTO impact ($1:name) VALUES ($1:list)", [impact]);
+
 //Read
 exports.getImpacts = () =>
   db.any(`SELECT $1:raw ORDER BY date DESC`, [baseQuery]);
@@ -32,9 +33,11 @@ exports.getImpactsByUser = user_id =>
   db.any("SELECT $1:raw AND i.added_by = $2", [baseQuery, user_id]);
 exports.getImpactsByType = type =>
   db.any("SELECT $1:raw AND i.type = $2", [baseQuery, type]);
+
 //Update
 exports.updateImpact = (impact, id) =>
   db.none(pgp.helpers.update(impact, null, "impact") + "WHERE id = " + id);
+  
 //Delete
 exports.deleteImpact = impact_id =>
   db.none("DELETE FROM impact WHERE id=($1)", [impact_id]);
