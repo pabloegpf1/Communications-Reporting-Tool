@@ -42,6 +42,10 @@ module.exports = {
       {
         id: 10,
         type: "TV"
+      },
+      {
+        id: 11,
+        type: "Social Media"
       }
     ]);
   },

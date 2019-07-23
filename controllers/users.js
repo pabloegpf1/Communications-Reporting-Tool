@@ -16,7 +16,6 @@ exports.showContributionsByUser = (request, response) => {
 
 exports.addUser = (request, response) => {
   let encrypted_pw = bcrypt.hashSync(request.body.password, 9);
-  console.log(request.body);
   User.addUser({
     first_name: request.body.first_name,
     last_name: request.body.last_name,
@@ -34,10 +33,24 @@ exports.addUser = (request, response) => {
     .catch(err => response.render("error", { message: "Error", error: err }));
 };
 
-exports.editUser = (request, response) => {
+exports.showEditUserForm = (request, response) => {
   response.render("userInfo", {
-    admin: request.user.admin
+    admin: request.user.admin,
+    user: request.user
   });
+};
+
+exports.editUser = (request, response) => {
+  let encrypted_pw = bcrypt.hashSync(request.body.password, 9);
+  let user = {
+    first_name: request.body.first_name,
+    last_name: request.body.last_name,
+    username: request.body.username,
+    password: encrypted_pw,
+    admin: request.body.admin === undefined ? false : true
+  }
+  User.editUser(user)
+  .then(response.redirect('/user/contributions'))
 };
 
 exports.signOut = (request, response) => {
