@@ -1,8 +1,11 @@
 var Media = require("../models/queries/media");
 
-exports.showMediaNames = (request, response) => {
-  Media.getMediaNames()
-    .then(data => response.send(data))
+exports.showMediaList = (request, response) => {
+  Media.getMedias()
+    .then(medias => response.render('medias',{
+      medias: medias,
+      admin: request.user.admin
+    }))
     .catch(err => response.status(500).send(err));
 };
 

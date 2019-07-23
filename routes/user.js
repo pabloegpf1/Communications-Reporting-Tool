@@ -13,8 +13,8 @@ router.get("/contributions/", loggedIn, function(request, response) {
   UserController.showContributionsByUser(request, response);
 });
 
-router.get("/edit", loggedIn, function(request, response) {
-  UserController.editUser(request, response);
+router.get("/edit/", loggedIn, function(request, response) {
+  UserController.showEditUserForm(request, response);
 });
 
 router.get("/sign-out", loggedIn, function(request, response) {
@@ -34,5 +34,9 @@ router.post(
     failureFlash: true
   })
 );
+
+router.post("/edit/", loggedIn, function(request, response) {
+  UserController.editUser(request, response);
+});
 
 module.exports = router;

@@ -13,14 +13,15 @@
               <h2 style="float: left;"><%= title %></h2>
           </div>
           <div class="col">
-              <a style="float: right;" href="/disseminations/add" class="btn btn-info">New Dissemination</a>
+              <a style="float: right;" href="/disseminations/add" class="btn btn-info">Add Dissemination</a>
           </div>
         </div>
           <table class="table table-striped table-bordered table-responsive-lg" id="impacts-table">
               <thead>
                 <tr>
+                  <th width="5%" scope="col">ID</th>
                   <th width="40%" scope="col">Headline</th>
-                  <th width="25%" scope="col">Summary</th>
+                  <th width="20%" scope="col">Summary</th>
                   <th width="10%" scope="col">PR/NEWS</th>
                   <th width="10%" scope="col">Date</th>
                   <th class="no-sort" width="7.5%" scope="col">Impacts</th>
@@ -30,6 +31,7 @@
               <tbody>
                   <% for(var i=0; i<disseminations.length; i++) {%>
                   <tr>
+                      <td><%= disseminations[i].id %></td>
                       <td style="text-overflow: ellipsis;white-space: nowrap;overflow: hidden;">
                         <a href="/disseminations/<%= disseminations[i].id %>"><%= disseminations[i].headline %></a>
                       </td>

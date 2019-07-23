@@ -70,6 +70,11 @@ module.exports = {
         type: Sequelize.ENUM("Spanish","English","Other"),
         unique: false
       },
+      classification: { 
+        allowNull: false,
+        type: Sequelize.ENUM("Awards","Careers","Collaboration","Events","External","Incorporations/Departures","Institutional","Mention","Media Impacts","Projects","Publications","Other"),
+        unique: false
+      },
       uploaded: { 
         allowNull: false,
         type: Sequelize.BOOLEAN,
@@ -95,15 +100,15 @@ module.exports = {
         type: Sequelize.INTEGER,
         unique: false
       },
-      url: {
-        allowNull: false,
-        type: Sequelize.STRING,
-        unique: true
-      },
-      shortened_url: {
+      video_url: {
         allowNull: true,
         type: Sequelize.STRING,
         unique: false
+      },
+      source_url: {
+        allowNull: false,
+        type: Sequelize.STRING,
+        unique: true
       },
       date: {
         allowNull: false,

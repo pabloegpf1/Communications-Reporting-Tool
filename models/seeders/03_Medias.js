@@ -155,7 +155,39 @@ module.exports = {
         url: "www.esleondiario.com",
         type: 1,
         content: "General Interest",
-        coverage: "Local",
+        coverage: "International",
+        format: "Online"
+      },
+      {
+        name: "Twitter",
+        url: "https://twitter.com",
+        type: 11,
+        content: "General Interest",
+        coverage: "International",
+        format: "Online"
+      },
+      {
+        name: "Instagram",
+        url: "https://www.instagram.com",
+        type: 11,
+        content: "General Interest",
+        coverage: "International",
+        format: "Online"
+      },
+      {
+        name: "Linkedin",
+        url: "https://es.linkedin.com",
+        type: 11,
+        content: "General Interest",
+        coverage: "International",
+        format: "Online"
+      },
+      {
+        name: "Facebook",
+        url: "https://www.facebook.com",
+        type: 11,
+        content: "General Interest",
+        coverage: "International",
         format: "Online"
       }
     ]);

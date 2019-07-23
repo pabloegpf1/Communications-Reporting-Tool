@@ -9,7 +9,7 @@ exports.addDissemination = dissemination =>
 //Read
 exports.getDisseminations = () =>
   db.any(
-    `SELECT id, headline, summary, date, added_by, pr_news, url FROM dissemination d ORDER BY date DESC`
+    `SELECT id, headline, summary, date, added_by, pr_news, url FROM dissemination d ORDER BY id DESC`
   );
 exports.getDisseminationById = id =>
   db.one(

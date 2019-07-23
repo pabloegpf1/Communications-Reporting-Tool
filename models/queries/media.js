@@ -8,7 +8,7 @@ exports.addMediaType = type =>
   db.none("INSERT INTO media_type (type) VALUES ($1)", [type]);
 //Read
 exports.getMediaNames = () => db.any("SELECT * FROM media ORDER BY name");
-exports.getMedias = () => db.any("SELECT * FROM media ORDER BY name");
+exports.getMedias = () => db.any("SELECT media.id,media.name,media.url,media.coverage,media.format,media.type,media.content,media_type.type as media_type FROM media,media_type WHERE media.type = media_type.id");
 exports.getAll = () =>
   db.multi(`SELECT media.id, media.name, media.url,media.coverage,media.format,media_type.type,media.content FROM media,media_type WHERE media.type = media_type.id;
                                 SELECT id,type FROM media_type;`);

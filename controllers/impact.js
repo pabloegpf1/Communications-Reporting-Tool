@@ -114,7 +114,6 @@ exports.searchImpact = (request, response) => {
 
 exports.editImpact = (request, response) => {
   let newImpact = createImpactFromRequest(request.body, request.user.id);
-  console.log(newImpact);
   Impact.updateImpact(newImpact, request.params.id)
     .then(() => response.redirect("/impacts"))
     .catch(err => response.render("error", { message: "Error", error: err }));
@@ -143,7 +142,6 @@ const createImpactFromRequest = function(data, user_id) {
     photo_count: data.photo_count,
     type: data.type,
     url: data.url,
-    shortened_url: data.shortened_url,
     date: data.date
   });
 };

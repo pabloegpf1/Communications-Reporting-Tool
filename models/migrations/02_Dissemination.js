@@ -30,7 +30,7 @@ module.exports = {
       },
       pr_news: { 
         allowNull: false,
-        type: Sequelize.ENUM("PR","NEWS"),
+        type: Sequelize.ENUM("PR","NEWS","Announcements"),
         unique: false
       },
       date: {

@@ -9,7 +9,7 @@ function loggedIn(request, response, next) {
 
 // GET Requests
 router.get("/", loggedIn, function(request, response) {
-  MediaController.showMediaNames(request, response);
+  MediaController.showMediaList(request, response);
 });
 
 router.get("/add", loggedIn, function(request, response) {
