@@ -41,7 +41,7 @@ exports.showImpactsByDissemination = (request, response) => {
 exports.showNewImpactForm = (request, response) => {
   Impact.getImpactTypes()
     .then(types => {
-      Media.getMedias().then(medias => {
+      Media.getAvailableMedias().then(medias => {
         Dissemination.getDisseminations().then(disseminations => {
           response.render("newImpact", {
             types: types,

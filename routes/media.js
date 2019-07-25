@@ -16,6 +16,10 @@ router.get("/add", loggedIn, function(request, response) {
   MediaController.showNewMediaForm(request, response);
 });
 
+router.get("/change-status/:id", loggedIn, function(request, response) {
+  MediaController.changeAvailableStatus(request, response);
+});
+
 // POST Requests
 router.post("/add", loggedIn, function(request, response) {
   MediaController.addMedia(request, response);

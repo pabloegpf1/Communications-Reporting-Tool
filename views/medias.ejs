@@ -39,7 +39,11 @@
                     <td><%= medias[i].format %></td>
                     <td style="text-align: center"><a class="fas fa-list" href="" ></a></td>
                     <td style="text-align: center"><a class="fas fa-external-link-alt" href="<%= medias[i].url %>" target="_blank"></a></td>
-                    <td style="text-align: center"><a class="fas fa-trash-alt" style="color:red;" href="" ></a></td>
+                    <% if(medias[i].available == true){ %>
+                        <td style="text-align: center"><a class="fas fa-trash-alt" style="color:red;" href="/media/change-status/<%= medias[i].id %>" ></a></td>
+                    <%}else{%>
+                        <td style="text-align: center"><a class="fas fa-trash-restore-alt" style="color:green;" href="/media/change-status/<%= medias[i].id %>" ></a></td>
+                    <%}%>
                 </tr>
                 <% } %>
             </tbody>
