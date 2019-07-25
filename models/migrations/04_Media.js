@@ -42,6 +42,12 @@ module.exports = {
 				type: Sequelize.STRING,
 				unique: true
 			},
+			available: {
+				allowNull: false,
+				type: Sequelize.BOOLEAN,
+				defaultValue: true,
+				unique: false
+			},
 			createdAt: {
 				allowNull: false,
 				defaultValue: new Date(),

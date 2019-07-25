@@ -12,6 +12,30 @@ module.exports = {
         username: "Admin",
         admin: true,
         password: bcrypt.hashSync(process.env.ADMIN_PW, 9)
+      },
+      {
+        id: 1,
+        first_name: "Rebeca",
+        last_name: "De Miguel",
+        username: "rebeca_demiguel",
+        admin: true,
+        password: bcrypt.hashSync(process.env.USER_PW, 9)
+      },
+      {
+        id: 2,
+        first_name: "Alejandro",
+        last_name: "Amaro",
+        username: "alejandro_amaro",
+        admin: true,
+        password: bcrypt.hashSync(process.env.USER_PW, 9)
+      },
+      {
+        id: 3,
+        first_name: "Patricia",
+        last_name: "Durán",
+        username: "patricia_duran",
+        admin: true,
+        password: bcrypt.hashSync(process.env.USER_PW, 9)
       }
     ]);
   },
