@@ -43,6 +43,12 @@ module.exports = {
         type: Sequelize.STRING,
         unique: true
       },
+      include_in_report: {
+        allowNull: false,
+        type: Sequelize.BOOLEAN,
+        defaultValue: true,
+        unique: false
+      },
       createdAt: {
         allowNull: false,
         defaultValue: new Date(),

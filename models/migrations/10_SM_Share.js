@@ -1,78 +1,36 @@
 'use strict';
 module.exports = {
   up: (queryInterface, Sequelize) => {
-    return queryInterface.createTable('impact', {
+    return queryInterface.createTable('sm_share', {
       id: {
         allowNull: false,
         autoIncrement: true,
         primaryKey: true,
         type: Sequelize.INTEGER
       },
+      social_media: { 
+        allowNull: false,
+        type: Sequelize.ENUM("Twitter","Instagram","Facebook","LinkedIn","Other"),
+        unique: false
+      },
+      account: {
+        allowNull: false,
+        type: Sequelize.STRING,
+        unique: false
+      },
       headline: {
         allowNull: false,
         type: Sequelize.STRING,
         unique: false
       },
-      type: { 
+      message: {
         allowNull: false,
-        type: Sequelize.INTEGER,
-        references: {
-          model: 'impact_type',
-          key: 'id'
-        },
-        onDelete: 'CASCADE'
-      },
-      added_by: { 
-        allowNull: false,
-        type: Sequelize.INTEGER,
-        defaultValue: 0,
-        references: {
-          model: 'users',
-          key: 'id'
-        },
-        onDelete: 'SET DEFAULT'
-      },
-      media: { 
-        allowNull: false,
-        type: Sequelize.INTEGER,
-        references: {
-          model: 'media',
-          key: 'id'
-        },
-        onDelete: 'CASCADE'
-      },
-      media_section: {
-        allowNull: false,
-        type: Sequelize.STRING,
-        unique: false
-      },
-      spokesperson: {
-        allowNull: true,
-        type: Sequelize.STRING,
-        unique: false
-      },
-      dissemination: { 
-        allowNull: false,
-        type: Sequelize.INTEGER,
-        references: {
-          model: 'dissemination',
-          key: 'id'
-        },
-        onDelete: 'RESTRICT'
-      },
-      comments: {
-        allowNull: true,
         type: Sequelize.STRING,
         unique: false
       },
       language: { 
         allowNull: false,
         type: Sequelize.ENUM("Spanish","English","Other"),
-        unique: false
-      },
-      classification: { 
-        allowNull: false,
-        type: Sequelize.ENUM("Awards","Careers","Collaboration","Events","External","Incorporations/Departures","Institutional","Mention","Media Impacts","Projects","Publications","Other"),
         unique: false
       },
       uploaded: { 
@@ -93,6 +51,35 @@ module.exports = {
       proactivity: { 
         allowNull: false,
         type: Sequelize.BOOLEAN,
+        unique: false
+      },
+      pr_news: { 
+        allowNull: false,
+        type: Sequelize.ENUM("PR","NEWS","Announcements"),
+        unique: false
+      },
+      classification: { 
+        allowNull: false,
+        type: Sequelize.INTEGER,
+        references: {
+          model: 'classification',
+          key: 'id'
+        },
+        onDelete: 'RESTRICT'
+      },
+      added_by: { 
+        allowNull: false,
+        type: Sequelize.INTEGER,
+        defaultValue: 0,
+        references: {
+          model: 'users',
+          key: 'id'
+        },
+        onDelete: 'SET DEFAULT'
+      },
+      comments: {
+        allowNull: true,
+        type: Sequelize.STRING,
         unique: false
       },
       photo_count: { 
@@ -128,6 +115,6 @@ module.exports = {
     });
   },
   down: (queryInterface, Sequelize) => {
-    return queryInterface.dropTable('impact');
+    return queryInterface.dropTable('sm_share');
   }
 };
