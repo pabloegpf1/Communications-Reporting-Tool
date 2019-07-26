@@ -15,6 +15,7 @@ const pdf = require('html-pdf');
 
 var indexRouter = require('./routes/index');
 var impactRouter = require('./routes/impact');
+var SMshareRouter = require('./routes/smShare');
 var disseminationRouter = require('./routes/dissemination');
 var mediasRouter = require('./routes/media');
 var userRouter = require('./routes/user');
@@ -47,6 +48,7 @@ app.use(flash());
 
 app.use('/', indexRouter);
 app.use('/impacts', impactRouter);
+app.use('/sm-share', SMshareRouter);
 app.use('/disseminations', disseminationRouter);
 app.use('/media', mediasRouter);
 app.use('/user', userRouter);
