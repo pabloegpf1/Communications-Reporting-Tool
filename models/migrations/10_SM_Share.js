@@ -8,15 +8,32 @@ module.exports = {
         primaryKey: true,
         type: Sequelize.INTEGER
       },
+      dissemination: { 
+        allowNull: false,
+        type: Sequelize.INTEGER,
+        references: {
+          model: 'dissemination',
+          key: 'id'
+        },
+        onDelete: 'RESTRICT'
+      },
       social_media: { 
         allowNull: false,
-        type: Sequelize.ENUM("Twitter","Instagram","Facebook","LinkedIn","Other"),
-        unique: false
+        type: Sequelize.INTEGER,
+        references: {
+          model: 'social_media',
+          key: 'id'
+        },
+        onDelete: 'RESTRICT'
       },
-      account: {
+      account: { 
         allowNull: false,
-        type: Sequelize.STRING,
-        unique: false
+        type: Sequelize.INTEGER,
+        references: {
+          model: 'social_media_account',
+          key: 'id'
+        },
+        onDelete: 'RESTRICT'
       },
       headline: {
         allowNull: false,
@@ -51,11 +68,6 @@ module.exports = {
       proactivity: { 
         allowNull: false,
         type: Sequelize.BOOLEAN,
-        unique: false
-      },
-      pr_news: { 
-        allowNull: false,
-        type: Sequelize.ENUM("PR","NEWS","Announcements"),
         unique: false
       },
       classification: { 

@@ -1,4 +1,5 @@
 const db = require("./db-connection");
+const pgp = require("pg-promise")();
 
 //Create
 exports.addUser = user =>
@@ -14,6 +15,8 @@ exports.getUserByUsername = username =>
 //Update
 exports.changeStatus = user_id =>
   db.none("UPDATE users SET admin = NOT admin WHERE id = $1", [user_id]);
+exports.editUser = (user, id) =>
+  db.none(pgp.helpers.update(user, null, "users") + "WHERE id = " + id);
 
 //Delete
 exports.deleteUser = user_id =>

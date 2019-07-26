@@ -7,7 +7,7 @@
 	<body>
 		<%- include('partials/navbar', {admin:admin}) %>
 		<div class="content-form">
-				<form class="impact-form" action="/user/edit/" method="post" novalidate></form>
+				<form class="impact-form" action="/user/edit/<%= user.id %>" method="post" novalidate>
 					<h2>User Info</h2>
 					<label for="exampleFormControlInput1">Username</label>
 					<input type="text" class="form-control" name="username" value="<%= user.username %>">
@@ -16,9 +16,9 @@
 					<label for="exampleFormControlInput1">Last name</label>
 					<input type="text" class="form-control" name="last_name" value="<%= user.last_name %>">
 					<label for="exampleFormControlInput1">Password</label>
-					<input type="secret" class="form-control" name="password">
+					<input type="password" class="form-control" name="password">
 					<label for="exampleFormControlInput1">Repeat password</label>
-					<input type="secret" class="form-control" name="password_check">
+					<input type="password" class="form-control" name="password2">
 				<button type="submit"class="btn btn-success" style="float: right;margin: 10px;">Submit Changes</a>
 			</form>
 		</div>

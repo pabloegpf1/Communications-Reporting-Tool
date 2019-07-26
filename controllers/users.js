@@ -49,8 +49,9 @@ exports.editUser = (request, response) => {
     password: encrypted_pw,
     admin: request.body.admin === undefined ? false : true
   }
-  User.editUser(user)
-  .then(response.redirect('/user/contributions'))
+  User.editUser(user,request.params.id)
+  .then(()=>response.redirect('/user/contributions'))
+  .catch(err => response.render("error", { message: "Error", error: err }));
 };
 
 exports.signOut = (request, response) => {
