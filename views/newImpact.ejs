@@ -107,8 +107,8 @@
           <label for="classification">Classification</label>
           <select class="form-control" name="classification" required>
             <option disabled selected value> -- Select a Classification -- </option>
-            <% for(var i=0; i<types.length; i++) {%>
-              <option value="<%= types[i].id %>"><%= types[i].type %></option>
+            <% for(var i=0; i<classifications.length; i++) {%>
+              <option value="<%= classifications[i].id %>"><%= classifications[i].classification %></option>
             <% }%>
           </select>
           <div class="invalid-feedback">
@@ -154,7 +154,7 @@
         <div class="col">
           <div class="form-group">
             <label for="exampleFormControlInput1">Source URL*</label>
-            <input type="text" class="form-control" name="url" required>
+            <input type="text" class="form-control" name="source_url" required>
             <div class="invalid-feedback">
               Please copy and paste the URL from the publication here
             </div>

@@ -7,51 +7,39 @@ module.exports = {
     );
     return queryInterface.bulkInsert("classification", [
       {
-        id: 1,
         classification: "Awards"
       },
       {
-        id: 2,
         classification: "Careers"
       },
       {
-        id: 3,
         classification: "Collaboration"
       },
       {
-        id: 4,
         classification: "Events"
       },
       {
-        id: 5,
         classification: "External"
       },
       {
-        id: 6,
         classification: "Incorporations/Departures"
       },
       {
-        id: 7,
         classification: "Institutional"
       },
       {
-        id: 8,
         classification: "Mention"
       },
       {
-        id: 9,
         classification: "Media Impacts"
       },
       {
-        id: 10,
         classification: "Projects"
       },
       {
-        id: 11,
         classification: "Publications"
       },
       {
-        id: 12,
         classification: "Other"
       }
     ]);
