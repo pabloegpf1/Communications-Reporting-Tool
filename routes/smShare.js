@@ -11,4 +11,8 @@ router.get('/', loggedIn, function(request, response) {
 	SmShare.showSmshares(request,response)
 });
 
+router.get('/add', loggedIn, function(request, response) {
+	SmShare.showNewSmshareForm(request,response)
+});
+
 module.exports = router;
