@@ -10,7 +10,7 @@ module.exports = {
       },
       headline: {
         allowNull: false,
-        type: Sequelize.STRING,
+        type: Sequelize.TEXT,
         unique: false
       },
       type: { 
@@ -43,12 +43,12 @@ module.exports = {
       },
       media_section: {
         allowNull: false,
-        type: Sequelize.STRING,
+        type: Sequelize.TEXT,
         unique: false
       },
       spokesperson: {
         allowNull: true,
-        type: Sequelize.STRING,
+        type: Sequelize.TEXT,
         unique: false
       },
       dissemination: { 
@@ -62,7 +62,7 @@ module.exports = {
       },
       comments: {
         allowNull: true,
-        type: Sequelize.STRING,
+        type: Sequelize.TEXT,
         unique: false
       },
       language: { 
@@ -106,12 +106,12 @@ module.exports = {
       },
       video_url: {
         allowNull: true,
-        type: Sequelize.STRING,
+        type: Sequelize.TEXT,
         unique: false
       },
       source_url: {
         allowNull: false,
-        type: Sequelize.STRING,
+        type: Sequelize.TEXT,
         unique: true
       },
       date: {

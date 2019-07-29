@@ -10,7 +10,7 @@ module.exports = {
 			},
 			name: {
 				allowNull: false,
-				type: Sequelize.STRING,
+				type: Sequelize.TEXT,
 				unique: false
 			},
 			type: {
@@ -39,7 +39,7 @@ module.exports = {
 			},
 			url: {
 				allowNull: true,
-				type: Sequelize.STRING,
+				type: Sequelize.TEXT,
 				unique: true
 			},
 			available: {

@@ -21,14 +21,16 @@ router.get("/sign-out", loggedIn, function(request, response) {
   UserController.signOut(request, response)
 })
 
-// POST Requests
+// ----- POST Requests -----
+
 router.post("/add", loggedIn, function(request, response) {
   UserController.addUser(request, response)
 })
 
+// This router controls where to take user if authentication success/failure
 router.post("/login",
-  passport.authenticate("local", {
-    successRedirect: "/impacts",
+  passport.authenticate("local", { 
+    successRedirect: "/disseminations",
     failureRedirect: "/",
     failureFlash: true
   })
