@@ -20,14 +20,59 @@
 
       <div class="form-group">
         <label for="exampleFormControlInput1">Dissemination*</label>
-        <select class="form-control" name="dissemination" data-style="btn-light" data-show-subtext="true" data-live-search="true" required>
-          <option selected value="<%= impact.dissemination %>"> <%= impact.dissemination_headline %> </option>
+        <select class="form-control" name="dissemination" data-style="btn-light" data-show-subtext="true"  data-live-search="true" required>
+          <option disabled selected value="<%= dissemination.id %>"><%= dissemination.headline %></option>
+          <option disabled>----------</option>
+          <option value="-1">Other dissemination (Add info manually) </option>
+          <option disabled>----------</option>
           <% for(var i=0; i<disseminations.length; i++) {%>
-            <option value="<%= disseminations[i].id %>"><%= disseminations[i].headline %></option>
+            <option value="<%= disseminations[i].id %>">[<%= disseminations[i].id %>] <%= disseminations[i].headline %> (<%= disseminations[i].date.getFullYear() %>)</option>
           <% }%>
         </select>
         <div class="invalid-feedback">
           You must select the dissemination which the impact refers to.
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label for="exampleFormControlInput1">Dissemination Headline*</label>
+        <input type="text" class="form-control dissemination" name="dissemination_headline" value="<%= dissemination.headline %>" disabled>
+        <div class="invalid-feedback">
+          This field cannot be empty
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label for="exampleFormControlInput1">Dissemination Summary*</label>
+        <textarea class="form-control dissemination" name="dissemination_summary" rows="3"disabled><%= dissemination.summary %></textarea>
+        <div class="invalid-feedback">
+          Please add a short summary of the publication
+        </div>
+      </div>
+
+      <div class="form-row">
+        <div class="form-group col">
+            <label for="exampleFormControlSelect1">Dissemination Published Date*</label>
+            <input type="date" class="form-control dissemination" value="<%= dissemination.date%>" name="dissemination_date"disabled>
+            <div class="invalid-feedback">
+              You must add the date when the publication was made.
+            </div>
+        </div>
+        <div class="form-group col">
+          <label for="exampleFormControlSelect1">Dissemination PR/NEWS</label>
+          <select class="form-control dissemination" name="dissemination_pr_news"  disabled>
+            <option disabled selected value="<%= dissemination.pr_news %>"><%= dissemination.pr_news %></option>
+            <option value="PR">PR</option>
+            <option value="NEWS">NEWS</option>
+          </select>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label for="exampleFormControlInput1">Dissemination URL*</label>
+        <input type="text" class="form-control dissemination" name="dissemination_url" value="<%= dissemination.url %>" disabled>
+        <div class="invalid-feedback">
+          Please copy and paste the URL from the publication here
         </div>
       </div>
 
@@ -165,6 +210,7 @@
       <button type="submit"class="btn btn-success btn-lg" style="float: right; padding: 10px; margin: 10px;width:30%">Submit Changes</a>
     </form>
   </div>
+  <% include ./partials/addOtherDissemination%>
   <% include ./partials/formValidationScript%>
   <% include ./partials/scripts%>
 </body>

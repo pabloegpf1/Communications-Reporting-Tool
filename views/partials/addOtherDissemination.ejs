@@ -1,0 +1,23 @@
+<script> 
+    $(document).ready(function(disseminations){
+      $("select[name='dissemination']").on('change',function(){
+        var selected = $(this).val()
+        console.log(selected)
+        if(selected =="-1"){
+          $('.dissemination').prop("disabled",false);
+          $('.dissemination').val(null,false);
+        }else{
+          const disseminations = <%- JSON.stringify(disseminations) %>;
+          const index = disseminations.length - selected
+          var date = new Date(disseminations[index].date)
+          console.log()
+          $('.dissemination').prop("disabled",true);
+          $("input[name='dissemination_headline']").val(disseminations[index].headline);
+          $("textarea[name='dissemination_summary']").val(disseminations[index].summary);
+          $("input[name='dissemination_date']").val(date.getFullYear()+"-"+("0" + (date.getMonth() + 1)).slice(-2)+"-"+("0" + date.getDate()).slice(-2));
+          $("select[name='dissemination_pr_news']").val(disseminations[index].pr_news);
+          $("input[name='dissemination_url']").val(disseminations[index].url);
+        }
+      });
+    });
+    </script>

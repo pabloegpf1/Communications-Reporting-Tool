@@ -1,6 +1,7 @@
 var Impact = require("../models/queries/impact");
 var Dissemination = require("../models/queries/dissemination");
 var Classification = require("../models/queries/classification");
+var DisseminationController = require("../controllers/dissemination");
 var Media = require("../models/queries/media");
 
 exports.showImpacts = (request, response) => {
@@ -43,7 +44,7 @@ exports.showNewImpactForm = (request, response) => {
   Impact.getImpactTypes()
     .then(types => {
       Media.getAvailableMedias().then(medias => {
-        Dissemination.getDisseminations().then(disseminations => {
+        Dissemination.getAvailableDisseminations().then(disseminations => {
           Classification.getClassifications().then(classifications => {
             response.render("newImpact", {
               types: types,
@@ -71,24 +72,23 @@ exports.showImpactDetails = (request, response) => {
 };
 
 exports.showEditImpactForm = (request, response) => {
-  Dissemination.getDisseminations()
+  Dissemination.getAvailableDisseminations()
     .then(disseminations => {
       Media.getMedias().then(medias => {
         Impact.getImpactTypes().then(types => {
           Impact.getImpactById(request.params.id).then(impact => {
             var date = new Date(impact.date.toDateString());
-            impact.date =
-              date.getFullYear() +
-              "-" +
-              ("0" + (date.getMonth() + 1)).slice(-2) +
-              "-" +
-              ("0" + date.getDate()).slice(-2);
-            response.render("editImpact", {
-              disseminations: disseminations,
-              impact: impact,
-              medias: medias,
-              types: types,
-              admin: request.user.admin
+            impact.date = date.getFullYear() +"-" +("0" + (date.getMonth() + 1)).slice(-2) +"-" +("0" + date.getDate()).slice(-2);
+            Dissemination.getDisseminationById(impact.dissemination).then(dissemination => {
+              dissemination.date = date.getFullYear() +"-" +("0" + (date.getMonth() + 1)).slice(-2) +"-" +("0" + date.getDate()).slice(-2);
+              response.render("editImpact", {
+                  disseminations: disseminations,
+                  dissemination: dissemination,
+                  impact: impact,
+                  medias: medias,
+                  types: types,
+                  admin: request.user.admin
+              });
             });
           });
         });
@@ -99,9 +99,21 @@ exports.showEditImpactForm = (request, response) => {
 
 exports.addImpact = (request, response) => {
   let newImpact = createImpactFromRequest(request.body, request.user.id);
-  Impact.addImpact(newImpact)
-    .then(() => response.redirect("/impacts"))
+  if(request.body.dissemination == "-1"){ //Other type of dissemination
+    DisseminationController.addOtherDissemination(request,response)
+    .then((dissemination)=>{
+      newImpact.dissemination = dissemination.id
+      console.log(newImpact)
+      Impact.addImpact(newImpact)
+      .then(() => response.redirect("/impacts"))
+      .catch(err => response.render("error", { message: "Error", error: err }));
+    })
     .catch(err => response.render("error", { message: "Error", error: err }));
+  }else{
+    Impact.addImpact(newImpact)
+      .then(() => response.redirect("/impacts"))
+      .catch(err => response.render("error", { message: "Error", error: err }));
+  }  
 };
 
 exports.searchImpact = (request, response) => {
@@ -133,7 +145,7 @@ const createImpactFromRequest = function(data, user_id) {
   return (impact = {
     added_by: user_id,
     headline: data.headline,
-    dissemination: data.dissemination,
+    dissemination: data.dissemination === undefined ? null : data.dissemination,
     media: data.media,
     media_section: data.media_section,
     spokesperson: data.spokesperson,
