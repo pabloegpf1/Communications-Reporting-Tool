@@ -11,7 +11,7 @@
       <h2>Add Media Impact</h2>
       
       <div class="form-group">
-        <label for="exampleFormControlInput1">Headline*</label>
+        <label for="exampleFormControlInput1">Impact Headline*</label>
         <input type="text" class="form-control" name="headline" required>
         <div class="invalid-feedback">
           This field cannot be empty.
@@ -22,12 +22,57 @@
         <label for="exampleFormControlInput1">Dissemination*</label>
         <select class="form-control" name="dissemination" data-style="btn-light" data-show-subtext="true" data-live-search="true" required>
           <option disabled selected value> -- select a dissemination -- </option>
+          <option disabled>----------</option>
+          <option value="-1">Other dissemination (Add info manually) </option>
+          <option disabled>----------</option>
           <% for(var i=0; i<disseminations.length; i++) {%>
             <option value="<%= disseminations[i].id %>">[<%= disseminations[i].id %>] <%= disseminations[i].headline %> (<%= disseminations[i].date.getFullYear() %>)</option>
           <% }%>
         </select>
         <div class="invalid-feedback">
           You must select the dissemination which the impact refers to.
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label for="exampleFormControlInput1">Dissemination Headline*</label>
+        <input type="text" class="form-control dissemination" name="dissemination_headline"disabled>
+        <div class="invalid-feedback">
+          This field cannot be empty
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label for="exampleFormControlInput1">Dissemination Summary*</label>
+        <textarea class="form-control dissemination" name="dissemination_summary" rows="3"disabled></textarea>
+        <div class="invalid-feedback">
+          Please add a short summary of the publication
+        </div>
+      </div>
+
+      <div class="form-row">
+        <div class="form-group col">
+            <label for="exampleFormControlSelect1">Dissemination Published Date*</label>
+            <input type="date" class="form-control dissemination" name="dissemination_date"disabled>
+            <div class="invalid-feedback">
+              You must add the date when the publication was made.
+            </div>
+        </div>
+        <div class="form-group col">
+          <label for="exampleFormControlSelect1">Dissemination PR/NEWS</label>
+          <select class="form-control dissemination" name="dissemination_pr_news"disabled>
+            <option disabled selected value> -- select an option -- </option>
+            <option value="PR">PR</option>
+            <option value="NEWS">NEWS</option>
+          </select>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label for="exampleFormControlInput1">Dissemination URL*</label>
+        <input type="text" class="form-control dissemination" name="dissemination_url"disabled>
+        <div class="invalid-feedback">
+          Please copy and paste the URL from the publication here
         </div>
       </div>
       
@@ -107,8 +152,8 @@
           <label for="classification">Classification</label>
           <select class="form-control" name="classification" required>
             <option disabled selected value> -- Select a Classification -- </option>
-            <% for(var i=0; i<types.length; i++) {%>
-              <option value="<%= types[i].id %>"><%= types[i].type %></option>
+            <% for(var i=0; i<classifications.length; i++) {%>
+              <option value="<%= classifications[i].id %>"><%= classifications[i].classification %></option>
             <% }%>
           </select>
           <div class="invalid-feedback">
@@ -154,7 +199,7 @@
         <div class="col">
           <div class="form-group">
             <label for="exampleFormControlInput1">Source URL*</label>
-            <input type="text" class="form-control" name="url" required>
+            <input type="text" class="form-control" name="source_url" required>
             <div class="invalid-feedback">
               Please copy and paste the URL from the publication here
             </div>
@@ -172,6 +217,30 @@
   
     </form>
   </div>
+<script> 
+$(document).ready(function(disseminations){
+  $("select[name='dissemination']").on('change',function(){
+    var selected = $(this).val()
+    console.log(selected)
+    if(selected =="-1"){
+      $('.dissemination').prop("disabled",false);
+      $('.dissemination').val(null,false);
+    }else{
+      const disseminations = <%- JSON.stringify(disseminations) %>;
+      const index = disseminations.length - selected
+      var date = new Date(disseminations[index].date)
+      console.log()
+      $('.dissemination').prop("disabled",true);
+      $("input[name='dissemination_headline']").val(disseminations[index].headline);
+      $("textarea[name='dissemination_summary']").val(disseminations[index].summary);
+      $("input[name='dissemination_date']").val(date.getFullYear()+"-"+("0" + (date.getMonth() + 1)).slice(-2)+"-"+("0" + date.getDate()).slice(-2));
+      $("select[name='dissemination_pr_news']").val(disseminations[index].pr_news);
+      $("input[name='dissemination_url']").val(disseminations[index].url);
+    }
+  });
+});
+</script>
+ 
 <% include ./partials/formValidationScript%>
 <% include ./partials/scripts%>
 </body>

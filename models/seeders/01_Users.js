@@ -4,9 +4,13 @@ const bcrypt = require("bcrypt");
 
 module.exports = {
   up: (queryInterface, Sequelize) => {
+    queryInterface.sequelize.query("DELETE FROM impact")
+    queryInterface.sequelize.query("DELETE FROM sm_share")
+    queryInterface.sequelize.query("ALTER SEQUENCE users_id_seq RESTART WITH 1;")
+    queryInterface.sequelize.query("ALTER SEQUENCE impact_id_seq RESTART WITH 1");
+    queryInterface.sequelize.query("ALTER SEQUENCE sm_share_id_seq RESTART WITH 1;")
     return queryInterface.bulkInsert("users", [
       {
-        id: 0,
         first_name: "Admin",
         last_name: "Admin",
         username: "Admin",
@@ -14,7 +18,6 @@ module.exports = {
         password: bcrypt.hashSync(process.env.ADMIN_PW, 9)
       },
       {
-        id: 1,
         first_name: "Rebeca",
         last_name: "De Miguel",
         username: "rebeca_demiguel",
@@ -22,7 +25,6 @@ module.exports = {
         password: bcrypt.hashSync(process.env.USER_PW, 9)
       },
       {
-        id: 2,
         first_name: "Alejandro",
         last_name: "Amaro",
         username: "alejandro_amaro",
@@ -30,7 +32,13 @@ module.exports = {
         password: bcrypt.hashSync(process.env.USER_PW, 9)
       },
       {
-        id: 3,
+        first_name: "Almudena",
+        last_name: "Alfaro",
+        username: "almudena_alfaro",
+        admin: true,
+        password: bcrypt.hashSync(process.env.USER_PW, 9)
+      },
+      {
         first_name: "Patricia",
         last_name: "Durán",
         username: "patricia_duran",

@@ -7,25 +7,21 @@ module.exports = {
     );
     return queryInterface.bulkInsert("social_media_account", [
       {
-        id: 1,
         social_media: 1,
         name: "@IMDEA_Networks",
         url: "twitter.com/IMDEA_Networks"
       },
       {
-        id: 2,
         social_media: 2,
         name: "@imdea_networks",
         url: "instagram.com/imdea_networks/"
       },
       {
-        id: 3,
         social_media: 3,
         name: "IMDEA Networks",
         url: "facebook.com/imdea.networks/"
       },
       {
-        id: 4,
         social_media: 4,
         name: "IMDEA Networks",
         url: "linkedin.com/company/imdea-networks"

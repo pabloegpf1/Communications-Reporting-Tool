@@ -19,12 +19,12 @@ module.exports = {
       },
       name: {
         allowNull: false,
-        type: Sequelize.STRING,
+        type: Sequelize.TEXT,
         unique: false
       },
       url: {
         allowNull: false,
-        type: Sequelize.STRING,
+        type: Sequelize.TEXT,
         unique: true
       }
     });

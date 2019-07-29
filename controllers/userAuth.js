@@ -11,26 +11,15 @@ module.exports = function(passport, LocalStrategy) {
   });
 
   passport.use(
-    new LocalStrategy(
-      {
-        passReqToCallback: true
-      },
+    new LocalStrategy({passReqToCallback: true},
       function(req, username, password, done) {
         User.getUserByUsername(username)
           .then(user => {
             if (!user) {
-              return done(
-                null,
-                false,
-                req.flash("authMessage", "Incorrect username.")
-              );
+              return done(null,false,req.flash("authMessage", "Incorrect username."));
             }
             if (bcrypt.compareSync(password, user.password) == false) {
-              return done(
-                null,
-                false,
-                req.flash("authMessage", "Incorrect password.")
-              );
+              return done(null,false,req.flash("authMessage", "Incorrect password."));
             }
             return done(null, user);
           })

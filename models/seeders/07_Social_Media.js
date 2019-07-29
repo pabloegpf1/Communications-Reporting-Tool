@@ -7,19 +7,15 @@ module.exports = {
     );
     return queryInterface.bulkInsert("social_media", [
       {
-        id: 1,
         social_media: "Twitter",
       },
       {
-        id: 2,
         social_media: "Instagram",
       },
       {
-        id: 3,
         social_media: "LinkedIn",
       },
       {
-        id: 4,
         social_media: "Facebook",
       },
     ]);

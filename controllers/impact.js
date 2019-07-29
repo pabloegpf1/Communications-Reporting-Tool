@@ -1,5 +1,6 @@
 var Impact = require("../models/queries/impact");
 var Dissemination = require("../models/queries/dissemination");
+var Classification = require("../models/queries/classification");
 var Media = require("../models/queries/media");
 
 exports.showImpacts = (request, response) => {
@@ -43,11 +44,14 @@ exports.showNewImpactForm = (request, response) => {
     .then(types => {
       Media.getAvailableMedias().then(medias => {
         Dissemination.getDisseminations().then(disseminations => {
-          response.render("newImpact", {
-            types: types,
-            medias: medias,
-            disseminations: disseminations,
-            admin: request.user.admin
+          Classification.getClassifications().then(classifications => {
+            response.render("newImpact", {
+              types: types,
+              medias: medias,
+              disseminations: disseminations,
+              admin: request.user.admin,
+              classifications: classifications
+            });
           });
         });
       });
@@ -141,7 +145,8 @@ const createImpactFromRequest = function(data, user_id) {
     proactivity: data.proactivity === undefined ? false : true,
     photo_count: data.photo_count,
     type: data.type,
-    url: data.url,
+    classification: data.classification,
+    source_url: data.source_url,
     date: data.date
   });
 };

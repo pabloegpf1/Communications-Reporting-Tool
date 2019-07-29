@@ -37,12 +37,12 @@ module.exports = {
       },
       headline: {
         allowNull: false,
-        type: Sequelize.STRING,
+        type: Sequelize.TEXT,
         unique: false
       },
       message: {
         allowNull: false,
-        type: Sequelize.STRING,
+        type: Sequelize.TEXT,
         unique: false
       },
       language: { 
@@ -91,7 +91,7 @@ module.exports = {
       },
       comments: {
         allowNull: true,
-        type: Sequelize.STRING,
+        type: Sequelize.TEXT,
         unique: false
       },
       photo_count: { 
@@ -101,12 +101,12 @@ module.exports = {
       },
       video_url: {
         allowNull: true,
-        type: Sequelize.STRING,
+        type: Sequelize.TEXT,
         unique: false
       },
       source_url: {
         allowNull: false,
-        type: Sequelize.STRING,
+        type: Sequelize.TEXT,
         unique: true
       },
       date: {

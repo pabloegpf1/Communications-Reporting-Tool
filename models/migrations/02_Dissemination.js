@@ -10,12 +10,12 @@ module.exports = {
       },
       headline: {
         allowNull: false,
-        type: Sequelize.STRING,
+        type: Sequelize.TEXT,
         unique: false
       },
       summary: {
         allowNull: false,
-        type: Sequelize.STRING,
+        type: Sequelize.TEXT,
         unique: true
       },
       added_by: { 
@@ -40,7 +40,7 @@ module.exports = {
       },
       url: {
         allowNull: true,
-        type: Sequelize.STRING,
+        type: Sequelize.TEXT,
         unique: true
       },
       include_in_report: {
