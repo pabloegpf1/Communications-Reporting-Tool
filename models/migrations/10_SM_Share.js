@@ -60,11 +60,6 @@ module.exports = {
         type: Sequelize.BOOLEAN,
         unique: false
       },
-      statements: { 
-        allowNull: false,
-        type: Sequelize.BOOLEAN,
-        unique: false
-      },
       proactivity: { 
         allowNull: false,
         type: Sequelize.BOOLEAN,

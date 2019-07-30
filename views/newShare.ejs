@@ -1,17 +1,17 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>New Impact</title>
+    <title>Add Social Media Share</title>
     <% include ./partials/css%>
   </head>
 <body>
   <%- include('partials/navbar', {admin:admin}) %>
   <div class="content-form">
-    <form class="publication-form" action="/impacts/add" method="post" novalidate>
-      <h2>Add Media Impact</h2>
+    <form class="publication-form" action="/sm-share/add" method="post" novalidate>
+      <h2>Add Social Media Share</h2>
       
       <div class="form-group">
-        <label for="exampleFormControlInput1">Impact Headline*</label>
+        <label for="exampleFormControlInput1">SM Share Headline*</label>
         <input type="text" class="form-control" name="headline" required>
         <div class="invalid-feedback">
           This field cannot be empty.
@@ -78,11 +78,11 @@
       
       <div class="form-row">
         <div class="form-group col">
-          <label for="exampleFormControlSelect1">Media (<a href='/media/add'>Add new</a>)</label>
-          <select class="form-control" name="media" data-show-subtext="true" data-live-search="true" required>
-            <option disabled selected value> -- Select a Media -- </option>
-            <% for(var i=0; i<medias.length; i++) {%>
-              <option value="<%= medias[i].id %>">[<%= medias[i].format %>] <%= medias[i].name %> </option>
+          <label for="exampleFormControlSelect1">Social Media</label>
+          <select class="form-control" name="social_media" data-show-subtext="true" data-live-search="true" required>
+            <option disabled selected value> -- Select a Social Media -- </option>
+            <% for(var i=0; i<social_medias.length; i++) {%>
+              <option value="<%= social_medias[i].id %>"><%= social_medias[i].social_media %> </option>
             <% }%>
           </select>
           <div class="invalid-feedback">
@@ -90,29 +90,30 @@
           </div>
         </div>
         <div class="form-group col">
-          <label for="exampleFormControlInput1">Media Section*</label>
-          <input type="text" class="form-control" name="media_section" required>
+          <label for="exampleFormControlInput1">Social Media Account*</label>
+          <select class="form-control" name="social_media_account" data-show-subtext="true" data-live-search="true" required>
+            <option disabled selected value> -- Select a Social Media -- </option>
+            <% for(var i=0; i<social_media_accounts.length; i++) {%>
+              <option value="<%= social_media_accounts[i].id %>">[<%= social_media_accounts[i].social_media %>]<%= social_media_accounts[i].name %> </option>
+            <% }%>
+          </select>
           <div class="invalid-feedback">
-            Please specify the section of the media (Science,Technology,News...).
+            Please specify the social media account.
+          </div>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <div class="form-group">
+          <label for="exampleFormControlInput1">Message</label>
+          <textarea class="form-control" name="message" rows="3"></textarea>
+          <div class="invalid-feedback">
+            Plase add a message
           </div>
         </div>
       </div>
 
       <div class="form-row">
-        <div class="form-group col">
-            <div class="form-group">
-              <label for="exampleFormControlInput1">Type of Publication</label>
-              <select class="form-control" name="type" required>
-                <option disabled selected value> -- Select a Type -- </option>
-                <% for(var i=0; i<types.length; i++) {%>
-                  <option value="<%= types[i].id %>"><%= types[i].type %></option>
-                <% }%>
-              </select>
-              <div class="invalid-feedback">
-                Plase select the type of publication
-              </div>
-            </div>
-          </div>
         <div class="form-group col"style="display: flex;align-items: center;">    
           <div class="form-check form-check-inline">
             <input class="form-check-input" type="checkbox" id="uploaded" value="true" name="uploaded">
@@ -180,18 +181,12 @@
 
       <div class="form-row">
         <div class="form-group col">
-          <label for="exampleFormControlInput1">Spokesperson</label>
+          <label for="exampleFormControlInput1">Video URL</label>
           <input type="text" class="form-control" name="spokesperson">
         </div>
-        <div class="form-group col" style="display: flex;align-items: center;">
-          <div class="form-check form-check-inline">
-            <input class="form-check-input" type="checkbox" id="statements" value="true" name="statements">
-            <label class="form-check-label" for="statements">Statements</label>
-          </div>
-          <div class="form-check form-check-inline">
-            <input class="form-check-input" type="checkbox" id="has_video" value="true" name="has_video">
-            <label class="form-check-label" for="has_video"> Has video</label>
-          </div>
+        <div class="form-check form-check-inline">
+          <input class="form-check-input" type="checkbox" id="has_video" value="true" name="has_video">
+          <label class="form-check-label" for="has_video"> Has video</label>
         </div>
       </div>
 
@@ -212,8 +207,8 @@
         <textarea class="form-control" name="comments" rows="2"></textarea>
       </div>
 
-      <a class="btn btn-danger btn-lg" style="float: left;margin: 10px;" href="/publications/" >Cancel</a>
-      <button type="submit"class="btn btn-success btn-lg" style="float: right;margin: 10px;">Add Media Impact</a>
+      <a class="btn btn-danger btn-lg" style="float: left;margin: 10px;" href="/sm-share/" >Cancel</a>
+      <button type="submit"class="btn btn-success btn-lg" style="float: right;margin: 10px;">Add Social Media Share</a>
   
     </form>
   </div>

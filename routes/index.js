@@ -3,9 +3,14 @@ var router = express.Router()
 var Document = require('../controllers/document')
 var Impact = require("../models/queries/impact")
 
-router.get('/', function(request, response) {
-	response.render('login', {
-		authMessage: request.flash('authMessage')
+function loggedIn(request, response, next) {
+	if (request.user) next()
+	else response.redirect("/user/login")
+}
+
+router.get('/',loggedIn, function(request, response) {
+	response.render('index', {
+		admin: request.user.admin
 	});
 });
 

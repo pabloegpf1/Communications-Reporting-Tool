@@ -2,7 +2,7 @@ var Dissemination = require("../models/queries/dissemination");
 var Media = require("../models/queries/media");
 
 exports.showDisseminations = (request, response) => {
-  Dissemination.getDisseminations()
+  Dissemination.getAvailableDisseminations()
     .then(disseminations => {
       response.render("disseminations", {
         title: "Disseminations",
@@ -46,12 +46,7 @@ exports.showEditDisseminationForm = (request, response) => {
   Dissemination.getDisseminationById(request.params.id)
     .then(dissemination => {
       var date = new Date(dissemination.date.toDateString());
-      dissemination.date =
-        date.getFullYear() +
-        "-" +
-        ("0" + (date.getMonth() + 1)).slice(-2) +
-        "-" +
-        ("0" + date.getDate()).slice(-2);
+      dissemination.date = date.getFullYear() +"-" +("0" + (date.getMonth() + 1)).slice(-2) +"-" +("0" + date.getDate()).slice(-2);
       response.render("editDissemination", {
         dissemination: dissemination,
         admin: request.user.admin
@@ -68,6 +63,14 @@ exports.addDissemination = (request, response) => {
   Dissemination.addDissemination(newDissemination)
     .then(() => response.redirect("/disseminations"))
     .catch(err => response.render("error", { message: "Error", error: err }));
+};
+
+exports.addOtherDissemination = (request, response) => {
+  let newDissemination = createOtherTypeOfDissemination(
+    request.body,
+    request.user.id
+  );
+  return Dissemination.addDissemination(newDissemination)
 };
 
 exports.searchDissemination = (request, response) => {
@@ -107,5 +110,17 @@ const createDisseminationFromRequest = function(data, user_id) {
     pr_news: data.pr_news,
     url: data.url,
     date: data.date
+  });
+};
+
+const createOtherTypeOfDissemination = function(data, user_id) {
+  return (dissemination = {
+    added_by: user_id,
+    headline: data.dissemination_headline,
+    summary: data.dissemination_summary,
+    pr_news: data.dissemination_pr_news,
+    url: data.dissemination_url,
+    date: data.dissemination_date,
+    include_in_report: false
   });
 };

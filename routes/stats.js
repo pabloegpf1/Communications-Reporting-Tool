@@ -4,7 +4,7 @@ var StatController = require("../controllers/stats")
 
 function loggedIn(request, response, next) {
   if (request.user) next()
-  else response.redirect("/")
+  else response.redirect("/user/login")
 }
 
 //GET Requests

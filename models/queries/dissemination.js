@@ -3,7 +3,7 @@ const db = require("./db-connection");
 
 //Create
 exports.addDissemination = dissemination =>
-  db.none("INSERT INTO dissemination ($1:name) VALUES ($1:list)", [
+  db.one("INSERT INTO dissemination ($1:name) VALUES ($1:list) RETURNING id", [
     dissemination
   ]);
 //Read
@@ -11,6 +11,12 @@ exports.getDisseminations = () =>
   db.any(
     `SELECT id, headline, summary, date, added_by, pr_news, url FROM dissemination d ORDER BY id DESC`
   );
+
+exports.getAvailableDisseminations = () =>
+db.any(
+  `SELECT id, headline, summary, date, added_by, pr_news, url FROM dissemination d WHERE include_in_report = true ORDER BY id DESC`
+);
+
 exports.getDisseminationById = id =>
   db.one(
     `SELECT id, headline, summary, date, added_by, pr_news, url FROM dissemination d WHERE id = $1`,
