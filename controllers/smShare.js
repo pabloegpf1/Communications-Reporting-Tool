@@ -3,11 +3,11 @@ var Dissemination = require("../models/queries/dissemination");
 var Classification = require("../models/queries/classification");
 var DisseminationController = require("../controllers/dissemination");
 
-exports.showSmshares = (request, response) => {
+exports.showShares = (request, response) => {
   SMshare.getShares()
     .then(shares => {
       console.log(shares)
-      response.render("smShares", {
+      response.render("shares", {
         title: "Social Media Shares",
         shares: shares,
         admin: request.user.admin
@@ -16,12 +16,12 @@ exports.showSmshares = (request, response) => {
     .catch(err => response.render("error", { message: "Error", error: err }));
 };
 
-exports.showNewSmshareForm = (request, response) => {
+exports.showNewShareForm = (request, response) => {
   SMshare.getSocialMedias().then(social_medias => {
       SMshare.getSocialMediaAccounts().then(social_media_accounts => {
         Dissemination.getAvailableDisseminations().then(disseminations => {
           Classification.getClassifications().then(classifications => {
-            response.render("newSmShare", {
+            response.render("newShare", {
               social_medias: social_medias,
               social_media_accounts: social_media_accounts,
               disseminations: disseminations,
@@ -35,10 +35,38 @@ exports.showNewSmshareForm = (request, response) => {
     .catch(err => response.render("error", { message: "Error", error: err }));
 };
 
-exports.showSmshareDetails = (request, response) => {
+exports.showEditShareForm = (request, response) => {
+  Dissemination.getAvailableDisseminations().then(disseminations => {
+    Classification.getClassifications().then(classifications => {
+      SMshare.getSocialMedias().then(social_medias => {
+        SMshare.getSocialMediaAccounts().then(accounts => {
+          SMshare.getShareById(request.params.id).then(share => {
+            var date = new Date(share.date.toDateString());
+            share.date = date.getFullYear() +"-" +("0" + (date.getMonth() + 1)).slice(-2) +"-" +("0" + date.getDate()).slice(-2);
+            Dissemination.getDisseminationById(share.dissemination).then(dissemination => {
+              dissemination.date = date.getFullYear() +"-" +("0" + (date.getMonth() + 1)).slice(-2) +"-" +("0" + date.getDate()).slice(-2);
+              response.render("editShare", {
+                disseminations: disseminations,
+                dissemination: dissemination,
+                classifications: classifications,
+                share: share,
+                social_medias: social_medias,
+                accounts: accounts,
+                admin: request.user.admin
+              });
+            });
+          });
+        });
+      });
+    })
+  })
+  .catch(err => response.render("error", { message: "Error", error: err }));
+};
+
+exports.showShareDetails = (request, response) => {
   SMshare.getShareById(request.params.id)
     .then(share => {
-      response.render("smShareDetails", {
+      response.render("shareDetails", {
         share: share,
         admin: request.user.admin
       });
@@ -46,22 +74,47 @@ exports.showSmshareDetails = (request, response) => {
     .catch(err => response.render("error", { message: "Error", error: err }));
 };
 
-exports.AddSmshare = (request, response) => {
+exports.AddShare = (request, response) => {
   let newSmShare = createSmShareFromRequest(request.body, request.user.id);
   if(request.body.dissemination == "-1"){ //Other type of dissemination
     DisseminationController.addOtherDissemination(request,response)
     .then((dissemination)=>{
       newSmShare.dissemination = dissemination.id
-      SMshare.addSmShare(newSmShare)
+      SMshare.addShare(newSmShare)
       .then(() => response.redirect("/sm-share"))
       .catch(err => response.render("error", { message: "Error", error: err }));
     })
     .catch(err => response.render("error", { message: "Error", error: err }));
   }else{
-    SMshare.addSmShare(newSmShare)
+    SMshare.addShare(newSmShare)
       .then(() => response.redirect("/sm-share"))
       .catch(err => response.render("error", { message: "Error", error: err }));
   }  
+};
+
+exports.editShare = (request, response) => {
+  let newShare = createSmShareFromRequest(request.body, request.user.id);
+  console.log(newShare)
+  if(request.body.dissemination == "-1"){ //Other type of dissemination
+    DisseminationController.addOtherDissemination(request,response)
+    .then((dissemination)=>{
+      newShare.dissemination = dissemination.id
+      SMshare.updateShare(newShare, request.params.id)
+      .then(() => response.redirect("/sm-share"))
+      .catch(err => response.render("error", { message: "Error", error: err }));
+    })
+    .catch(err => response.render("error", { message: "Error", error: err }));
+  }else{
+    SMshare.updateShare(newShare,request.params.id)
+    .then(() => response.redirect("/sm-share"))
+    .catch(err => response.render("error", { message: "Error", error: err }));
+  }
+};
+
+exports.deleteShare = (request, response) => {
+  SMshare.deleteShare(request.params.id)
+    .then(() => response.redirect("/sm-share"))
+    .catch(err => response.render("error", { message: "Error", error: err }));
 };
 
 const createSmShareFromRequest = function(data, user_id) {

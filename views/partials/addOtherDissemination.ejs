@@ -5,6 +5,7 @@
         console.log(selected)
         if(selected =="-1"){
           $('.dissemination').prop("disabled",false);
+          $('.dissemination').attr('required');
           $('.dissemination').val(null,false);
         }else{
           const disseminations = <%- JSON.stringify(disseminations) %>;
@@ -12,6 +13,7 @@
           var date = new Date(disseminations[index].date)
           console.log()
           $('.dissemination').prop("disabled",true);
+          $('.dissemination').removeAttr("required");
           $("input[name='dissemination_headline']").val(disseminations[index].headline);
           $("textarea[name='dissemination_summary']").val(disseminations[index].summary);
           $("input[name='dissemination_date']").val(date.getFullYear()+"-"+("0" + (date.getMonth() + 1)).slice(-2)+"-"+("0" + date.getDate()).slice(-2));
