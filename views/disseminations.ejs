@@ -24,7 +24,7 @@
                   <th width="20%" scope="col">Summary</th>
                   <th width="10%" scope="col">PR/NEWS</th>
                   <th width="10%" scope="col">Date</th>
-                  <th class="no-sort" width="7.5%" scope="col">Impacts</th>
+                  <th class="no-sort" width="7.5%" scope="col">Details</th>
                   <th class="no-sort" width="7.5%" scope="col">Link</th>
                 </tr>
               </thead>
@@ -33,12 +33,12 @@
                   <tr>
                       <td><%= disseminations[i].id %></td>
                       <td style="text-overflow: ellipsis;white-space: nowrap;overflow: hidden;">
-                        <a href="/disseminations/<%= disseminations[i].id %>"><%= disseminations[i].headline %></a>
+                        <a href="/impacts/dissemination/<%= disseminations[i].id %>"><%= disseminations[i].headline %></a>
                       </td>
                       <td><%= disseminations[i].summary %></td>
                       <td><%= disseminations[i].pr_news %></td>
                       <td><%= disseminations[i].date.toLocaleDateString() %></td>
-                      <td style="text-align: center"><a class="fas fa-list" href="/impacts/dissemination/<%= disseminations[i].id %>"></a></td>
+                      <td style="text-align: center"><a class="fas fa-list" href="/disseminations/<%= disseminations[i].id %>"></a></td>
                       <td style="text-align: center"><a class="fas fa-external-link-alt" href="<%= disseminations[i].url %>" target="_blank" ></a></td>
                   </tr>
                   <% } %>

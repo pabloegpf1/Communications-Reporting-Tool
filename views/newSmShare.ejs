@@ -7,7 +7,7 @@
 <body>
   <%- include('partials/navbar', {admin:admin}) %>
   <div class="content-form">
-    <form class="publication-form" action="/impacts/add" method="post" novalidate>
+    <form class="publication-form" action="/sm-share/add" method="post" novalidate>
       <h2>Add Social Media Share</h2>
       
       <div class="form-group">
@@ -107,7 +107,7 @@
         <div class="form-group col">
             <div class="form-group">
               <label for="exampleFormControlInput1">Message</label>
-              <textarea class="form-control" name="Message" rows="3"></textarea>
+              <textarea class="form-control" name="message" rows="3"></textarea>
               <div class="invalid-feedback">
                 Plase add a message
               </div>

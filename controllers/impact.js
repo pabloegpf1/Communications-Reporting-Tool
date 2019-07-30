@@ -103,7 +103,6 @@ exports.addImpact = (request, response) => {
     DisseminationController.addOtherDissemination(request,response)
     .then((dissemination)=>{
       newImpact.dissemination = dissemination.id
-      console.log(newImpact)
       Impact.addImpact(newImpact)
       .then(() => response.redirect("/impacts"))
       .catch(err => response.render("error", { message: "Error", error: err }));

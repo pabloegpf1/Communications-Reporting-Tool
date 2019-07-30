@@ -1,6 +1,6 @@
 var express = require('express')
 var router = express.Router()
-var SmShare = require('../controllers/smShare')
+var SmShareController = require('../controllers/smShare')
 
 function loggedIn(request, response, next) {
 	if (request.user) next()
@@ -8,11 +8,21 @@ function loggedIn(request, response, next) {
   }
 
 router.get('/', loggedIn, function(request, response) {
-	SmShare.showSmshares(request,response)
+	SmShareController.showSmshares(request,response)
 });
 
+router.get("/:id", loggedIn, function(request, response) {
+	SmShareController.showSmshareDetails(request, response)
+})
+
 router.get('/add', loggedIn, function(request, response) {
-	SmShare.showNewSmshareForm(request,response)
+	SmShareController.showNewSmshareForm(request,response)
+});
+
+// ----- Post Requests -----
+
+router.post('/add', loggedIn, function(request, response) {
+	SmShareController.AddSmshare(request,response)
 });
 
 module.exports = router;
