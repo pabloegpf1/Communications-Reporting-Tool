@@ -27,7 +27,7 @@ exports.addUser = (request, response) => {
       if (request.user.admin == true) {
         response.redirect("/admin/users");
       } else {
-        response.redirect("/publications");
+        response.redirect("/impacts");
       }
     })
     .catch(err => response.render("error", { message: "Error", error: err }));
@@ -56,5 +56,5 @@ exports.editUser = (request, response) => {
 
 exports.signOut = (request, response) => {
   request.logout();
-  response.redirect("/");
+  response.redirect("/user/login");
 };

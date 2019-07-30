@@ -4,7 +4,7 @@ var ImpactController = require("../controllers/impact")
 
 function loggedIn(request, response, next) {
   if (request.user) next()
-  else response.redirect("/")
+  else response.redirect("/user/login")
 }
 
 //GET Requests

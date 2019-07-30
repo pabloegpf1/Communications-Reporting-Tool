@@ -4,7 +4,7 @@ var AdminController = require("../controllers/admin")
 
 function isAdmin(request, response, next) {
   if (request.user && request.user.admin == true) next()
-  else response.redirect("/")
+  else response.redirect("/user/login")
 }
 
 //GET Requests

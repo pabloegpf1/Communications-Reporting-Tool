@@ -5,10 +5,17 @@ const passport = require("passport")
 
 function loggedIn(request, response, next) {
   if (request.user) next()
-  else response.redirect("/")
+  else response.redirect("/user/login")
 }
 
 // GET Requests
+
+router.get('/login', function(request, response) {
+	response.render('login', {
+		authMessage: request.flash('authMessage')
+	});
+});
+
 router.get("/contributions/", loggedIn, function(request, response) {
   UserController.showContributionsByUser(request, response)
 })
@@ -30,8 +37,8 @@ router.post("/add", loggedIn, function(request, response) {
 // This router controls where to take user if authentication success/failure
 router.post("/login",
   passport.authenticate("local", { 
-    successRedirect: "/disseminations",
-    failureRedirect: "/",
+    successRedirect: "/",
+    failureRedirect: "/user/login",
     failureFlash: true
   })
 )

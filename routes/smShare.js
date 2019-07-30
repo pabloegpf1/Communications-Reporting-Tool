@@ -4,7 +4,7 @@ var SmShareController = require('../controllers/smShare')
 
 function loggedIn(request, response, next) {
 	if (request.user) next()
-	else response.redirect("/")
+	else response.redirect("/user/login")
   }
 
 router.get('/', loggedIn, function(request, response) {
