@@ -1,4 +1,6 @@
 var Dissemination = require("../models/queries/dissemination");
+var Impact = require("../models/queries/impact");
+var SMshare = require("../models/queries/smShare");
 var Media = require("../models/queries/media");
 
 exports.showDisseminations = (request, response) => {
@@ -23,6 +25,23 @@ exports.showDisseminationsByType = (request, response) => {
       });
     })
     .catch(err => response.render("error", { message: "Error", error: err }));
+};
+
+exports.showImpactsAndSharesByDissemination = (request, response) => {
+  Impact.getImpactsByDissemination(request.params.id)
+  .then(impacts => {
+    SMshare.getSharesByDissemination(request.params.id)
+    .then(shares => {
+      response.render("impactsAndShares", {
+        title: "Generated Impacts and SM Shares",
+        impacts: impacts,
+        shares:shares,
+        admin: request.user.admin
+      });
+    })
+    .catch(err => response.render("error", { message: "Error", error: err }));
+  })
+  .catch(err => response.render("error", { message: "Error", error: err }));
 };
 
 exports.showNewDisseminationForm = (request, response) => {
@@ -90,7 +109,6 @@ exports.editDissemination = (request, response) => {
     request.body,
     request.user.id
   );
-  console.log(newDissemination);
   Dissemination.updateDissemination(newDissemination, request.params.id)
     .then(() => response.redirect("/disseminations"))
     .catch(err => response.render("error", { message: "Error", error: err }));

@@ -47,7 +47,7 @@ exports.editUser = (request, response) => {
     last_name: request.body.last_name,
     username: request.body.username,
     password: encrypted_pw,
-    admin: request.body.admin === undefined ? false : true
+    admin: request.user.admin
   }
   User.editUser(user,request.params.id)
   .then(()=>response.redirect('/user/contributions'))

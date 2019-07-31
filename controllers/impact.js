@@ -28,11 +28,11 @@ exports.showImpactsByType = (request, response) => {
     .catch(err => response.render("error", { message: "Error", error: err }));
 };
 
-exports.showImpactsByDissemination = (request, response) => {
-  Impact.getImpactsByDissemination(request.params.id)
+exports.showImpactsByMedia = (request, response) => {
+  Impact.getImpactsByMedia(request.params.id)
     .then(impacts => {
       response.render("impacts", {
-        title: "Impacts",
+        title: "Impacts by media",
         impacts: impacts,
         admin: request.user.admin
       });

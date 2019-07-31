@@ -15,8 +15,12 @@ exports.getUserByUsername = username =>
 //Update
 exports.changeStatus = user_id =>
   db.none("UPDATE users SET admin = NOT admin WHERE id = $1", [user_id]);
-exports.editUser = (user, id) =>
-  db.none(pgp.helpers.update(user, null, "users") + "WHERE id = " + id);
+exports.editUser = (user, id) =>{
+  const query = pgp.as.format(pgp.helpers.update(user, null, "users") + " WHERE id = " + id)
+  console.log(query)
+  return db.none(query);
+}
+  
 
 //Delete
 exports.deleteUser = user_id =>

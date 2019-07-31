@@ -24,7 +24,7 @@
                 <th scope="col">Content</th>
                 <th scope="col">Coverage</th>
                 <th scope="col">Format</th>
-                <th class="no-sort" scope="col" style="text-align:center">Publications</th>
+                <th class="no-sort" scope="col" style="text-align:center">Impacts</th>
                 <th class="no-sort" scope="col" style="text-align:center">URL</th>
                 <th class="no-sort" scope="col" style="text-align:center">Actions</th>
                 </tr>
@@ -37,7 +37,7 @@
                     <td><%= medias[i].content %></td>
                     <td><%= medias[i].coverage %></td>
                     <td><%= medias[i].format %></td>
-                    <td style="text-align: center"><a class="fas fa-list" href="" ></a></td>
+                    <td style="text-align: center"><a class="fas fa-list" href="impacts/media/<%= medias[i].id %>" ></a></td>
                     <td style="text-align: center"><a class="fas fa-external-link-alt" href="<%= medias[i].url %>" target="_blank"></a></td>
                     <% if(medias[i].available == true){ %>
                         <td style="text-align: center"><a class="fas fa-trash-alt" style="color:red;" href="/media/change-status/<%= medias[i].id %>" ></a></td>

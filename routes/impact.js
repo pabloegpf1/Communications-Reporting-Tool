@@ -16,8 +16,8 @@ router.get("/type/:id", loggedIn, function(request, response) {
   ImpactController.showImpactsByType(request, response)
 })
 
-router.get("/dissemination/:id", loggedIn, function(request, response) {
-  ImpactController.showImpactsByDissemination(request, response)
+router.get("/media/:id", loggedIn, function(request, response) {
+  ImpactController.showImpactsByMedia(request, response)
 })
 
 router.get("/add", loggedIn, function(request, response) {

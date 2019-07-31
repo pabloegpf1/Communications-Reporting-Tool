@@ -34,6 +34,12 @@
 					</div>
 				</div>
 			</div>
+
+			<div class="form-group">
+				<label for="classification">Classification</label>
+				<input type="text" class="form-control" name="date" rows="1" value="<%= impact.classification_name %>" readonly />
+			</div>
+
 			<div class="row" style="margin-bottom:30px; margin-top:30px;">
 				<div class="col">
 					<div class="form-check">
@@ -107,26 +113,19 @@
 			<div class="row">
 				<div class="col">
 					<div class="form-group">
-						<label for="exampleFormControlInput1">Original URL</label>
-						<input type="text" class="form-control" name="url" rows="1" value="<%= impact.url %>" readonly />
+						<label for="exampleFormControlInput1">Source URL</label>
+						<input type="text" class="form-control" name="url" rows="1" value="<%= impact.source_url %>" readonly />
 					</div>
 				</div>
 				<div class="col">
 					<div class="form-group">
-						<label for="exampleFormControlInput1">Shortened URL</label>
-						<input type="text" class="form-control" name="shortened_url" rows="1" value="<%= impact.shortened_url %>" readonly />
+						<label for="exampleFormControlInput1">Video URL</label>
+						<input type="text" class="form-control" name="shortened_url" rows="1" value="<%= impact.video_url %>" readonly />
 					</div>
 				</div>
 			</div>
-			<a
-				style="float: left; padding: 10px; width:20%; margin: 10px; width:30%"
-				href="/impacts/delete/<%= impact.id %>"
-				class="btn btn-danger btn-lg"
-				>Delete</a
-			>
-			<a style="float: right; padding: 10px; width:20%; margin: 10px; width:30%" href="/impacts/edit/<%= impact.id %>" class="btn btn-info btn-lg"
-				>Edit</a
-			>
+			<a style="float: left; padding: 10px; width:20%; margin: 10px; width:30%" href="/impacts/delete/<%= impact.id %>"class="btn btn-danger btn-lg">Delete</a>
+			<a style="float: right; padding: 10px; width:20%; margin: 10px; width:30%" href="/impacts/edit/<%= impact.id %>" class="btn btn-info btn-lg">Edit</a>
 		</div>
 		<% include ./partials/scripts%>
 	</body>

@@ -25,7 +25,7 @@
                   <th width="14%" scope="col">Type</th>
                   <th width="20%" scope="col">Summary</th>
                   <th width="10%" scope="col">Date</th>
-                  <th class="no-sort" width="7%" scope="col">Link</th>
+                  <th class="no-sort" width="7%" scope="col">Details</th>
                 </tr>
               </thead>
               <tbody>
@@ -33,13 +33,13 @@
                   <tr>
                       <td><%= impacts[i].id %></td>
                       <td style="text-overflow: ellipsis;white-space: nowrap;overflow: hidden;">
-                        <a href="/impacts/<%= impacts[i].id %>"><%= impacts[i].headline %></a>
+                        <a href="<%= impacts[i].source_url %>" target="_blank"><%= impacts[i].headline %></a>
                       </td>
                       <td><%= impacts[i].media_name %></td>
                       <td><%= impacts[i].type %></td>
                       <td><%= impacts[i].summary %></td>
                       <td><%= impacts[i].date.toLocaleDateString() %></td>
-                      <td style="text-align: center"><a class="fas fa-external-link-alt" href="<%= impacts[i].source_url %>" target="_blank" ></a></td>
+                      <td style="text-align: center"><a class="fas fa-list" href="/impacts/<%= impacts[i].id %>"></a></td>
                   </tr>
                   <% } %>
               </tbody>

@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title><%= title %></title>
+    <% include ./partials/css%>
+</head>
+<body>
+    <%- include('partials/navbar', {admin:admin}) %>
+    <div class="content">
+      <div class="impacts-table">
+        <h2><%= title %></h2>
+        <div class="row row-title">
+          <div class="col">
+              <h3 style="float: left;">Impacts</h3>
+          </div>
+          <div class="col">
+              <a style="float: right;" href="/impacts/add" class="btn btn-info">Add Media Impact</a>
+          </div>
+        </div>
+          <table class="table table-striped table-bordered table-responsive-lg" id="impacts-table">
+            <thead>
+              <tr>
+                <th scope="col">ID</th>
+                <th width="30%" scope="col">Headline</th>
+                <th width="14%" scope="col">Media</th>
+                <th width="14%" scope="col">Type</th>
+                <th width="20%" scope="col">Summary</th>
+                <th width="10%" scope="col">Date</th>
+                <th class="no-sort" width="7%" scope="col">Link</th>
+              </tr>
+            </thead>
+            <tbody>
+              <% for(var i=0; i<impacts.length; i++) {%>
+                <tr>
+                  <td><%= impacts[i].id %></td>
+                  <td style="text-overflow: ellipsis;white-space: nowrap;overflow: hidden;">
+                    <a href="/impacts/<%= impacts[i].id %>"><%= impacts[i].headline %></a>
+                  </td>
+                  <td><%= impacts[i].media_name %></td>
+                  <td><%= impacts[i].type %></td>
+                  <td><%= impacts[i].summary %></td>
+                  <td><%= impacts[i].date.toLocaleDateString() %></td>
+                  <td style="text-align: center"><a class="fas fa-external-link-alt" href="<%= impacts[i].source_url %>" target="_blank" ></a></td>
+                </tr>
+              <% } %>
+            </tbody>
+          </table>
+        </div>
+
+        <div class="share-table">
+          <div class="row row-title">
+            <div class="col">
+                <h3 style="float: left;">Social Media Shares</h3>
+            </div>
+            <div class="col">
+                <a style="float: right;" href="/sm-shares/add" class="btn btn-info">Add SM Share</a>
+            </div>
+          </div>
+            <table class="table table-striped table-bordered table-responsive-lg" id="impact-table">
+              <thead>
+                <tr>
+                  <th scope="col">ID</th>
+                  <th width="30%" scope="col">Message</th>
+                  <th width="20%" scope="col">Headline</th>
+                  <th width="14%" scope="col">Social Media</th>
+                  <th width="14%" scope="col">Classification</th>
+                  <th width="10%" scope="col">Date</th>
+                  <th class="no-sort" width="7%" scope="col">Link</th>
+                </tr>
+              </thead>
+              <tbody>
+                  <% for(var i=0; i<shares.length; i++) {%>
+                  <tr>
+                      <td><%= shares[i].id %></td>
+                      <td style="text-overflow: ellipsis;white-space: nowrap;overflow: hidden;">
+                        <a href="/sm-shares/<%= shares[i].id %>"><%= shares[i].message %></a>
+                      </td>
+                      <td><%= shares[i].headline %></td>
+                      <td><%= shares[i].social_media %></td>
+                      <td><%= shares[i].classification %></td>
+                      <td><%= shares[i].date.toLocaleDateString() %></td>
+                      <td style="text-align: center"><a class="fas fa-external-link-alt" href="<%= shares[i].source_url %>" target="_blank" ></a></td>
+                  </tr>
+                  <% } %>
+              </tbody>
+            </table>
+        </div>
+    </div>
+    <% include ./partials/scripts%>
+    <% include ./partials/datatablesScripts%>
+</body>
+</html>

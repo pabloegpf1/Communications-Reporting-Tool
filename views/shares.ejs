@@ -13,7 +13,7 @@
               <h2 style="float: left;"><%= title %></h2>
           </div>
           <div class="col">
-              <a style="float: right;" href="/sm-share/add" class="btn btn-info">Add SM Share</a>
+              <a style="float: right;" href="/sm-shares/add" class="btn btn-info">Add SM Share</a>
           </div>
         </div>
           <table class="table table-striped table-bordered table-responsive-lg" id="impact-table">
@@ -25,23 +25,23 @@
                   <th width="14%" scope="col">Social Media</th>
                   <th width="14%" scope="col">Classification</th>
                   <th width="10%" scope="col">Date</th>
-                  <th class="no-sort" width="7%" scope="col">Link</th>
+                  <th class="no-sort" width="7%" scope="col">Details</th>
                 </tr>
               </thead>
               <tbody>
-                  <% for(var i=0; i<shares.length; i++) {%>
-                  <tr>
-                      <td><%= shares[i].id %></td>
-                      <td style="text-overflow: ellipsis;white-space: nowrap;overflow: hidden;">
-                        <a href="/sm-share/<%= shares[i].id %>"><%= shares[i].message %></a>
-                      </td>
-                      <td><%= shares[i].headline %></td>
-                      <td><%= shares[i].social_media %></td>
-                      <td><%= shares[i].classification %></td>
-                      <td><%= shares[i].date.toLocaleDateString() %></td>
-                      <td style="text-align: center"><a class="fas fa-external-link-alt" href="<%= shares[i].source_url %>" target="_blank" ></a></td>
-                  </tr>
-                  <% } %>
+                <% for(var i=0; i<shares.length; i++) {%>
+                <tr>
+                  <td><%= shares[i].id %></td>
+                  <td style="text-overflow: ellipsis;white-space: nowrap;overflow: hidden;">
+                    <a href="<%= shares[i].source_url %>" target="_blank" ><%= shares[i].message %></a>
+                  </td>
+                  <td><%= shares[i].headline %></td>
+                  <td><%= shares[i].social_media %></td>
+                  <td><%= shares[i].classification %></td>
+                  <td><%= shares[i].date.toLocaleDateString() %></td>
+                  <td style="text-align: center"><a class="fas fa-list" href="/sm-shares/<%= shares[i].id %>" ></a></td>
+                </tr>
+                <% } %>
               </tbody>
             </table>
       </div>

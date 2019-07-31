@@ -8,7 +8,7 @@
   <%- include('partials/navbar', {admin:admin}) %>
   <div class="content-form">
 
-    <form class="impact-form" action="/sm-share/edit/<%= share.id %>" method="post" novalidate>
+    <form class="impact-form" action="/sm-shares/edit/<%= share.id %>" method="post" novalidate>
       <h2>Edit SM Share</h2>
       <div class="form-group">
         <label for="exampleFormControlInput1">Headline*</label>
@@ -210,7 +210,7 @@
           <input type="text" class="form-control" name="video_url" value="<%= share.video_url %>">
         </div>
       </div>
-      <a class="btn btn-danger btn-lg" style="float: left; padding: 10px; width:25%; margin: 10px; width:30%" href="/sm-share/" >Cancel</a>
+      <a class="btn btn-danger btn-lg" style="float: left; padding: 10px; width:25%; margin: 10px; width:30%" href="/sm-shares/" >Cancel</a>
       <button type="submit"class="btn btn-success btn-lg" style="float: right; padding: 10px; margin: 10px;width:30%">Submit Changes</a>
     </form>
   </div>
