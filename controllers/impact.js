@@ -28,6 +28,18 @@ exports.showImpactsByType = (request, response) => {
     .catch(err => response.render("error", { message: "Error", error: err }));
 };
 
+exports.showImpactsByMedia = (request, response) => {
+  Impact.getImpactsByMedia(request.params.id)
+    .then(impacts => {
+      response.render("impacts", {
+        title: "Impacts by media",
+        impacts: impacts,
+        admin: request.user.admin
+      });
+    })
+    .catch(err => response.render("error", { message: "Error", error: err }));
+};
+
 exports.showNewImpactForm = (request, response) => {
   Impact.getImpactTypes()
     .then(types => {

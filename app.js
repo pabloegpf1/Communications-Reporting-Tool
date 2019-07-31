@@ -12,6 +12,7 @@ const LocalStrategy = require('passport-local').Strategy;
 const session = require('express-session');
 const flash = require('connect-flash');
 const pdf = require('html-pdf');
+var Excel = require('exceljs');
 
 var indexRouter = require('./routes/index');
 var impactRouter = require('./routes/impact');
