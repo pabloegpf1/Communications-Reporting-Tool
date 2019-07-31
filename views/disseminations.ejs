@@ -20,7 +20,7 @@
               <thead>
                 <tr>
                   <th width="5%" scope="col">ID</th>
-                  <th width="40%" scope="col">Headline</th>
+                  <th width="40%" scope="col">Headline (Click to see Impacts and SM Shares)</th>
                   <th width="20%" scope="col">Summary</th>
                   <th width="10%" scope="col">PR/NEWS</th>
                   <th width="10%" scope="col">Date</th>
@@ -33,7 +33,7 @@
                   <tr>
                       <td><%= disseminations[i].id %></td>
                       <td style="text-overflow: ellipsis;white-space: nowrap;overflow: hidden;">
-                        <a href="/impacts/dissemination/<%= disseminations[i].id %>"><%= disseminations[i].headline %></a>
+                        <a href="/disseminations/impacts-shares/<%= disseminations[i].id %>"><%= disseminations[i].headline %></a>
                       </td>
                       <td><%= disseminations[i].summary %></td>
                       <td><%= disseminations[i].pr_news %></td>

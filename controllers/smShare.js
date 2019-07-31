@@ -81,13 +81,13 @@ exports.AddShare = (request, response) => {
     .then((dissemination)=>{
       newSmShare.dissemination = dissemination.id
       SMshare.addShare(newSmShare)
-      .then(() => response.redirect("/sm-share"))
+      .then(() => response.redirect("/sm-shares"))
       .catch(err => response.render("error", { message: "Error", error: err }));
     })
     .catch(err => response.render("error", { message: "Error", error: err }));
   }else{
     SMshare.addShare(newSmShare)
-      .then(() => response.redirect("/sm-share"))
+      .then(() => response.redirect("/sm-shares"))
       .catch(err => response.render("error", { message: "Error", error: err }));
   }  
 };
@@ -100,20 +100,20 @@ exports.editShare = (request, response) => {
     .then((dissemination)=>{
       newShare.dissemination = dissemination.id
       SMshare.updateShare(newShare, request.params.id)
-      .then(() => response.redirect("/sm-share"))
+      .then(() => response.redirect("/sm-shares"))
       .catch(err => response.render("error", { message: "Error", error: err }));
     })
     .catch(err => response.render("error", { message: "Error", error: err }));
   }else{
     SMshare.updateShare(newShare,request.params.id)
-    .then(() => response.redirect("/sm-share"))
+    .then(() => response.redirect("/sm-shares"))
     .catch(err => response.render("error", { message: "Error", error: err }));
   }
 };
 
 exports.deleteShare = (request, response) => {
   SMshare.deleteShare(request.params.id)
-    .then(() => response.redirect("/sm-share"))
+    .then(() => response.redirect("/sm-shares"))
     .catch(err => response.render("error", { message: "Error", error: err }));
 };
 

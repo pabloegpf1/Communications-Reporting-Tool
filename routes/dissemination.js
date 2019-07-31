@@ -16,6 +16,10 @@ router.get("/type/:id", loggedIn, function(request, response) {
   DisseminationController.getDisseminationTypes(request, response)
 })
 
+router.get("/impacts-shares/:id", loggedIn, function(request, response) {
+  DisseminationController.showImpactsAndSharesByDissemination(request, response)
+})
+
 router.get("/add", loggedIn, function(request, response) {
   DisseminationController.showNewDisseminationForm(request, response)
 })

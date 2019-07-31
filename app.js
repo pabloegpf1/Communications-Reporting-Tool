@@ -48,7 +48,7 @@ app.use(flash());
 
 app.use('/', indexRouter);
 app.use('/impacts', impactRouter);
-app.use('/sm-share', SMshareRouter);
+app.use('/sm-shares', SMshareRouter);
 app.use('/disseminations', disseminationRouter);
 app.use('/media', mediasRouter);
 app.use('/user', userRouter);
