@@ -7,7 +7,80 @@
 <body>
     <%- include('partials/navbar', {admin:admin}) %>
     <div class="content">
-      <h1>Welcome to IMDEA Network's Communication Reporting Tool</h1>
+      <h2 class="display-4" style="padding: 20px;color: #2A3F54">Content Management</h2>
+      <div class="jumbotron" style="background-color: rgb(29, 84, 155);color: white">
+        <div class="container">
+          <h1 class="display-4">Disseminations</h1>
+          <p class="lead">Lorem ipsum dolor sit amet consectetur adipisicing elit. Dignissimos, quaerat deleniti? Quaerat dolor fugiat provident aperiam vitae odit perspiciatis nemo consequuntur tempora consequatur facere architecto, molestias obcaecati id iusto voluptas!</p>
+          <a class="btn btn-info btn-lg" href="/disseminations" role="button">See disseminations</a>
+          <a class="btn btn-success btn-lg" href="/disseminations/add" role="button">Add new dissemination</a>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col">
+            <div class="jumbotron" style="background-color: #2C73D2;color: white">
+                <div class="container">
+                  <h1 class="display-4">Impacts</h1>
+                  <p class="lead">Lorem ipsum dolor sit amet consectetur adipisicing elit.</p>
+                  <a class="btn btn-info btn-lg btn-block" href="/impacts" role="button">See Impacts</a>
+                  <a class="btn btn-success btn-lg btn-block" href="/impacts/add" role="button">Add new Impact</a>
+                </div>
+              </div>
+        </div>
+        <div class="col">
+            <div class="jumbotron" style="background-color: #0081CF;color: white">
+                <div class="container">
+                  <h1 class="display-4">Social Media</h1>
+                  <p class="lead">Lorem ipsum dolor sit amet consectetur adipisicing elit.</p>
+                  <a class="btn btn-info btn-lg btn-block" href="/sm-shares" role="button">See SM Shares</a>
+                  <a class="btn btn-success btn-lg btn-block" href="/sm-shares/add" role="button">Add new SM Share</a>
+                </div>
+              </div>
+        </div>
+      </div>
+      <h2 class="display-4" style="padding: 20px;color: #2A3F54">Data Analysis</h2>
+      <div class="row">
+          <div class="col">
+              <div class="jumbotron" style="background-color: #0089BA;color: white">
+                  <div class="container">
+                    <h1 class="display-4">Statistics</h1>
+                    <p class="lead">Lorem ipsum dolor sit amet consectetur adipisicing elit.</p>
+                    <a class="btn btn-info btn-lg btn-block" href="/stats" role="button">See Stats</a>
+                  </div>
+                </div>
+          </div>
+          <div class="col">
+              <div class="jumbotron" style="background-color: #008E9B;color: white">
+                  <div class="container">
+                    <h1 class="display-4">Metabase</h1>
+                    <p class="lead">Lorem ipsum dolor sit amet consectetur adipisicing elit.</p>
+                    <a class="btn btn-info btn-lg btn-block" href="http://172.16.1.173:5000/" target="blank" target= role="button">Go to Metabase</a>
+                  </div>
+                </div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col" >
+              <div class="jumbotron" style="background-color: rgb(103, 49, 210);color: white">
+                <div class="container">
+                  <h1 class="display-4">Report</h1>
+                  <p class="lead">Lorem ipsum dolor sit amet consectetur adipisicing elit.</p>
+                  <a class="btn btn-info btn-lg btn-block" href="/download-annual-communications-report" role="button">Download Report</a>
+                </div>
+              </div>
+            </div>
+            <div class="col">
+              <div class="jumbotron" style="background-color: rgb(156, 37, 215);color: white">
+                <div class="container">
+                  <h1 class="display-4">Spreadsheet</h1>
+                  <p class="lead">Lorem ipsum dolor sit amet consectetur adipisicing elit.</p>
+                  <a class="btn btn-info btn-lg btn-block" href="/download-annual-communications-report" role="button">Download Spreadsheet</a>
+                </div>
+              </div>
+            </div>
+        </div>
+          
+        </div>
     </div>
     <% include ./partials/scripts%>
 </body>
