@@ -12,28 +12,28 @@
     <p style="font-size:18px; margin-top: 10%;font-weight: bold;" href="<%= disseminations[i].url %>"><%= disseminations[i].headline %> [<%= disseminations[i].pr_news %>]</p>
     <p style="font-size:14px"><%= disseminations[i].summary %></p>
     <p style="font-size:14px">Date: <%= disseminations[i].date.toDateString() %></p>
-    <p style="font-size:12px;color: blue;">Media Dissemination performed by IMDEA Networks</p>
+    <p style="font-size:12px;color: brown;">Media Dissemination performed by IMDEA Networks</p>
     <% for(var j=0; j<impacts.length; j++) { %>
       <% if(impacts[j].dissemination == disseminations[i].id && impacts[j].uploaded == true){%>
         <p style="font-size:12px;font-weight: bold;;margin-left:2em">&bull; "<%= impacts[j].headline %>"</p>
         <p style="font-size:12px;margin-left:2em"><%= impacts[j].media_name %> - <%= impacts[j].date.toDateString() %></p>
-        <p style="font-size:12px;margin-left:2em"><%= impacts[j].source_url %></p>
+        <p style="font-size:12px;margin-left:2em;color: blue"><%= impacts[j].source_url %></p>
       <% } %>
     <% } %>
-    <p style="font-size:12px;color: blue;">Impact on the Media</p>
+    <p style="font-size:12px;color: brown;">Impact on the Media</p>
     <% for(var j=0; j<impacts.length; j++) { %>
       <% if(impacts[j].dissemination == disseminations[i].id && impacts[j].uploaded == false){%>
         <p style="font-size:12px;margin-left:2em;font-weight: bold;">&bull; "<%= impacts[j].headline %>"</b></p>
         <p style="font-size:12px;margin-left:2em"><%= impacts[j].media_name %> - <%= impacts[j].date.toDateString() %></p>
-        <p style="font-size:12px;margin-left:2em"><%= impacts[j].source_url %></p>
+        <p style="font-size:12px;margin-left:2em;color: blue"><%= impacts[j].source_url %></p>
       <% } %>
     <% } %>
-    <p style="font-size:12px;color: blue;">News/Blog posts published by IMDEA Networks and their impacts</p>
+    <p style="font-size:12px;color: brown;">News/Blog posts published by IMDEA Networks and their impacts</p>
     <% for(var j=0; j<shares.length; j++) { %>
       <% if(shares[j].dissemination == disseminations[i].id){%>
         <p style="font-size:12px;margin-left:2em;font-weight: bold;">&bull; <%= shares[j].social_media%>[<%= shares[j].social_media_account%>] - <%= impacts[j].date.toDateString() %></b></p>
         <p style="font-size:12px;margin-left:2em"><%= shares[j].message %> </p>
-        <p style="font-size:12px;margin-left:2em"><%= shares[j].source_url %></p>
+        <p style="font-size:12px;margin-left:2em;color: blue"><%= shares[j].source_url %></p>
       <% } %>
     <% } %>
   <% } %>
