@@ -4,8 +4,31 @@
     <title>PDF</title>
   </head>
 <body>
-  <h2 style="text-align: center;font-weight: bold">IMDEA Networks Communications Report – Media Impact</h2>
-  <h3 style="text-align: center;font-weight: normal">PR: <%= Impact.headline %></h3>
-  <h3 style="text-align: center;font-weight: normal"><%= Impact.date.toLocaleDateString() %></h3>
+  <h2 style="text-align: center;font-weight: bold;margin-top: 40%;font-weight: bold;">IMDEA Networks Communications Report</h2>
+  <h2 style="text-align: center;font-weight: bold;margin-top: 5%">Media Impact</h2>
+  <h3 style="text-align: center;font-weight: bold">From: <%= initialDate %> To: <%= finalDate %></h3>
+  <br><div style="page-break-after:always;"></div>
+  <% for(var i=0; i<disseminations.length; i++) { %>
+    <p style="font-size:18px; margin-top: 10%;font-weight: bold;" href="<%= disseminations[i].url %>"><%= disseminations[i].headline %> [<%= disseminations[i].pr_news %>]</p>
+    <p style="font-size:14px"><%= disseminations[i].summary %></p>
+    <p style="font-size:14px">Date: <%= disseminations[i].date.toDateString() %></p>
+    <p style="font-size:12px;color: blue;">Media Dissemination performed by IMDEA Networks</p>
+    <% for(var j=0; j<impacts.length; j++) { %>
+      <% if(impacts[j].dissemination == disseminations[i].id && impacts[j].uploaded == true){%>
+        <p style="font-size:12px;font-weight: 700;margin-left:3em">&bull; "<%= impacts[j].headline %>"</p>
+        <p style="font-size:12px;margin-left:3em">&nbsp;<%= impacts[j].media_name %> - <%= impacts[j].date.toDateString() %></p>
+        <p style="font-size:12px;margin-left:3em">&nbsp;<%= impacts[j].source_url %></p>
+      <% } %>
+    <% } %>
+    <p style="font-size:12px;color: blue;">Impact on the Media</p>
+    <% for(var j=0; j<impacts.length; j++) { %>
+        <% if(impacts[j].dissemination == disseminations[i].id && impacts[j].uploaded == false){%>
+          <p style="font-size:12px;margin-left:3em">&bull; "<%= impacts[j].headline %>"</b></p>
+          <p style="font-size:12px;margin-left:3em">&nbsp;<%= impacts[j].media_name %> - <%= impacts[j].date.toDateString() %></p>
+          <p style="font-size:12px;margin-left:3em">&nbsp;<%= impacts[j].source_url %></p>
+        <% } %>
+      <% } %>
+    <p style="font-size:12px;color: blue;">News/Blog posts published by IMDEA Networks and their impacts</p>
+  <% } %>
 </body>
 </html>

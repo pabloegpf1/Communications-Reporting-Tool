@@ -1,0 +1,29 @@
+<!-- Modal for Report Generator -->
+<div class="modal fade" id="<%= id %>" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <form class="publication-form" action="<%= url %>" method="post" novalidate>
+        <div class="modal-dialog modal-dialog-centered" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">Select a time period</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                        <div class="form-group col">
+                            <label for="exampleFormControlSelect1">From</label>
+                            <input type="date" class="form-control dissemination" name="initial_date" required>
+                        </div>
+                        <div class="form-group col">
+                            <label for="exampleFormControlSelect1">Until</label>
+                            <input type="date" class="form-control dissemination" name="final_date" required>
+                        </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                    <button type="submit" class="btn btn-primary">Generate <%= item %></button>
+                </div>
+            </div>
+        </div>
+    </form>
+</div>
