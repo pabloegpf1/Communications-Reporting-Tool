@@ -30,14 +30,21 @@ exports.createPrImpactReport = (request, response) => {
     .then(impacts => {
       SMshare.getSharesByDate(request.body.initial_date,request.body.final_date)
       .then(shares => {
-        ejs.renderFile('./views/templates/PrImpactReport.ejs', { 
+       /* response.render('templates/PrImpactReport.ejs', { 
           disseminations: disseminations,
           impacts: impacts,
           shares: shares,
           initialDate:request.body.initial_date,
           finalDate: request.body.final_date
-        }, function(err, result) {
-          pdf.create(result, options).toFile('./documents/PrImpactReport.pdf', function(err,res) {
+        })})*/
+          ejs.renderFile('./views/templates/PrImpactReport.ejs', { 
+            disseminations: disseminations,
+            impacts: impacts,
+            shares: shares,
+            initialDate:request.body.initial_date,
+            finalDate: request.body.final_date
+          }, function(err, result) {
+            pdf.create(result, options).toFile('./documents/PrImpactReport.pdf', function(err,res) {
             if (err) return console.log(err);
             response.download('./documents/PrImpactReport.pdf');
           })
