@@ -15,16 +15,11 @@ router.get('/',loggedIn, function(request, response) {
 	});
 });
 
-router.get('/download-annual-communications-report', function(request, response) {
+router.post('/download-annual-communications-report', function(request, response) {
 	Document.createPrImpactReport(request, response)
 })
 
-router.get('/pdf', function(request, response) {
-	Impact.getImpactById(1)
-	.then(impact => response.render('templates/PrImpactReport',{Impact:impact}))
-})
-
-router.get('/press_release_clipping_spreadsheet', function(request, response) {
+router.post('/press_release_clipping_spreadsheet', function(request, response) {
 	SpreadSheet.createPressClippingSpreadsheet(request, response)
 })
 

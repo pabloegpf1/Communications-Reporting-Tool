@@ -18,21 +18,21 @@ exports.showShares = (request, response) => {
 
 exports.showNewShareForm = (request, response) => {
   SMshare.getSocialMedias().then(social_medias => {
-      SMshare.getSocialMediaAccounts().then(social_media_accounts => {
-        Dissemination.getAvailableDisseminations().then(disseminations => {
-          Classification.getClassifications().then(classifications => {
-            response.render("newShare", {
-              social_medias: social_medias,
-              social_media_accounts: social_media_accounts,
-              disseminations: disseminations,
-              admin: request.user.admin,
-              classifications: classifications
-            });
+    SMshare.getSocialMediaAccounts().then(social_media_accounts => {
+      Dissemination.getAvailableDisseminations().then(disseminations => {
+        Classification.getClassifications().then(classifications => {
+          response.render("newShare", {
+            social_medias: social_medias,
+            social_media_accounts: social_media_accounts,
+            disseminations: disseminations,
+            admin: request.user.admin,
+            classifications: classifications
           });
         });
       });
-    })
-    .catch(err => response.render("error", { message: "Error", error: err }));
+    });
+  })
+  .catch(err => response.render("error", { message: "Error", error: err }));
 };
 
 exports.showEditShareForm = (request, response) => {
