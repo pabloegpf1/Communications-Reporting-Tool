@@ -10,8 +10,8 @@
   <br><div style="page-break-after:always;"></div>
   <% for(var i=0; i<disseminations.length; i++) { %>
     <p style="font-size:18px; margin-top: 10%;font-weight: bold;" href="<%= disseminations[i].url %>"><%= disseminations[i].headline %> [<%= disseminations[i].pr_news %>]</p>
-    <p style="font-size:14px"><%= disseminations[i].summary %></p>
-    <p style="font-size:14px">Date: <%= disseminations[i].date.toDateString() %></p>
+    <p style="font-size:12px;"><%= disseminations[i].date.toDateString() %></p>
+    <p style="font-size:14px"><%= disseminations[i].lead_paragraph %></p>
     <p style="font-size:12px;color: brown;">Media Dissemination performed by IMDEA Networks</p>
     <% for(var j=0; j<impacts.length; j++) { %>
       <% if(impacts[j].dissemination == disseminations[i].id && impacts[j].uploaded == true){%>

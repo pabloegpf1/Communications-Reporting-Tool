@@ -1,11 +1,9 @@
 const pgp = require("pg-promise")();
-const db = require("./db-connection");
+const db = require("../config/db-connection");
 
 // Create
 // Read
 exports.getClassifications = () =>
-  db.any(
-    `SELECT * FROM classification`
-  );
+  db.any(`SELECT * FROM classification`);
 // Update
 // Delete

@@ -5,8 +5,14 @@ const bodyParser = require('body-parser');
 const cookieParser = require('cookie-parser');
 const logger = require('morgan');
 const dotenv = require('dotenv').config();
-const Sequelize = require('sequelize');
-const sequelize = new Sequelize(process.env.DB_URL);
+const Sequelize = require('sequelize'), config = require(__dirname + "/models/config/config");
+var sequelize = new Sequelize(
+	config.postgres.database,
+  	config.postgres.username, 
+  	config.postgres.password, {
+    	host: config.postgres.host,
+    	dialect: 'postgres'
+  })
 const passport = require('passport');
 const LocalStrategy = require('passport-local').Strategy;
 const session = require('express-session');

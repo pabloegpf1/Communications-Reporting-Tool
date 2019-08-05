@@ -9,30 +9,31 @@
     <div class="content-form">
       <form class="dissemination-form" action="/disseminations/edit/<%= dissemination.id %>" method="post" novalidate>
         <h2>Edit dissemination</h2>
+
         <div class="form-group">
           <label for="exampleFormControlInput1">Headline*</label>
           <input type="text" class="form-control" name="headline" value="<%= dissemination.headline %>" required>
-          <div class="invalid-feedback">
-            This field cannot be empty
-          </div>
         </div>
+
+        <div class="form-group">
+          <label for="exampleFormControlInput1">Lead Paragraph</label>
+          <textarea class="form-control" name="lead_paragraph" rows="3" required><%= dissemination.lead_paragraph %></textarea>
+        </div>
+
         <div class="form-group">
           <label for="exampleFormControlInput1">Summary*</label>
           <textarea class="form-control" name="summary" rows="3" required><%= dissemination.summary %></textarea>
-          <div class="invalid-feedback">
-            Please add a short summary of the dissemination
-          </div>
         </div>
+
         <div class="row">
+
           <div class="col">
-              <div class="form-group">
-                <label for="exampleFormControlSelect1">Date Published*</label>
-                <input type="date" class="form-control" name="date" value="<%= dissemination.date %>" required>
-                <div class="invalid-feedback">
-                  You must add the date when the dissemination was made
-                </div>
-              </div>
+            <div class="form-group">
+              <label for="exampleFormControlSelect1">Date Published*</label>
+              <input type="date" class="form-control" name="date" value="<%= dissemination.date %>" required>
+            </div>
           </div>
+
           <div class="col">
             <div class="form-group">
               <label for="exampleFormControlSelect1">PR/NEWS</label>
@@ -43,14 +44,14 @@
               </select>
             </div>
           </div>
+
         </div>
+
         <div class="form-group">
-          <label for="exampleFormControlInput1">URL*</label>
-          <input type="text" class="form-control" name="url" required value="<%= dissemination.url %>">
-          <div class="invalid-feedback">
-            Please copy and paste the URL from the dissemination here
-          </div>
-        </div>
+        <label for="exampleFormControlInput1">URL*</label>
+        <input type="text" class="form-control" name="url" required value="<%= dissemination.url %>">
+      </div>
+
       <a class="btn btn-danger btn-lg" style="float: left; padding: 10px; width:25%; margin: 10px; width:30%" href="/disseminations/" >Cancel</a>
       <button type="submit"class="btn btn-success btn-lg" style="float: right; padding: 10px; margin: 10px;width:30%">Submit Changes</a>
     </form>

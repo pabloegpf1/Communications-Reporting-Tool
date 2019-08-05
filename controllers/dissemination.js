@@ -124,6 +124,7 @@ const createDisseminationFromRequest = function(data, user_id) {
   return (dissemination = {
     added_by: user_id,
     headline: data.headline,
+    lead_paragraph: data.lead_paragraph,
     summary: data.summary,
     pr_news: data.pr_news,
     url: data.url,
@@ -135,6 +136,7 @@ const createOtherTypeOfDissemination = function(data, user_id) {
   return (dissemination = {
     added_by: user_id,
     headline: data.dissemination_headline,
+    lead_paragraph: data.dissemination_lead_paragraph,
     summary: data.dissemination_summary,
     pr_news: data.dissemination_pr_news,
     url: data.dissemination_url,

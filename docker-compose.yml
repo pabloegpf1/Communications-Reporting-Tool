@@ -1,0 +1,39 @@
+version: '3'
+services:
+
+  web:
+    build: .
+    command: >
+      sh -c  "npm run dev"
+    ports:
+      - "3000:3000"
+    volumes:
+      - ./:/usr/src/app
+      - ./node_modules:/usr/src/app/node_modules 
+    depends_on:
+      - metabase
+      - db
+    environment:
+      DB_HOST: db
+      DB_PW: ${DB_PW}
+      DB_USER: ${DB_USER}
+      DB_DATABASE: ${DB_DATABASE}
+      DB_PORT: "5433"
+      ADMIN_PW: ${ADMIN_PW}
+      USER_PW: ${USER_PW}
+      NODE_ENV: development
+
+  metabase:
+    image: metabase/metabase
+    ports:
+      - "5000:3000"
+
+  db:
+    image: postgres:alpine
+    environment:
+      POSTGRES_PASSWORD: ${DB_PW}
+      POSTGRES_USER: ${DB_USER}
+      POSTGRES_DB: ${DB_DATABASE}
+    ports:
+      - "5433:5432"
+
