@@ -1,4 +1,4 @@
-const db = require("./db-connection");
+const db = require("../config/db-connection");
 const pgp = require("pg-promise")();
 
 //Create

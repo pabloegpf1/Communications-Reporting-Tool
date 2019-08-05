@@ -24,7 +24,7 @@ module.exports = function(passport, LocalStrategy) {
             return done(null, user);
           })
           .catch(error =>
-            done(null, false, req.flash("authMessage", "User not found."))
+            done(null, false, req.flash("authMessage", JSON.stringify(error)))
           );
       }
     )

@@ -13,6 +13,11 @@ module.exports = {
         type: Sequelize.TEXT,
         unique: false
       },
+      lead_paragraph: {
+        allowNull: false,
+        type: Sequelize.TEXT,
+        unique: false
+      },
       summary: {
         allowNull: false,
         type: Sequelize.TEXT,

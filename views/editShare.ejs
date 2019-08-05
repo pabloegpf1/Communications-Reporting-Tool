@@ -13,9 +13,6 @@
       <div class="form-group">
         <label for="exampleFormControlInput1">Headline*</label>
         <input type="text" class="form-control" name="headline" value="<%= share.headline %>" required>
-        <div class="invalid-feedback">
-          This field cannot be empty
-        </div>
       </div>
 
       <div class="form-group">
@@ -29,37 +26,30 @@
             <option value="<%= disseminations[i].id %>">[<%= disseminations[i].id %>] <%= disseminations[i].headline %> (<%= disseminations[i].date.getFullYear() %>)</option>
           <% }%>
         </select>
-        <div class="invalid-feedback">
-          You must select the dissemination which the impact refers to.
-        </div>
       </div>
 
       <div class="form-group">
-        <label for="exampleFormControlInput1">Dissemination Headline*</label>
+        <label for="exampleFormControlInput1">Dissemination: Headline*</label>
         <input type="text" class="form-control dissemination" name="dissemination_headline" value="<%= dissemination.headline %>" disabled>
-        <div class="invalid-feedback">
-          This field cannot be empty
-        </div>
       </div>
 
       <div class="form-group">
-        <label for="exampleFormControlInput1">Dissemination Summary*</label>
+        <label for="exampleFormControlInput1">Dissemination: Lead Paragraph*</label>
+        <textarea class="form-control dissemination" name="dissemination_lead_paragraph" rows="3"disabled required><%= dissemination.lead_paragraph %></textarea>
+      </div>
+
+      <div class="form-group">
+        <label for="exampleFormControlInput1">Dissemination: Summary*</label>
         <textarea class="form-control dissemination" name="dissemination_summary" rows="3"disabled><%= dissemination.summary %></textarea>
-        <div class="invalid-feedback">
-          Please add a short summary of the publication
-        </div>
       </div>
 
       <div class="form-row">
         <div class="form-group col">
-            <label for="exampleFormControlSelect1">Dissemination Published Date*</label>
-            <input type="date" class="form-control dissemination" value="<%= dissemination.date%>" name="dissemination_date"disabled>
-            <div class="invalid-feedback">
-              You must add the date when the publication was made.
-            </div>
+          <label for="exampleFormControlSelect1">Dissemination: Published Date*</label>
+          <input type="date" class="form-control dissemination" value="<%= dissemination.date%>" name="dissemination_date"disabled>
         </div>
         <div class="form-group col">
-          <label for="exampleFormControlSelect1">Dissemination PR/NEWS</label>
+          <label for="exampleFormControlSelect1">Dissemination: PR/NEWS</label>
           <select class="form-control dissemination" name="dissemination_pr_news"  disabled>
             <option disabled selected value="<%= dissemination.pr_news %>"><%= dissemination.pr_news %></option>
             <option value="PR">PR</option>
@@ -69,14 +59,12 @@
       </div>
 
       <div class="form-group">
-        <label for="exampleFormControlInput1">Dissemination URL*</label>
+        <label for="exampleFormControlInput1">Dissemination: URL*</label>
         <input type="text" class="form-control dissemination" name="dissemination_url" value="<%= dissemination.url %>" disabled>
-        <div class="invalid-feedback">
-          Please copy and paste the URL from the publication here
-        </div>
       </div>
 
       <div class="form-row">
+
         <div class="form-group col">
           <label for="media">Social Media</label>
           <select class="form-control" id="social_media" name="social_media" required>
@@ -85,9 +73,6 @@
             <option value="<%= social_medias[i].id %>"><%= social_medias[i].name %></option>
             <% }%>
           </select>
-          <div class="invalid-feedback">
-            Please choose one of the registered medias or add a new one
-          </div>
         </div>
 
         <div class="form-group col">
@@ -98,21 +83,16 @@
             <option value="<%= accounts[i].id %>"><%= accounts[i].name %></option>
             <% }%>
           </select>
-          <div class="invalid-feedback">
-            Please choose one of the registered medias or add a new one
-          </div>
         </div>
+
       </div>
 
       <div class="form-group">
-          <div class="form-group">
-            <label for="exampleFormControlInput1">Message</label>
-            <textarea class="form-control" name="message" rows="3"><%= share.message %></textarea>
-            <div class="invalid-feedback">
-              Plase add a message
-            </div>
-          </div>
+        <div class="form-group">
+          <label for="exampleFormControlInput1">Message</label>
+          <textarea class="form-control" name="message" rows="3"><%= share.message %></textarea>
         </div>
+      </div>
 
       <div class="form-group">
         <label for="exampleFormControlInput1">Comments</label>
@@ -120,53 +100,55 @@
       </div>
 
       <div class="row">
+
         <div class="form-group col">
           <div class="form-group">
-              <label for="exampleFormControlSelect1">Language*</label>
-              <select class="form-control" name="language" required>
-                <option selected value="<%= share.language %>"><%= share.language %></option>
-                <option value="Spanish">Spanish</option>
-                <option value="English">English</option>
-                <option value="Other">Other</option>
-              </select>
-              <div class="invalid-feedback">
-                Plase select the language of the impact (select other if multiple languages are used)
-              </div>
-            </div>
+            <label for="exampleFormControlSelect1">Language*</label>
+            <select class="form-control" name="language" required>
+              <option selected value="<%= share.language %>"><%= share.language %></option>
+              <option value="Spanish">Spanish</option>
+              <option value="English">English</option>
+              <option value="Other">Other</option>
+            </select>
+          </div>
         </div>
+
         <div class="form-group col">
-            <div class="form-group">
-              <label for="exampleFormControlSelect1">Date Published*</label>
-              <input type="date" class="form-control" name="date" value="<%= share.date %>" required>
-              <div class="invalid-feedback">
-                You must add the date when the impact was made
-              </div>
-            </div>
+          <div class="form-group">
+            <label for="exampleFormControlSelect1">Date Published*</label>
+            <input type="date" class="form-control" name="date" value="<%= share.date %>" required>
+          </div>
         </div>
+
       </div>
 
       <div class="row" style="margin:20px;">
-          <div class="col">
-            <div class="form-check">
-              <input class="form-check-input" type="checkbox" value="true" name="uploaded" <% if(share.uploaded){ %> checked <%}%> >
-              <label class="form-check-label form-check-label" for="defaultCheck1">Uploaded*</label>
-            </div>
+
+        <div class="col">
+          <div class="form-check">
+            <input class="form-check-input" type="checkbox" value="true" name="uploaded" <% if(share.uploaded){ %> checked <%}%> >
+            <label class="form-check-label form-check-label" for="defaultCheck1">Uploaded*</label>
           </div>
-          <div class="col">
-            <div class="form-check">
-              <input class="form-check-input" type="checkbox" value="true" name="has_video" <% if (share.has_video){ %> checked <% } %>>
-              <label class="form-check-label" for="defaultCheck1"> Has video*</label>
-            </div>
+        </div>
+
+        <div class="col">
+          <div class="form-check">
+            <input class="form-check-input" type="checkbox" value="true" name="has_video" <% if (share.has_video){ %> checked <% } %>>
+            <label class="form-check-label" for="defaultCheck1"> Has video*</label>
           </div>
+        </div>
+
         <div class="col">
           <div class="form-check">
             <input class="form-check-input" type="checkbox" value="true" name="proactivity" <% if (share.proactivity){ %> checked <% } %>>
             <label class="form-check-label" for="defaultCheck1">Proactivity*</label>
           </div>
         </div>
+
       </div>
 
       <div class="form-row">
+
         <div class="form-group col">
           <label for="classification">Classification</label>
           <select class="form-control" name="classification" required>
@@ -175,41 +157,38 @@
               <option value="<%= classifications[i].id %>"><%= classifications[i].classification %></option>
             <% }%>
           </select>
-          <div class="invalid-feedback">
-            Plase select a Classification
-          </div>
         </div>
+
         <div class="form-group col">
-            <label for="photo_count">Number of photos*</label>
-            <select class="form-control" name="photo_count" required>
-              <option selected value="<%= share.photo_count %>"> <%= share.photo_count %> </option>
-              <option value="0">none</option>
-              <option value="1">1</option>
-              <option value="2">2</option>
-              <option value="3">3</option>
-              <option value="4">4</option>
-              <option value="5">5</option>
-              <option value="6">>5</option>
-            </select>
-            <div class="invalid-feedback">
-              You must select the number of photos included in the impact
-            </div>
+          <label for="photo_count">Number of photos*</label>
+          <select class="form-control" name="photo_count" required>
+            <option selected value="<%= share.photo_count %>"> <%= share.photo_count %> </option>
+            <option value="0">none</option>
+            <option value="1">1</option>
+            <option value="2">2</option>
+            <option value="3">3</option>
+            <option value="4">4</option>
+            <option value="5">5</option>
+            <option value="6">>5</option>
+          </select>
         </div>
+
       </div>
 
       <div class="row">
+
         <div class="form-group col-sm-7">
           <label for="exampleFormControlInput1">Source URL*</label>
           <input type="text" class="form-control" name="source_url" required value="<%= share.source_url %>">
-          <div class="invalid-feedback">
-            Please copy and paste the URL from the impact here
-          </div>
         </div>
+
         <div class="form-group col-sm-5">
           <label for="exampleFormControlInput1">Video URL</label>
           <input type="text" class="form-control" name="video_url" value="<%= share.video_url %>">
         </div>
+
       </div>
+
       <a class="btn btn-danger btn-lg" style="float: left; padding: 10px; width:25%; margin: 10px; width:30%" href="/sm-shares/" >Cancel</a>
       <button type="submit"class="btn btn-success btn-lg" style="float: right; padding: 10px; margin: 10px;width:30%">Submit Changes</a>
     </form>

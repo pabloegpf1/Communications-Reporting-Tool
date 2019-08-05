@@ -12,27 +12,23 @@
 
         <div class="form-group">
           <label for="exampleFormControlInput1">Headline*</label>
-          <input type="text" class="form-control" name="headline" required>
-          <div class="invalid-feedback">
-            This field cannot be empty
-          </div>
+          <input type="text" class="form-control" name="headline" data-toggle="tooltip" title="English headline published on the website" required>
+        </div>
+
+        <div class="form-group">
+          <label for="exampleFormControlInput1">Lead Paragraph*</label>
+          <textarea class="form-control" name="lead_paragraph" rows="3" required></textarea>
         </div>
 
         <div class="form-group">
           <label for="exampleFormControlInput1">Summary*</label>
-          <textarea class="form-control" name="summary" rows="3" required></textarea>
-          <div class="invalid-feedback">
-            Please add a short summary of the publication
-          </div>
+          <textarea class="form-control" name="summary" rows="3" data-toggle="tooltip" title="A short version of the headline picking the most important words to summarize the information" required></textarea>
         </div>
 
         <div class="form-row">
           <div class="form-group col">
-              <label for="exampleFormControlSelect1">Date Published*</label>
-              <input type="date" class="form-control" name="date" required>
-              <div class="invalid-feedback">
-                You must add the date when the publication was made.
-              </div>
+            <label for="exampleFormControlSelect1">Date Published*</label>
+            <input type="date" class="form-control" name="date" required>
           </div>
           <div class="form-group col">
             <label for="exampleFormControlSelect1">PR/NEWS</label>
@@ -47,9 +43,6 @@
         <div class="form-group">
           <label for="exampleFormControlInput1">URL*</label>
           <input type="text" class="form-control" name="url" required>
-          <div class="invalid-feedback">
-            Please copy and paste the URL from the publication here
-          </div>
         </div>
 
       <a class="btn btn-danger btn-lg" style="float: left; padding: 10px; margin: 10px; width:30%" href="/disseminations/" >Cancel</a>
