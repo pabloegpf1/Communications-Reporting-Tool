@@ -15,11 +15,11 @@ router.get('/',loggedIn, function(request, response) {
 	});
 });
 
-router.post('/download-annual-communications-report', function(request, response) {
+router.post('/download-report', function(request, response) {
 	Document.createPrImpactReport(request, response)
 })
 
-router.post('/press_release_clipping_spreadsheet', function(request, response) {
+router.post('/download-spreadsheet', function(request, response) {
 	SpreadSheet.createPressClippingSpreadsheet(request, response)
 })
 
