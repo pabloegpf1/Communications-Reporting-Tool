@@ -26,6 +26,7 @@
             <a class="dropdown-item" href="http://172.16.1.173:5000/" target="blank">Access to Metabase</a>
             <div class="dropdown-divider"></div>
             <a class="dropdown-item" data-toggle="modal" data-target="#reportModal" role="button">Download Report</a>
+            <a class="dropdown-item" data-toggle="modal" data-target="#spreadsheetModal" role="button">Download Spreadsheet</a>
           </div>
         </li>
       <li class="nav-item dropdown active">
@@ -60,5 +61,7 @@
       <button class="btn btn-light my-2 my-sm-0" type="submit">Search</button>
     </form>
   </div>
-  <%- include('datePickerModal', {id:"reportModal",url:"/download-annual-communications-report",item:"Report"}) %>  
 </nav>
+
+<%- include('datePickerModal', {id:"reportModal",url:"/download-report",item:"Report"}) %>  
+<%- include('datePickerModal', {id:"spreadsheetModal",url:"/download-spreadsheet",item:"Spreadsheet"}) %>  
