@@ -1,4 +1,4 @@
-const bcrypt = require("bcrypt");
+const bcrypt = require("bcryptjs");
 var Impact = require("../models/queries/impact");
 var User = require("../models/queries/users");
 

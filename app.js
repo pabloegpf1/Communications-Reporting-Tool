@@ -5,20 +5,16 @@ const bodyParser = require('body-parser');
 const cookieParser = require('cookie-parser');
 const logger = require('morgan');
 const dotenv = require('dotenv').config();
-const Sequelize = require('sequelize'), config = require(__dirname + "/models/config/config");
-var sequelize = new Sequelize(
-	config.postgres.database,
-  	config.postgres.username, 
-  	config.postgres.password, {
-    	host: config.postgres.host,
+const Sequelize = require('sequelize');
+var sequelize = new Sequelize(process.env.DB_DATABASE, process.env.DB_USER, process.env.DB_PW, 
+	{
+    	host: process.env.DB_HOST,
     	dialect: 'postgres'
-  })
+  	})
 const passport = require('passport');
 const LocalStrategy = require('passport-local').Strategy;
 const session = require('express-session');
 const flash = require('connect-flash');
-const pdf = require('html-pdf');
-var Excel = require('exceljs');
 
 var indexRouter = require('./routes/index');
 var impactRouter = require('./routes/impact');
@@ -65,7 +61,7 @@ app.use('/stats', statRouter);
 sequelize
 	.authenticate()
 	.then(() => {
-		console.log('Connection has been established successfully.');
+		console.log('Connection has been established successfully');
 	})
 	.catch(err => {
 		console.error('Unable to connect to the database:', err);

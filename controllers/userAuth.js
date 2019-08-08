@@ -1,4 +1,4 @@
-const bcrypt = require("bcrypt");
+const bcrypt = require("bcryptjs");
 var User = require("../models/queries/users");
 
 module.exports = function(passport, LocalStrategy) {

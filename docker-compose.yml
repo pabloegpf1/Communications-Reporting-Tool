@@ -4,29 +4,26 @@ services:
   web:
     build: .
     command: >
-      sh -c  "npm run dev"
+      sh -c  "npx sequelize-cli db:migrate:undo && npx sequelize-cli db:migrate && npx sequelize-cli db:seed:all && npm run dev"
     ports:
       - "3000:3000"
     volumes:
       - ./:/usr/src/app
-      - ./node_modules:/usr/src/app/node_modules 
+      #- ./node_modules:/usr/src/app/node_modules 
     depends_on:
-      - metabase
+  #   - metabase
       - db
     environment:
       DB_HOST: db
       DB_PW: ${DB_PW}
       DB_USER: ${DB_USER}
       DB_DATABASE: ${DB_DATABASE}
-      DB_PORT: "5433"
-      ADMIN_PW: ${ADMIN_PW}
-      USER_PW: ${USER_PW}
-      NODE_ENV: development
+      DB_PORT: ${DB_PORT}
 
-  metabase:
-    image: metabase/metabase
-    ports:
-      - "5000:3000"
+  #metabase:
+  #  image: metabase/metabase
+  #  ports:
+  #    - "5000:3000"
 
   db:
     image: postgres:alpine
@@ -35,5 +32,6 @@ services:
       POSTGRES_USER: ${DB_USER}
       POSTGRES_DB: ${DB_DATABASE}
     ports:
-      - "5433:5432"
+      - "${DB_PORT}:5432"
+
 

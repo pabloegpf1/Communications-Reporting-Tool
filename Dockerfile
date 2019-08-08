@@ -1,4 +1,4 @@
-FROM node:10
+FROM node:latest
 
 WORKDIR /usr/src/app
 
@@ -6,7 +6,8 @@ COPY package*.json ./
 
 RUN npm install
 RUN npm install nodemon -g
-RUN npm install -g sequelize-cli
+RUN npm install --save sequelize-cli
+RUN npm install --save pg pg-hstore
 
 COPY . .
 
