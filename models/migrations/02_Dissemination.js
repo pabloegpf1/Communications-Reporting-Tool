@@ -9,12 +9,12 @@ module.exports = {
         type: Sequelize.INTEGER
       },
       headline: {
-        allowNull: false,
+        allowNull: true,
         type: Sequelize.TEXT,
         unique: false
       },
       lead_paragraph: {
-        allowNull: false,
+        allowNull: true,
         type: Sequelize.TEXT,
         unique: false
       },
@@ -34,12 +34,12 @@ module.exports = {
         onDelete: 'SET DEFAULT'
       },
       pr_news: { 
-        allowNull: false,
+        allowNull: true,
         type: Sequelize.ENUM("PR","NEWS"),
         unique: false
       },
       date: {
-        allowNull: false,
+        allowNull: true,
         type: Sequelize.DATE,
         unique: false
       },

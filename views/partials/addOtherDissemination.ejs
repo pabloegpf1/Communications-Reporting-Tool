@@ -6,10 +6,17 @@
           $('.dissemination').prop("disabled",false);
           $('.dissemination').attr('required');
           $('.dissemination').val(null,false);
+          $(".optional").hide();
+          $(".optional").val(null);
+          $("#dissemination_summary_label").text("Summary");
+          $("#dissemination_pr_news_label").text("PR/NEWS");
         }else{
           const disseminations = <%- JSON.stringify(disseminations) %>;
           const index = disseminations.length - selected
           var date = new Date(disseminations[index].date)
+          $(".optional").show();
+          $("#dissemination_summary_label").text("Dissemination: Summary");
+          $("#dissemination_pr_news_label").text("Dissemination: PR/NEWS");
           $('.dissemination').prop("disabled",true);
           $('.dissemination').removeAttr("required");
           $("input[name='dissemination_headline']").val(disseminations[index].headline);

@@ -135,12 +135,12 @@ const createDisseminationFromRequest = function(data, user_id) {
 const createOtherTypeOfDissemination = function(data, user_id) {
   return (dissemination = {
     added_by: user_id,
-    headline: data.dissemination_headline,
-    lead_paragraph: data.dissemination_lead_paragraph,
+    headline: data.dissemination_headline === "" ? null : data.dissemination_headline,
+    lead_paragraph: data.dissemination_lead_paragraph === "" ? null : dissemination_lead_paragraph,
     summary: data.dissemination_summary,
     pr_news: data.dissemination_pr_news,
-    url: data.dissemination_url,
-    date: data.dissemination_date,
+    url: data.dissemination_url === "" ? null : data.dissemination_url,
+    date: data.dissemination_date === "" ? null : data.dissemination_date,
     include_in_report: false
   });
 };
