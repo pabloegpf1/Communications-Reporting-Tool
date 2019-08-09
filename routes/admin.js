@@ -48,7 +48,7 @@ router.get('/add-social-media', isAdmin, function(request, response) {
 	AdminController.showNewSocialMediaForm(request, response)
 })
 
-router.get('/add-social-media-account', isAdmin, function(request, response) {
+router.get('/add-social-media-account', function(request, response) {
 	AdminController.showNewSocialMediaAccountForm(request, response)
 })
 

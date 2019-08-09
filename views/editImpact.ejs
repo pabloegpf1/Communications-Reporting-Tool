@@ -28,28 +28,28 @@
         </select>
       </div>
 
-      <div class="form-group">
-        <label for="exampleFormControlInput1">Dissemination: Headline*</label>
+      <div class="form-group optional">
+        <label id="dissemination_headline_label" for="exampleFormControlInput1">Dissemination: Headline*</label>
         <input type="text" class="form-control dissemination" name="dissemination_headline" value="<%= dissemination.headline %>" disabled required>
       </div>
 
-      <div class="form-group">
-        <label for="exampleFormControlInput1">Dissemination: Lead Paragraph*</label>
+      <div class="form-group optional">
+        <label id="dissemination_lead_paragraph_label" for="exampleFormControlInput1">Dissemination: Lead Paragraph*</label>
         <textarea class="form-control dissemination" name="dissemination_lead_paragraph" rows="3"disabled required><%= dissemination.lead_paragraph %></textarea>
       </div>
 
       <div class="form-group">
-        <label for="exampleFormControlInput1">Dissemination: Summary*</label>
+        <label id="dissemination_summary_label" for="exampleFormControlInput1">Dissemination: Summary*</label>
         <textarea class="form-control dissemination" name="dissemination_summary" rows="3"disabled required><%= dissemination.summary %></textarea>
       </div>
 
       <div class="form-row">
-        <div class="form-group col">
-            <label for="exampleFormControlSelect1">Dissemination: Published Date*</label>
+        <div class="form-group col optional">
+            <label id="dissemination_published_date_label" for="exampleFormControlSelect1">Dissemination: Published Date*</label>
             <input type="date" class="form-control dissemination" value="<%= dissemination.date %>" name="dissemination_date"disabled required>
         </div>
         <div class="form-group col">
-          <label for="exampleFormControlSelect1">Dissemination: PR/NEWS</label>
+          <label id="dissemination_pr_news_label" for="exampleFormControlSelect1">Dissemination: PR/NEWS</label>
           <select class="form-control dissemination" name="dissemination_pr_news" disabled required> 
             <option disabled selected value="<%= dissemination.pr_news %>"><%= dissemination.pr_news %></option>
             <option value="PR">PR</option>
@@ -58,8 +58,8 @@
         </div>
       </div>
 
-      <div class="form-group">
-        <label for="exampleFormControlInput1">Dissemination: URL*</label>
+      <div class="form-group optional">
+        <label id="dissemination_url_label" for="exampleFormControlInput1">Dissemination: URL*</label>
         <input type="text" class="form-control dissemination" name="dissemination_url" value="<%= dissemination.url %>" disabled>
       </div>
 
@@ -175,11 +175,11 @@
       <div class="row">
         <div class="form-group col">
           <label for="exampleFormControlInput1">Source URL*</label>
-          <input type="text" class="form-control" name="source_url" required value="<%= impact.url %>">
+          <input type="text" class="form-control" name="source_url" value="<%= impact.source_url %>" required>
         </div>
         <div class="form-group col">
           <label for="exampleFormControlInput1">Video URL</label>
-          <input type="text" class="form-control" name="shortened_url" value="<%= impact.shortened_url %>">
+          <input type="text" class="form-control" name="shortened_url" value="<%= impact.video_url %>">
         </div>
       </div>
       <a class="btn btn-danger btn-lg" style="float: left; padding: 10px; width:25%; margin: 10px; width:30%" href="/impacts/" >Cancel</a>
