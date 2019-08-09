@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>New User</title>
+    <% include ./partials/css%>
+  </head>
+<body>
+  <%- include('partials/navbar', {admin:admin}) %>
+  <div class="content-form">
+    <form class="impact-form" action="/admin/add-classification" method="post" novalidate>
+      <h2>New Classification</h2>
+      <div class="form-group">
+        <label for="exampleFormControlInput1">Classification</label>
+        <input type="text" id="classification" class="form-control" name="classification" required>
+      </div>
+      <button type="submit" class="btn btn-success" style="float: right; padding: 10px; margin: 10px;">Add</a>
+    </form>
+  </div>
+<% include ./partials/formValidationScript%>
+<% include ./partials/scripts%>
+</body>
+</html>

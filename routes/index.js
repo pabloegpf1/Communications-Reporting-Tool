@@ -2,7 +2,6 @@ var express = require('express')
 var router = express.Router()
 var Document = require('../controllers/document')
 var SpreadSheet = require('../controllers/spreadsheet')
-var Impact = require("../models/queries/impact")
 
 function loggedIn(request, response, next) {
 	if (request.user) next()

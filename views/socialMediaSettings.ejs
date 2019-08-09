@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Impact Settings</title>
+    <% include ./partials/css%>
+  </head>
+<body>
+    <%- include('partials/navbar', {admin:admin}) %>
+    <div class="content">
+      <div class="row">
+        <h2 style="float: left;"><%= title %></h2>
+      </div>
+      <div class="row row-title">
+        <div class="col"><h3 style="float: left;">Social Media Accounts</h3></div>
+        <div class="col"><a style="float: right;" href="/admin/add-social-media-account" class="btn btn-info">Add new Social Media Account</a></div>
+      </div>
+        <table class="table table-striped table-bordered table-responsive-lg" id="impacts-table">
+          <thead>
+            <tr>
+              <th scope="col">Social Media Accounts</th>
+              <th scope="col">Social Media</th>
+            </tr>
+          </thead>
+          <tbody>
+              <% for(var i=0; i<social_media_accounts.length; i++) {%>
+              <tr>
+                <td><a href="http://<%= social_media_accounts[i].url %>""><%= social_media_accounts[i].name %></a></td>
+                <td><%= social_media_accounts[i].social_media %></td>
+              </tr>
+              <% } %>
+          </tbody>
+        </table>
+        <div class="row row-title">
+          <div class="col"><h3 style="float: left;">Social Medias</h3></div>
+          <div class="col"><a style="float: right;" href="/admin/add-social-media" class="btn btn-info">Add new Social Media</a></div>
+        </div>
+          <table class="table table-striped table-bordered table-responsive-lg" id="impacts-table">
+            <thead>
+              <tr>
+                <th scope="col">Social Media</th>
+              </tr>
+            </thead>
+            <tbody>
+                <% for(var i=0; i<social_medias.length; i++) {%>
+                <tr>
+                  <td><%= social_medias[i].social_media %></td>
+                </tr>
+                <% } %>
+            </tbody>
+          </table>
+    </div>
+  <% include ./partials/scripts%>
+  <% include ./partials/datatablesScripts%>
+</body>
+</html>

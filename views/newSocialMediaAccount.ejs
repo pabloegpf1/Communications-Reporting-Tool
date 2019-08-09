@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>New User</title>
+    <% include ./partials/css%>
+  </head>
+<body>
+  <%- include('partials/navbar', {admin:admin}) %>
+  <div class="content-form">
+    <form class="impact-form" action="/admin/add-social-media-account" method="post" novalidate>
+      <h2>New Social Media Account</h2>
+      <div class="form-group">
+        <label for="exampleFormControlInput1">Social Media</label>
+        <input type="text" id="social_media" class="form-control" name="name" required>
+      </div>
+      <div class="form-group">
+        <label for="exampleFormControlSelect1">Social Media</label>
+          <select class="form-control" name="social_media" required>
+            <option disabled selected value> -- select a social media -- </option>
+            <% for(var i=0; i<social_medias.length; i++) {%>
+              <option value="<%= social_medias[i].id %>"><%= social_medias[i].social_media %></option>
+            <% }%>
+          </select>
+      </div>
+      <div class="form-group">
+        <label for="exampleFormControlInput1">URL</label>
+        <input type="text" id="url" class="form-control" name="url" required>
+      </div>
+      <button type="submit" class="btn btn-success" style="float: right; padding: 10px; margin: 10px;">Add</a>
+    </form>
+  </div>
+<% include ./partials/formValidationScript%>
+<% include ./partials/scripts%>
+</body>
+</html>

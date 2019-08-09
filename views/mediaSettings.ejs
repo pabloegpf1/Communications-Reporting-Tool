@@ -11,19 +11,19 @@
         <h2 style="float: left;"><%= title %></h2>
       </div>
       <div class="row row-title">
-        <div class="col"><h3 style="float: left;">Impact Types</h3></div>
-        <div class="col"><a style="float: right;" href="/admin/add-impact-type" class="btn btn-info">Add Type of Publication</a></div>
+        <div class="col"><h3 style="float: left;">Media Types</h3></div>
+        <div class="col"><a style="float: right;" href="/admin/add-media-type" class="btn btn-info">Add Media Type</a></div>
       </div>
         <table class="table table-striped table-bordered table-responsive-lg" id="impacts-table">
           <thead>
             <tr>
-              <th scope="col">Type</th>
+              <th scope="col">Media Types</th>
             </tr>
           </thead>
           <tbody>
-              <% for(var i=0; i<impactTypes.length; i++) {%>
+              <% for(var i=0; i<types.length; i++) {%>
               <tr>
-                <td><%= impactTypes[i].type %></td>
+                <td><%= types[i].type %></td>
               </tr>
               <% } %>
           </tbody>

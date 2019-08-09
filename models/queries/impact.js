@@ -9,6 +9,7 @@ let baseQuery = `i.id,i.media, i.headline, i.media_section, i.spokesperson, i.co
                 WHERE m.type = m_t.id AND i.media = m.id AND i.type = i_type.id AND i.dissemination = d.id AND i.classification = c.id`;
 //Create
 exports.addImpact = impact =>db.none("INSERT INTO impact ($1:name) VALUES ($1:list)", [impact]);
+exports.addImpacType = impact_type =>db.none("INSERT INTO impact_type (type) VALUES ($1)", [impact_type]);
 
 //Read
 exports.getImpacts = () =>db.any(`SELECT $1:raw ORDER BY date DESC`, [baseQuery]);
