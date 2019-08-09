@@ -10,10 +10,10 @@ const pgp = require("pg-promise")({
 
 const connection = pgp({
     "host": process.env.DB_HOST,
-    "port": portNumber = process.env.DB_PORT ||  "5432",
-    "password": process.env.DB_PW,
+    "port": portNumber = process.env.DB_PORT,
     "database": process.env.DB_DATABASE,
-    "user": process.env.DB_USER
+    "user": process.env.DB_USER,
+    "password": process.env.DB_PW
   });
 
 connection.connect()

@@ -18,7 +18,7 @@ services:
       DB_PW: ${DB_PW}
       DB_USER: ${DB_USER}
       DB_DATABASE: ${DB_DATABASE}
-      DB_PORT: ${DB_PORT}
+      DB_PORT: ${DB_PORT:-5432}
 
   #metabase:
   #  image: metabase/metabase
@@ -32,6 +32,6 @@ services:
       POSTGRES_USER: ${DB_USER}
       POSTGRES_DB: ${DB_DATABASE}
     ports:
-      - "${DB_PORT}:5432"
+      - "${DB_PORT:-5432}:5432"
 
 
