@@ -9,21 +9,21 @@ services:
       - "3000:3000"
     volumes:
       - ./:/usr/src/app
-      #- ./node_modules:/usr/src/app/node_modules 
     depends_on:
-  #   - metabase
+      - metabase
       - db
+    network_mode: "host" #Comment this line if using a if using a Windows/macOS host host
     environment:
-      DB_HOST: host.docker.internal
+      DB_HOST:  localhost # IMPORTANT: Change this to "host.docker.internal" if using a Windows/macOS host
       DB_PW: ${DB_PW}
       DB_USER: ${DB_USER}
       DB_DATABASE: ${DB_DATABASE}
       DB_PORT: ${DB_PORT:-5432}
 
-  #metabase:
-  #  image: metabase/metabase
-  #  ports:
-  #    - "5000:3000"
+  metabase:
+    image: metabase/metabase
+    ports:
+      - "5000:3000"
 
   db:
     image: postgres:alpine
