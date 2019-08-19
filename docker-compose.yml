@@ -4,7 +4,7 @@ services:
   web:
     build: .
     command: >
-      sh -c  "npx sequelize-cli db:migrate:undo && npx sequelize-cli db:migrate && npx sequelize-cli db:seed:all && npm run dev"
+      sh -c  "npx sequelize-cli db:migrate:undo:all && npx sequelize-cli db:migrate && npx sequelize-cli db:seed:all && npm run dev"
     ports:
       - "3000:3000"
     volumes:
@@ -14,7 +14,7 @@ services:
   #   - metabase
       - db
     environment:
-      DB_HOST: db
+      DB_HOST: host.docker.internal
       DB_PW: ${DB_PW}
       DB_USER: ${DB_USER}
       DB_DATABASE: ${DB_DATABASE}
