@@ -4,10 +4,11 @@
     <title>PDF</title>
   </head>
 <body>
-  <h2 style="text-align: center;font-weight: bold;margin-top: 40%;font-weight: bold;">IMDEA Networks Communications Report</h2>
+  <h2 style="text-align: center;font-weight: bold;margin-top: 300px;font-weight: bold;">IMDEA Networks Communications Report</h2>
   <h2 style="text-align: center;font-weight: bold;margin-top: 5%">Media Impact</h2>
   <h3 style="text-align: center;font-weight: bold">From: <%= initialDate %> To: <%= finalDate %></h3>
-  <br><div style="page-break-after:always;"></div>
+  <br style="page-break-after: always; clear:both;">
+
   <% for(var i=0; i<disseminations.length; i++) { %>
     <p style="font-size:18px; margin-top: 10%;font-weight: bold;" href="<%= disseminations[i].url %>"><%= disseminations[i].headline %> [<%= disseminations[i].pr_news %>]</p>
     <p style="font-size:12px;"><%= disseminations[i].date.toDateString() %></p>
