@@ -11,7 +11,7 @@
       <h2>Add Social Media Share</h2>
       
       <div class="form-group">
-        <label for="exampleFormControlInput1">SM Share Headline*</label>
+        <label for="exampleFormControlInput1">Headline*</label>
         <input type="text" class="form-control" name="headline" data-toggle="tooltip" title="Category in all caps + name. E.g.: EVENT: Annual Workshop. Category given to the post that can be Awards, Careers, Collaboration, Events, External, Incorporations/Departures, Institutional, Media impacts, Mention, Other, Projects or Publications" required>
       </div>
       
@@ -94,15 +94,20 @@
         </div>
       </div>
 
+      <div class="form-group">
+        <label for="exampleFormControlInput1">Comments</label>
+        <textarea class="form-control" name="comments" rows="2"></textarea>
+      </div>
+
       <div class="form-row">
         <div class="form-group col"style="display: flex;align-items: center;">    
           <div class="form-check form-check-inline">
             <input class="form-check-input" type="checkbox" id="uploaded" value="true" name="uploaded" data-toggle="tooltip" title="Tick if we have actively published on any web portals">
-            <label class="form-check-label" for="uploaded">Uploaded*</label>
+            <label class="form-check-label" for="uploaded">Uploaded</label>
           </div>
           <div class="form-check form-check-inline">
             <input class="form-check-input" type="checkbox" id="proactivity" value="true" name="proactivity" data-toggle="tooltip" title="Tick if the impact is a result of our dissemination activities but we haven’t directly published it">
-            <label class="form-check-label" for="proactivity">Proactivity*</label>
+            <label class="form-check-label" for="proactivity">Proactivity</label>
           </div>
         </div>
       </div>
@@ -150,27 +155,19 @@
 
       <div class="form-row">
         <div class="form-group col">
-          <label for="exampleFormControlInput1">Video URL</label>
-          <input type="text" class="form-control" name="spokesperson">
-        </div>
-        <div class="form-check form-check-inline">
-          <input class="form-check-input" type="checkbox" id="has_video" value="true" name="has_video">
-          <label class="form-check-label" for="has_video" data-toggle="tooltip" title="If the post contains a video of our Youtube channel, tick this box and the add the link on the “Video URL” box"> Has video</label>
-        </div>
-      </div>
-
-      <div class="form-row">
-        <div class="col">
           <div class="form-group">
             <label for="exampleFormControlInput1">Source URL*</label>
             <input type="text" class="form-control" name="source_url" data-toggle="tooltip" title="The link related to the dissemination that connects with the impact we’re adding, usually from our website" required>
           </div>
         </div>
+        <div class="form-group col">
+          <label for="exampleFormControlInput1">Video URL</label>
+          <input type="text" class="form-control" name="video_url">
+        </div>
       </div>
-      
-      <div class="form-group">
-        <label for="exampleFormControlInput1">Comments</label>
-        <textarea class="form-control" name="comments" rows="2"></textarea>
+
+      <div class="form-row">
+        
       </div>
 
       <a class="btn btn-danger btn-lg" style="float: left;margin: 10px;" href="/sm-shares/" >Cancel</a>

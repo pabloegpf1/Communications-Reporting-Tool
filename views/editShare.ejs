@@ -127,21 +127,14 @@
         <div class="col">
           <div class="form-check">
             <input class="form-check-input" type="checkbox" value="true" name="uploaded" <% if(share.uploaded){ %> checked <%}%> >
-            <label class="form-check-label form-check-label" for="defaultCheck1">Uploaded*</label>
-          </div>
-        </div>
-
-        <div class="col">
-          <div class="form-check">
-            <input class="form-check-input" type="checkbox" value="true" name="has_video" <% if (share.has_video){ %> checked <% } %>>
-            <label class="form-check-label" for="defaultCheck1"> Has video*</label>
+            <label class="form-check-label form-check-label" for="defaultCheck1">Uploaded</label>
           </div>
         </div>
 
         <div class="col">
           <div class="form-check">
             <input class="form-check-input" type="checkbox" value="true" name="proactivity" <% if (share.proactivity){ %> checked <% } %>>
-            <label class="form-check-label" for="defaultCheck1">Proactivity*</label>
+            <label class="form-check-label" for="defaultCheck1">Proactivity</label>
           </div>
         </div>
 
@@ -175,18 +168,15 @@
 
       </div>
 
-      <div class="row">
-
-        <div class="form-group col-sm-7">
+      <div class="form-group row">
+        <div class="form-group col">
           <label for="exampleFormControlInput1">Source URL*</label>
           <input type="text" class="form-control" name="source_url" required value="<%= share.source_url %>">
         </div>
-
-        <div class="form-group col-sm-5">
+        <div class="form-group col">
           <label for="exampleFormControlInput1">Video URL</label>
           <input type="text" class="form-control" name="video_url" value="<%= share.video_url %>">
         </div>
-
       </div>
 
       <a class="btn btn-danger btn-lg" style="float: left; padding: 10px; width:25%; margin: 10px; width:30%" href="/sm-shares/" >Cancel</a>

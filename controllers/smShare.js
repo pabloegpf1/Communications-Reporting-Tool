@@ -128,12 +128,12 @@ const createSmShareFromRequest = function(data, user_id) {
     comments: data.comments,
     language: data.language,
     uploaded: data.published === undefined ? false : true,
-    has_video: data.has_video === undefined ? false : true,
+    has_video: data.video_url === "" ? false : true,
     proactivity: data.proactivity === undefined ? false : true,
     photo_count: data.photo_count,
     classification: data.classification,
-    video_url: data.video_url,
-    source_url: data.source_url,
+    video_url: data.video_url === "" ? null : data.video_url,
+    source_url: data.source_url === "" ? null : data.source_url,
     date: data.date
   });
 };
