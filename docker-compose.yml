@@ -12,7 +12,7 @@ services:
     depends_on:
       - metabase
       - db
-    network_mode: "host" #Comment this line if using a if using a Windows/macOS host host
+    #network_mode: "host" #Comment this line if using a if using a Windows/macOS host host
     environment:
       DB_HOST:  localhost # IMPORTANT: Change this to "host.docker.internal" if using a Windows/macOS host
       DB_PW: ${DB_PW}
