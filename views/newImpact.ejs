@@ -5,23 +5,24 @@
     <% include ./partials/css%>
   </head>
 <body>
+ 
   <%- include('partials/navbar', {admin:admin}) %>
   <div class="content-form">
     <form class="publication-form" action="/impacts/add" method="post" novalidate>
       <h2>Add Media Impact</h2>
       
       <div class="form-group">
-        <label for="exampleFormControlInput1">Impact Headline*</label>
+        <label for="headline">Impact Headline*</label>
         <input type="text" class="form-control" name="headline" data-toggle="tooltip" title="The headline showcased on the media impact" required>
       </div>
       
       <div class="form-group">
-        <label for="exampleFormControlInput1">Dissemination*</label>
-        <select class="form-control" name="dissemination" data-style="btn-light" data-show-subtext="true" data-live-search="true" data-toggle="tooltip" title="Choose the dissemination that the impact is linked to and the fields will fill automatically. If you want to add other media impact not related to any dissemination, choose “other dissemination” and fill the boxes as necessary" required>
-          <option disabled selected value> -- select a dissemination -- </option>
-          <option disabled>----------</option>
+        <label for="dissemination">Dissemination*</label>
+        <select class="selectpicker form-control" data-validation="required" data-size="10" data-live-search="true" data-style="btn-light border" name="dissemination" data-toggle="tooltip" title="Choose the dissemination that the impact is linked to and the fields will fill automatically. If you want to add other media impact not related to any dissemination, choose “other dissemination” and fill the boxes as necessary" required>
+          <option disabled selected value> -- select a Dissemination -- </option>
+          <option data-divider="true"></option>
           <option value="-1">Other dissemination (Add info manually) </option>
-          <option disabled>----------</option>
+          <option data-divider="true"></option>
           <% for(var i=0; i<disseminations.length; i++) {%>
             <option value="<%= disseminations[i].id %>">[<%= disseminations[i].id %>] <%= disseminations[i].headline %> (<%= disseminations[i].date.getFullYear() %>)</option>
           <% }%>
@@ -34,24 +35,24 @@
       </div>
 
       <div class="form-group optional">
-        <label id="dissemination_lead_paragraph_label" for="exampleFormControlInput1">Dissemination: Lead Paragraph*</label>
+        <label id="dissemination_lead_paragraph_label" for="dissemination_lead_paragraph">Dissemination: Lead Paragraph*</label>
         <textarea class="form-control dissemination" name="dissemination_lead_paragraph" rows="3"disabled></textarea>
       </div>
 
       <div class="form-group">
-        <label id="dissemination_summary_label" for="exampleFormControlInput1">Dissemination: Summary*</label>
+        <label id="dissemination_summary_label" for="dissemination_summary">Dissemination: Summary*</label>
         <textarea class="form-control dissemination" name="dissemination_summary" rows="3"disabled></textarea>
       </div>
 
       <div class="form-row">
 
         <div class="form-group col optional">
-          <label id="dissemination_date_label" for="exampleFormControlSelect1">Dissemination: Published Date*</label>
+          <label id="dissemination_date_label" for="dissemination_date">Dissemination: Published Date*</label>
           <input type="date" class="form-control dissemination" name="dissemination_date"disabled>
         </div>
 
         <div class="form-group col">
-          <label id="dissemination_pr_news_label" for="exampleFormControlSelect1">Dissemination: PR/NEWS</label>
+          <label id="dissemination_pr_news_label" for="dissemination_pr_news">Dissemination: PR/NEWS</label>
           <select class="form-control dissemination" name="dissemination_pr_news"disabled>
             <option disabled selected value> -- select an option -- </option>
             <option value="PR">PR</option>
@@ -62,15 +63,15 @@
       </div>
 
       <div class="form-group optional">
-        <label id="dissemination_summary_label" for="exampleFormControlInput1">Dissemination: URL*</label>
+        <label id="dissemination_summary_label" for="dissemination_url">Dissemination: URL*</label>
         <input type="text" class="form-control dissemination" name="dissemination_url"disabled>
       </div>
       
       <div class="form-row">
 
         <div class="form-group col">
-          <label for="exampleFormControlSelect1">Media (<a href='/media/add'>Add new</a>)</label>
-          <select class="form-control" name="media" data-show-subtext="true" data-live-search="true" data-toggle="tooltip" title="You can add a new media outlet if it isn’t on the drop-down list" required>
+          <label for="media">Media (<a href='/media/add'>Add new</a>)</label>
+          <select class="form-control selectpicker" data-size="10" data-live-search="true" data-style="btn-light border" name="media" data-toggle="tooltip" title="You can add a new media outlet if it isn’t on the drop-down list" required>
             <option disabled selected value> -- Select a Media -- </option>
             <% for(var i=0; i<medias.length; i++) {%>
               <option value="<%= medias[i].id %>">[<%= medias[i].format %>] <%= medias[i].name %> </option>

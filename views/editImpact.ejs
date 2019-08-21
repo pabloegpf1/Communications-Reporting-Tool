@@ -17,7 +17,7 @@
 
       <div class="form-group">
         <label for="exampleFormControlInput1">Dissemination*</label>
-        <select class="form-control" name="dissemination" data-style="btn-light" data-show-subtext="true"  data-live-search="true" required>
+        <select class="form-control selectpicker" data-size="10" data-live-search="true" data-style="btn-default border" name="dissemination" required>
           <option selected value="<%= impact.dissemination %>"><%= dissemination.headline %></option>
           <option disabled>----------</option>
           <option value="-1">Other dissemination (Add info manually) </option>
@@ -172,17 +172,14 @@
           <label for="exampleFormControlInput1">Comments</label>
           <textarea class="form-control" name="comments" rows="2"><%= impact.comments %></textarea>
         </div>
-  
-
-
-
 
       <a class="btn btn-danger btn-lg" style="float: left; padding: 10px; width:25%; margin: 10px; width:30%" href="/impacts/" >Cancel</a>
       <button type="submit"class="btn btn-success btn-lg" style="float: right; padding: 10px; margin: 10px;width:30%">Submit Changes</a>
     </form>
   </div>
-  <% include ./partials/addOtherDissemination%>
   <% include ./partials/formValidationScript%>
-  <% include ./partials/scripts%>
+  <% include ./partials/scripts%>  
+  <% include ./partials/addOtherDissemination%>
+
 </body>
 </html>

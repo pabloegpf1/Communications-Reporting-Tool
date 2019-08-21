@@ -17,7 +17,7 @@
       
       <div class="form-group">
         <label for="exampleFormControlInput1">Dissemination*</label>
-        <select class="form-control" name="dissemination" data-style="btn-light" data-show-subtext="true" data-live-search="true" data-toggle="tooltip" title="As the impacts, choose the dissemination that corresponds to the posts on social media networks. If the post is something not related to any dissemination (e.g. job advertisements) click on “other dissemination” and fill the boxes as necessary" required>
+        <select class="form-control selectpicker" data-size="10" data-live-search="true" data-style="btn-default border" name="dissemination" data-toggle="tooltip" title="As the impacts, choose the dissemination that corresponds to the posts on social media networks. If the post is something not related to any dissemination (e.g. job advertisements) click on “other dissemination” and fill the boxes as necessary" required>
           <option disabled selected value> -- select a dissemination -- </option>
           <option disabled>----------</option>
           <option value="-1">Other dissemination (Add info manually) </option>
@@ -69,7 +69,7 @@
       <div class="form-row">
         <div class="form-group col">
           <label for="exampleFormControlSelect1">Social Media</label>
-          <select class="form-control" name="social_media" data-show-subtext="true" data-live-search="true" data-toggle="tooltip" title="In which the post has been published" required>
+          <select class="form-control" name="social_media" data-toggle="tooltip" title="In which the post has been published" required>
             <option disabled selected value> -- Select a Social Media -- </option>
             <% for(var i=0; i<social_medias.length; i++) {%>
               <option value="<%= social_medias[i].id %>"><%= social_medias[i].social_media %> </option>
@@ -78,7 +78,7 @@
         </div>
         <div class="form-group col">
           <label for="exampleFormControlInput1">Social Media Account* (<a href='/admin/add-social-media-account'>Add new</a>)</label>
-          <select class="form-control" name="social_media_account" data-show-subtext="true" data-live-search="true" required>
+          <select class="form-control" name="social_media_account" required>
             <option disabled selected value> -- Select a Social Media -- </option>
             <% for(var i=0; i<social_media_accounts.length; i++) {%>
               <option value="<%= social_media_accounts[i].id %>">[<%= social_media_accounts[i].social_media %>] <%= social_media_accounts[i].name %> </option>
