@@ -3,13 +3,12 @@ services:
 
   web:
     build: .
-    command: ["npm","run","dev"]
+    command: ["npm","run","migrate"]
     ports:
       - "3000:3000"
     volumes:
       - ./:/usr/src/app
     depends_on:
-      - metabase
       - db
     #network_mode: "host" #Comment this line if using a if using a Windows/macOS host host
     environment:
@@ -19,11 +18,6 @@ services:
       DB_DATABASE: ${DB_DATABASE}
       DB_PORT: ${DB_PORT:-5432}
 
-  metabase:
-    image: metabase/metabase
-    ports:
-      - "5000:3000"
-
   db:
     image: postgres:alpine
     environment:
@@ -32,3 +26,7 @@ services:
       POSTGRES_DB: ${DB_DATABASE}
     ports:
       - "${DB_PORT:-5432}:5432"
+
+  metabase:
+  
+
