@@ -9,7 +9,16 @@
   <h3 style="text-align: center;font-weight: bold">From: <%= initialDate %> To: <%= finalDate %></h3>
   <br style="page-break-after: always; clear:both;">
 
+  <% var months = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December']; %>
+  <% var currentYear = 0; var currentMonth = 0%>
   <% for(var i=0; i<disseminations.length; i++) { %>
+    <% var year = disseminations[i].date.getFullYear(); var month = disseminations[i].date.getMonth()%>
+    <% if(year != currentYear || month != currentMonth){ %>
+    <% currentYear= year; currentMonth = month; %>
+    <br style="page-break-after: always; clear:both;">
+    <h1 style="text-align: center;font-weight: bold;margin-top: 400px;font-weight: bold;"><%=months[currentMonth]%> <%=currentYear%></h1>
+    <br style="page-break-after: always; clear:both;">
+    <% } %>
     <p style="font-size:18px; margin-top: 10%;font-weight: bold;" href="<%= disseminations[i].url %>"><%= disseminations[i].headline %> [<%= disseminations[i].pr_news %>]</p>
     <p style="font-size:12px;"><%= disseminations[i].date.toDateString() %></p>
     <p style="font-size:14px"><%= disseminations[i].lead_paragraph %></p>
