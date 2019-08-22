@@ -24,7 +24,7 @@ module.exports = function(passport, LocalStrategy) {
             return done(null, user);
           })
           .catch(error =>
-            done(null, false, req.flash("authMessage", JSON.stringify(error)))
+            done(null, false, req.flash("authMessage", "Please try again"))
           );
       }
     )
