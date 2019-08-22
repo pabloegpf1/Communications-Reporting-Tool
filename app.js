@@ -6,6 +6,7 @@ const cookieParser = require('cookie-parser');
 const logger = require('morgan');
 const dotenv = require('dotenv').config();
 const Sequelize = require('sequelize');
+const events = require('events').EventEmitter.defaultMaxListeners = 15;
 var sequelize = new Sequelize(process.env.DB_DATABASE, process.env.DB_USER, process.env.DB_PW, 
 	{
 		port: process.env.DB_PORT,
