@@ -5,7 +5,7 @@
   "scripts": {
     "dev": "nodemon -L",
     "start": "node ./bin/www",
-    "migrate": "npx sequelize-cli db:migrate:undo:all && npx sequelize-cli db:migrate && npx sequelize-cli db:seed:all && nodemon -L"
+    "migrate": "npm install && npx sequelize-cli db:migrate:undo:all && npx sequelize-cli db:migrate && npx sequelize-cli db:seed:all"
   },
   "dependencies": {
     "bcryptjs": "^2.4.3",
