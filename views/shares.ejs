@@ -25,7 +25,7 @@
                   <th width="14%" scope="col">Social Media</th>
                   <th width="14%" scope="col">Classification</th>
                   <th width="10%" scope="col">Date</th>
-                  <th class="no-sort" width="7%" scope="col">Details</th>
+                  <th class="no-sort" width="7%" scope="col">Link</th>
                 </tr>
               </thead>
               <tbody>
@@ -33,13 +33,13 @@
                 <tr>
                   <td><%= shares[i].id %></td>
                   <td style="text-overflow: ellipsis;white-space: nowrap;overflow: hidden;">
-                    <a href="<%= shares[i].source_url %>" target="_blank" ><%= shares[i].message %></a>
+                    <a href="/sm-shares/<%= shares[i].id %>" ><%= shares[i].message %></a>
                   </td>
                   <td><%= shares[i].headline %></td>
                   <td><%= shares[i].social_media %></td>
                   <td><%= shares[i].classification %></td>
                   <td><%= shares[i].date.toLocaleDateString() %></td>
-                  <td style="text-align: center"><a class="fas fa-list" href="/sm-shares/<%= shares[i].id %>" ></a></td>
+                  <td style="text-align: center"><a class="fas fa-list" href="<%= shares[i].source_url %>" target="_blank"></a></td>
                 </tr>
                 <% } %>
               </tbody>
