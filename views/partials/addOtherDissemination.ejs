@@ -1,8 +1,8 @@
 <script> 
     $(document).ready(function(disseminations){
       $("select[name='dissemination']").on('change',function(){
-        var selected = $(this).val()
-        if(selected =="-1"){
+        var selected = $(this).prop('selectedIndex');
+        if(selected =="3"){
           $('.dissemination').prop("disabled",false);
           $('.dissemination').attr('required');
           $('.dissemination').val(null,false);
@@ -12,7 +12,10 @@
           $("#dissemination_pr_news_label").text("PR/NEWS*");
         }else{
           const disseminations = <%- JSON.stringify(disseminations) %>;
-          const index = disseminations.length - selected
+          const index = selected - 5;
+          console.log(selected);
+          console.log(disseminations);
+          console.log(disseminations[index].date);
           var date = new Date(disseminations[index].date)
           $(".optional").show();
           $("#dissemination_summary_label").text("Dissemination: Summary*");
