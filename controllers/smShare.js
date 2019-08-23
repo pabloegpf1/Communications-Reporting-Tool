@@ -82,13 +82,13 @@ exports.AddShare = (request, response) => {
       newSmShare.dissemination = dissemination.id
       SMshare.addShare(newSmShare)
       .then(() => response.redirect("/sm-shares"))
-      .catch(err => response.render("error", { message: "Error", error: err }));
+      .catch(err => response.render("error-pkey", { admin: request.user.admin }));
     })
     .catch(err => response.render("error", { message: "Error", error: err }));
   }else{
     SMshare.addShare(newSmShare)
       .then(() => response.redirect("/sm-shares"))
-      .catch(err => response.render("error", { message: "Error", error: err }));
+      .catch(err => response.render("error-pkey", { admin: request.user.admin }));
   }  
 };
 
@@ -101,13 +101,13 @@ exports.editShare = (request, response) => {
       newShare.dissemination = dissemination.id
       SMshare.updateShare(newShare, request.params.id)
       .then(() => response.redirect("/sm-shares"))
-      .catch(err => response.render("error", { message: "Error", error: err }));
+      .catch(err => response.render("error-pkey", { admin: request.user.admin }));
     })
-    .catch(err => response.render("error", { message: "Error", error: err }));
+    .catch(err => response.render("error-pkey", { admin: request.user.admin }));
   }else{
     SMshare.updateShare(newShare,request.params.id)
     .then(() => response.redirect("/sm-shares"))
-    .catch(err => response.render("error", { message: "Error", error: err }));
+    .catch(err => response.render("error-pkey", { admin: request.user.admin }));
   }
 };
 

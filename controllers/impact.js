@@ -107,13 +107,13 @@ exports.addImpact = (request, response) => {
       newImpact.dissemination = dissemination.id
       Impact.addImpact(newImpact)
       .then(() => response.redirect("/impacts"))
-      .catch(err => response.render("error", { message: "Error", error: err }));
+      .catch(err => response.render("error-pkey", { admin: request.user.admin }));
     })
-    .catch(err => response.render("error", { message: "Error", error: err }));
+    .catch(err => response.render("error-pkey", { admin: request.user.admin }));
   }else{
     Impact.addImpact(newImpact)
       .then(() => response.redirect("/impacts"))
-      .catch(err => response.render("error", { message: "Error", error: err }));
+      .catch(err => response.render("error-pkey", { admin: request.user.admin }));
   }  
 };
 
@@ -138,13 +138,13 @@ exports.editImpact = (request, response) => {
       console.log(newImpact)
       Impact.updateImpact(newImpact, request.params.id)
       .then(() => response.redirect("/impacts"))
-      .catch(err => response.render("error", { message: "Error", error: err }));
+      .catch(err => response.render("error-pkey", { admin: request.user.admin }));
     })
-    .catch(err => response.render("error", { message: "Error", error: err }));
+    .catch(err => response.render("error-pkey", { admin: request.user.admin }));
   }else{
     Impact.updateImpact(newImpact, request.params.id)
       .then(() => response.redirect("/impacts"))
-      .catch(err => response.render("error", { message: "Error", error: err }));
+      .catch(err => response.render("error-pkey", { admin: request.user.admin }));
   }
 };
 

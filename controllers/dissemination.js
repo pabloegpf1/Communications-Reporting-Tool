@@ -81,8 +81,8 @@ exports.addDissemination = (request, response) => {
   );
   Dissemination.addDissemination(newDissemination)
     .then(() => response.redirect("/disseminations"))
-    .catch(err => response.render("error", { message: "Error", error: err }));
-};
+    .catch(err => response.render("error-pkey", { admin: request.user.admin }));
+  };
 
 exports.addOtherDissemination = (request, response) => {
   let newDissemination = createOtherTypeOfDissemination(
@@ -111,8 +111,8 @@ exports.editDissemination = (request, response) => {
   );
   Dissemination.updateDissemination(newDissemination, request.params.id)
     .then(() => response.redirect("/disseminations"))
-    .catch(err => response.render("error", { message: "Error", error: err }));
-};
+    .catch(err => response.render("error-pkey", { admin: request.user.admin }));
+  };
 
 exports.deleteDissemination = (request, response) => {
   Dissemination.deleteDissemination(request.params.id)
