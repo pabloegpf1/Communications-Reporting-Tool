@@ -47,12 +47,14 @@ exports.showNewUserForm = (request, response) => {
 };
 
 exports.changeUserStatus = (request, response) => {
+  if(request.params.id == 1) response.redirect("/admin/users") //Cannot change status of user "Admin"
   Users.changeStatus(request.params.id)
     .then(() => response.redirect("/admin/users"))
     .catch(err => response.render("error", { message: "Error", error: err }));
 };
 
 exports.deleteUser = (request, response) => {
+  if(request.params.id == 1) response.redirect("/admin/users") //Cannot delete user "Admin"
   Users.deleteUser(request.params.id)
   .then(() => response.redirect("/admin/users"))
   .catch(err => response.render("error", { message: "Error", error: err }));

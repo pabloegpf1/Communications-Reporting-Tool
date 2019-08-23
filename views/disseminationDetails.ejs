@@ -47,7 +47,7 @@
 				<input type="text" class="form-control" name="url" rows="1" value="<%= dissemination.url %>" readonly />
 			</div>
 
-			<a style="float: left; padding: 10px; width:20%; margin: 10px; width:30%" href="/disseminations/delete/<%= dissemination.id %>" class="btn btn-danger btn-lg">Delete</a>
+			<a style="float: left; padding: 10px; width:20%; margin: 10px; width:30%" onclick="return confirm('Are you sure you want to delete this dissemination?')" href="/disseminations/delete/<%= dissemination.id %>" class="btn btn-danger btn-lg">Delete</a>
 			<a style="float: right; padding: 10px; width:20%; margin: 10px; width:30%" href="/disseminations/edit/<%= dissemination.id %>" class="btn btn-info btn-lg" >Edit</a>
 		</div>
 		<% include ./partials/scripts%>

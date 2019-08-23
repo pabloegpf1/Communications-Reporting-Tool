@@ -6,7 +6,7 @@ exports.addUser = user =>
   db.none("INSERT INTO users ($1:name) VALUES ($1:list)", [user]);
   
 //Read
-exports.getUsers = () => db.any("SELECT * FROM users ORDER BY admin DESC");
+exports.getUsers = () => db.any("SELECT * FROM users ORDER BY id");
 exports.getUserById = user_id =>
 db.one("SELECT * FROM users WHERE id = $1", [user_id]);
 exports.getUserByUsername = username =>

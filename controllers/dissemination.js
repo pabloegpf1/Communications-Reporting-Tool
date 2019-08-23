@@ -93,6 +93,7 @@ exports.addOtherDissemination = (request, response) => {
 };
 
 exports.searchDissemination = (request, response) => {
+  if(request.body.string == "") response.redirect('disseminations')
   Dissemination.searchDissemination(request.body.string)
     .then(disseminations => {
       response.render("disseminations", {

@@ -110,7 +110,7 @@
 					</div>
 				</div>
 			</div>
-			<a style="float: left; padding: 10px; width:20%; margin: 10px; width:30%" href="/sm-shares/delete/<%= share.id %>" class="btn btn-danger btn-lg">Delete</a>
+			<a style="float: left; padding: 10px; width:20%; margin: 10px; width:30%" onclick="return confirm('Are you sure you want to delete this social media share?')" href="/sm-shares/delete/<%= share.id %>" class="btn btn-danger btn-lg">Delete</a>
 			<a style="float: right; padding: 10px; width:20%; margin: 10px; width:30%" href="/sm-shares/edit/<%= share.id %>" class="btn btn-info btn-lg">Edit</a>
 		</div>
 		<% include ./partials/scripts%>
