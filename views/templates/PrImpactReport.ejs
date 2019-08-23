@@ -22,8 +22,8 @@
     <p style="font-size:18px; margin-top: 10%;font-weight: bold;" href="<%= disseminations[i].url %>"><%= disseminations[i].headline %> [<%= disseminations[i].pr_news %>]</p>
     <p style="font-size:12px;"><%= disseminations[i].date.toDateString() %></p>
     <p style="font-size:14px"><%= disseminations[i].lead_paragraph %></p>
-    <% for(var j=0; j<impacts.length; j++) { %>
-      <% var addTitle = true; if(impacts[j].dissemination == disseminations[i].id && impacts[j].uploaded == true){%>
+    <% var addTitle = true; for(var j=0; j<impacts.length; j++) { %>
+      <% if(impacts[j].dissemination == disseminations[i].id && impacts[j].uploaded == true){%>
         <% if(addTitle == true){%>
           <p style="font-size:12px;color: brown;">Media Dissemination performed by IMDEA Networks</p>
           <% addTitle = false %>
