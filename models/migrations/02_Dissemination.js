@@ -21,7 +21,7 @@ module.exports = {
       summary: {
         allowNull: false,
         type: Sequelize.TEXT,
-        unique: true
+        unique: false
       },
       added_by: { 
         allowNull: false,
