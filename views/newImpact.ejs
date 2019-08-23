@@ -70,7 +70,7 @@
       <div class="form-row">
 
         <div class="form-group col">
-          <label for="media">Media (<a href='/media/add'>Add new</a>)</label>
+          <label for="media">Media* (<a href='/media/add'>Add new</a>)</label>
           <select class="form-control selectpicker" data-size="10" data-live-search="true" data-style="btn-light border" name="media" data-toggle="tooltip" title="You can add a new media outlet if it isn’t on the drop-down list" required>
             <option disabled selected value> -- Select a Media -- </option>
             <% for(var i=0; i<medias.length; i++) {%>
@@ -89,7 +89,7 @@
       <div class="form-row">
 
         <div class="form-group col">
-          <label for="type">Type of Publication</label>
+          <label for="type">Type of Publication*</label>
           <select class="form-control" name="type" required>
             <option disabled selected value> -- Select a Type -- </option>
             <% for(var i=0; i<types.length; i++) {%>
@@ -99,7 +99,7 @@
         </div>
 
         <div class="form-group col">   
-          <label for="type">Uploaded/Proactivity</label>
+          <label for="type">Uploaded/Proactivity*</label>
           <select class="form-control" name="uploaded_proactivity" required>
             <option disabled selected value> -- Select an option -- </option>
             <option value="Uploaded">Uploaded</option>
@@ -130,7 +130,7 @@
 
       <div class="form-row">
         <div class="form-group col">
-          <label for="classification">Classification</label>
+          <label for="classification">Classification*</label>
           <select class="form-control" name="classification" required>
             <option disabled selected value> -- Select a Classification -- </option>
             <% for(var i=0; i<classifications.length; i++) {%>
@@ -140,7 +140,7 @@
         </div>
 
         <div class="form-group col">
-          <label for="classification">Number of Photos</label>
+          <label for="classification">Number of Photos*</label>
           <select class="form-control" name="photo_count" required>
             <option disabled selected value> -- Number of Photos -- </option>
             <option value="0">none</option>

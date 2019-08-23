@@ -51,7 +51,7 @@
         </div>
 
         <div class="form-group col">
-          <label id="dissemination_pr_news_label" for="dissemination_pr_news">Dissemination: PR/NEWS</label>
+          <label id="dissemination_pr_news_label" for="dissemination_pr_news">Dissemination: PR/NEWS*</label>
           <select class="form-control dissemination" name="dissemination_pr_news" disabled>
             <option disabled selected value> -- select an option -- </option>
             <option value="PR">PR</option>
@@ -68,7 +68,7 @@
       
       <div class="form-row">
         <div class="form-group col">
-          <label for="exampleFormControlSelect1">Social Media</label>
+          <label for="exampleFormControlSelect1">Social Media*</label>
           <select class="form-control" name="social_media" data-toggle="tooltip" title="In which the post has been published" required>
             <option disabled selected value> -- Select a Social Media -- </option>
             <% for(var i=0; i<social_medias.length; i++) {%>
@@ -89,7 +89,7 @@
 
       <div class="form-group">
         <div class="form-group">
-          <label for="exampleFormControlInput1">Message</label>
+          <label for="exampleFormControlInput1">Message*</label>
           <textarea class="form-control" name="message" rows="3" data-toggle="tooltip" title="The full text of the post"></textarea>
         </div>
       </div>
@@ -101,7 +101,7 @@
 
       <div class="form-row">
         <div class="form-group col">   
-          <label for="type">Uploaded/Proactivity</label>
+          <label for="type">Uploaded/Proactivity*</label>
           <select class="form-control" name="uploaded_proactivity" required>
             <option disabled selected value> -- Select an option -- </option>
             <option value="Uploaded">Uploaded</option>
@@ -128,7 +128,7 @@
 
       <div class="form-row">
         <div class="form-group col">
-          <label for="classification">Classification</label>
+          <label for="classification">Classification*</label>
           <select class="form-control" name="classification" required>
             <option disabled selected value> -- Select a Classification -- </option>
             <% for(var i=0; i<classifications.length; i++) {%>
@@ -137,7 +137,7 @@
           </select>
         </div>
         <div class="form-group col">
-            <label for="classification">Number of Photos</label>
+            <label for="classification">Number of Photos*</label>
           <select class="form-control" name="photo_count" required>
             <option disabled selected value> -- Number of Photos -- </option>
             <option value="0">none</option>

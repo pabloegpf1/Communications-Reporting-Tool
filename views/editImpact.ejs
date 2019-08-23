@@ -49,7 +49,7 @@
             <input type="date" class="form-control dissemination" value="<%= dissemination.date %>" name="dissemination_date"disabled required>
         </div>
         <div class="form-group col">
-          <label id="dissemination_pr_news_label" for="exampleFormControlSelect1">Dissemination: PR/NEWS</label>
+          <label id="dissemination_pr_news_label" for="exampleFormControlSelect1">Dissemination: PR/NEWS*</label>
           <select class="form-control dissemination" name="dissemination_pr_news" disabled required> 
             <option disabled selected value="<%= dissemination.pr_news %>"><%= dissemination.pr_news %></option>
             <option value="PR">PR</option>
@@ -65,7 +65,7 @@
 
       <div class="form-row">
         <div class="form-group col">
-          <label for="media">Media (<a href='/media/add'>Add new</a>)</label>
+          <label for="media">Media* (<a href='/media/add'>Add new</a>)</label>
           <select class="form-control" id="media" name="media" required>
             <option selected value="<%= impact.media_id %>"><%= impact.media_name %></option>
             <% for(var i=0; i<medias.length; i++) {%>
@@ -83,7 +83,7 @@
       <div class="form-row">
 
           <div class="form-group col">
-            <label for="type">Type of Publication</label>
+            <label for="type">Type of Publication*</label>
             <select class="form-control" name="type" required>
               <option selected value="<%= impact.impact_type %>"> <%= impact.type %> </option>
               <% for(var i=0; i<types.length; i++) {%>
@@ -93,7 +93,7 @@
           </div>
   
           <div class="form-group col">   
-            <label for="type">Uploaded/Proactivity</label>
+            <label for="type">Uploaded/Proactivity*</label>
             <select class="form-control" name="uploaded_proactivity" required>
               <% if(impact.uploaded) {%>
               <option disabled selected value="Uploaded">Uploaded</option>
@@ -130,7 +130,7 @@
   
         <div class="form-row">
           <div class="form-group col">
-            <label for="classification">Classification</label>
+            <label for="classification">Classification*</label>
             <select class="form-control" name="classification" required>
               <option selected value="<%= impact.classification %>"><%= impact.classification_name %></option>
               <% for(var i=0; i<classifications.length; i++) {%>
@@ -140,7 +140,7 @@
           </div>
   
           <div class="form-group col">
-            <label for="classification">Number of Photos</label>
+            <label for="classification">Number of Photos*</label>
             <select class="form-control" name="photo_count" required>
               <option selected value="<%= impact.photo_count %>"> <%= impact.photo_count %> </option>
               <option value="0">none</option>
