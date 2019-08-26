@@ -9,6 +9,7 @@ exports.getDisseminations = () =>db.any(`SELECT id, headline, lead_paragraph, su
 exports.getAvailableDisseminations = () =>db.any(`SELECT id, headline,lead_paragraph, summary, date, added_by, pr_news, url FROM dissemination d WHERE include_in_report = true ORDER BY date DESC`);
 exports.getDisseminationById = id =>db.one(`SELECT id, headline,lead_paragraph, summary, date, added_by, pr_news, url FROM dissemination d WHERE id = $1`,[id]);
 exports.getDisseminationsByDate = (initial,final) =>db.any(pgp.as.format(`SELECT id, headline,lead_paragraph, summary, date, added_by, pr_news, url FROM dissemination d WHERE include_in_report = true AND date >= $1 AND date <= $2 ORDER BY date DESC`,[initial,final]));
+exports.getDisseminationsByDateAscending = (initial,final) =>db.any(pgp.as.format(`SELECT id, headline,lead_paragraph, summary, date, added_by, pr_news, url FROM dissemination d WHERE include_in_report = true AND date >= $1 AND date <= $2 ORDER BY date`,[initial,final]));
 exports.searchDissemination = string =>db.any(`SELECT id, headline, lead_paragraph, summary, date, added_by, pr_news, url FROM dissemination WHERE unaccent(summary) ILIKE unaccent('%$1:value%') ORDER BY date DESC`,[string]);
 exports.getDisseminationsByUser = user_id =>db.any("SELECT id, headline, lead_paragraph, summary, date, added_by, pr_news, url FROM dissemination WHERE added_by = $1",[user_id]);
 //Update

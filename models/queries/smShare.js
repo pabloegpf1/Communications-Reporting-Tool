@@ -18,7 +18,8 @@ exports.getShares = () =>db.any(`SELECT $1:raw ORDER BY date DESC`, [baseQuery])
 exports.getSocialMedias = () =>db.any(`SELECT * FROM social_media`);
 exports.getSocialMediaAccounts = () =>db.any(`SELECT sma.id,sma.name,sma.url,sm.social_media FROM social_media sm, social_media_account sma WHERE sma.social_media = sm.id`);
 exports.getShareById = id =>db.one(`SELECT $1:raw AND sm_s.id = $2`, [baseQuery, id])
-exports.getSharesByDate = (initial,final) =>db.any(`SELECT $1:raw AND d.date >= $2 AND d.date < $3 ORDER BY date`,[baseQuery,initial,final]);
+exports.getSharesByDate = (initial,final) =>db.any(`SELECT $1:raw AND d.date >= $2 AND d.date < $3 ORDER BY date DESC`,[baseQuery,initial,final]);
+exports.getSharesByDateAscending = (initial,final) =>db.any(`SELECT $1:raw AND d.date >= $2 AND d.date < $3 ORDER BY date`,[baseQuery,initial,final]);
 exports.getSharesByDissemination = dissemination_id =>db.any("SELECT $1:raw AND sm_s.dissemination = $2", [baseQuery,dissemination_id]);
 
 //Update

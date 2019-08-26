@@ -14,7 +14,8 @@ exports.addImpacType = impact_type =>db.none("INSERT INTO impact_type (type) VAL
 //Read
 exports.getImpacts = () =>db.any(`SELECT $1:raw ORDER BY date DESC`, [baseQuery]);
 exports.getImpactById = id =>db.one(`SELECT $1:raw AND i.id = $2`, [baseQuery, id]);
-exports.getImpactsByDate = (initial,final) =>db.any(`SELECT $1:raw AND d.date >= $2 AND d.date < $3 ORDER BY date`,[baseQuery,initial,final]);
+exports.getImpactsByDate = (initial,final) =>db.any(`SELECT $1:raw AND d.date >= $2 AND d.date < $3 ORDER BY date DESC`,[baseQuery,initial,final]);
+exports.getImpactsByDateAscending = (initial,final) =>db.any(`SELECT $1:raw AND d.date >= $2 AND d.date < $3 ORDER BY date`,[baseQuery,initial,final]);
 exports.searchImpact = string =>db.any(`SELECT $1:raw AND (unaccent(d.summary) ILIKE unaccent('%$2:value%')) ORDER BY date DESC`,[baseQuery, string]);
 exports.getImpactTypes = () => db.any("SELECT id,type FROM impact_type");
 exports.getImpactsByMedia = media_id =>db.any("SELECT $1:raw AND i.media = $2", [baseQuery, media_id]);

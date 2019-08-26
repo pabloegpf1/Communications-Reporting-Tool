@@ -7,11 +7,11 @@ var fs = require('fs');
 var ejs = require('ejs');
 
 exports.createPrImpactReport = (request, response) => {
-  Dissemination.getDisseminationsByDate(request.body.initial_date,request.body.final_date)
+  Dissemination.getDisseminationsByDateAscending(request.body.initial_date,request.body.final_date)
   .then(disseminations => {
-    Impact.getImpactsByDate(request.body.initial_date,request.body.final_date)
+    Impact.getImpactsByDateAscending(request.body.initial_date,request.body.final_date)
     .then(impacts => {
-      SMshare.getSharesByDate(request.body.initial_date,request.body.final_date)
+      SMshare.getSharesByDateAscending(request.body.initial_date,request.body.final_date)
       .then(shares => {
         ejs.renderFile('./views/templates/PrImpactReport.ejs', { 
           disseminations: disseminations,
