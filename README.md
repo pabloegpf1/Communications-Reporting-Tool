@@ -197,14 +197,14 @@ The main purpose of making this dashboards is to embed it inside Communications-
 
 ## Database design
 
-# Database Schema
+### Database Schema
 {F1382231}
 
-# Connecting to the database
+### Connecting to the database
 You can use the connection details inside the .env file to connect to the database using a gui such as [[ https://eggerapps.at/postico/ | Postico ]] (macOS) or [[ https://www.pgadmin.org/ | pgAdmin4 ]] (All other OS).
 Once you have connected you will be able to edit the data inside the tables and backup if needed.
 
-# Backup/Restore via CLI
+### Backup/Restore via CLI
 You will need to install psql.
 - Run:
 
@@ -220,13 +220,13 @@ pg_restore -h <db_host>  -p <db_port> --clean -U <db_username> -d <db_name> <pat
 ```
 IMPORTANT: The following guides are made as a pre-installation process. If the application is already running, you will have to make a backup of all data and restore it after you have made the changes (or use an external tool to access the database).
 
-# Edit Schema
+### Edit Schema
 
 - Go to Models/Migrations/.
 - Search for the table you want to edit.
 - Change the columns and attributes.
 
-# Edit Seed Data
+### Edit Seed Data
 
 There is some initial data that is inserted in the database to make it easier to start working with the application. If you want to change this information:
 - Go to Models/Seeders/
