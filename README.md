@@ -5,9 +5,9 @@ The main purpose for developing this tool is to provide a simple, yet powerful w
 
 ## Installation 
 ### Option1: Using Docker (Recommended) 
-- Install [[ https://docs.docker.com/install/ | Docker ]] and [[ https://docs.docker.com/compose/install/ | Docker-Compose ]].
-- Use git to clone the project from: https://gitlab.networks.imdea.org/pablo_escriva/ProjectClipping and cd into it. (You should have permissions)
--  Create a file in the root of the project named “.env”. This file will store all the environment variables, including the database credentials.
+- Install [Docker](https://docs.docker.com/install/) and [Docker-Compose](https://docs.docker.com/compose/install/).
+- Clone this project and cd into it.
+- Create a file in the root of the project named “.env”. This file will store all the environment variables, including the database credentials.
 -  Inside the .env file add:
 
 ```
@@ -28,8 +28,6 @@ NOTE: Docker could ask you about permissions to write in folders. If you don't a
 
 - Type 'y' when asked to remove a container. This will run all the migrations and must be done only the first time. Then:
 ```
-
-
 docker-compose up -d
 ```
 - Wait a couple of seconds for the app to start up, then go to http://localhost:3000
@@ -57,7 +55,7 @@ ALTER USER <userName> WITH SUPERUSER;
 
 #### Part 2: Project set up
   -  Download and install Node.js.
-  -  Use git to clone the project from: https://gitlab.networks.imdea.org/pablo_escriva/ProjectClipping and cd into it.
+  -  Clone this project and cd into it.
   -  Run: “npm install” in the terminal and wait for the process to end.
   -  Connect to the database:
   --	Create a file in the root of the project named “.env”. This file will store all the environment variables, including the database credentials.
@@ -86,11 +84,9 @@ npm run dev
   - Open a web browser and go to: http://localhost:3000/
   - Log in with username: “Admin” and the password you added to the .env file.
   
-  
-  ## Developer's guide
-  
-  =Software Stack=
-==Backend==
+## Developer's guide
+### Software Stack
+#### Backend
   - **Node.js***
   - **PostgreSQL**: provides a wide range of datatypes, it also makes possible to link information using foreign keys (reducing redundant information).
 
@@ -103,25 +99,23 @@ npm run dev
   - exceljs: Generating Excel files from json data
   - html-docx-js: Generating docx files from an HTML template.
 
-==Frontend==
+#### Frontend
   - HTML
   - CSS
   - EJS: Embedded JavaScript for dynamic generation of HTML code.
   - Bootstrap
   - Datatables
 
-=Project Structure and design patterns=
+## Project Structure and design patterns
 This project uses MVC architecture.
 
-{F1382209}
-
-==Model==
+### Model
   - Configuration file: Reads database connection credentials (generally from environment variables).
   - Migrations: Stores structure of the tables and relations between them. Makes it possible to rollback and regenerate tables easily.
   - Seeders: Keeps initial data to store in the db (for demonstration purposes or initial requirements).
   - Queries: Keeps all queries as functions that return js promises. This way we can wait for the data before displaying it to the user.
 
-==View==
+### View
   - HTML: plain HTML with EJS code that generates chunks of code dynamically and reads variables passed by the server. 
   - Partials: Parts of HTML code that are used in most of the views (navbar, CSS imports, scripts…). Partials allow to import this code in a single line, making a cleaner and easier to read HTML code.
   - Public: Directory where the CSS stylesheets and assets are stored.
@@ -131,29 +125,29 @@ NOTE: To edit the report template, go to views/templates/PrImpactReport.ejs. Dat
 
 NOTE: To change the generation of excel files, go to controllers/spreadsheet.js. 
 
-==Controller==
+### Controller
   - Keeps all logic that will be used by the routers when a request is made to the server.
   - Gets information from the models and passes it to the views.
 
 ## User's guide
 
-=Dictionary of terms=
-==Disseminations==
+### Dictionary of terms 
+#### Disseminations
 Press Releases or News published on IMDEA Networks website. PR’s are uploaded to the following distribution media portals: AlphaGalileo, DiCYT, EurekAlert!, Globedia, Sciencex.com/Phys.org, Agencia SINC, Tendencias 21, Total Telecom and Blog “Sociedad de la Información”.
-==Impacts==
+#### Impacts
 Impacts that our dissemination activities (PR and News) through the mailing list, distribution portals and social media have on different media outlets. We also add “other media impacts” that are a result of our proactivity but they don’t relate to any Press Release or News.
-==Social Media Shares (SM Shares)==
+#### Social Media Shares (SM Shares)
 Posts that we published weekly on Twitter, Instagram, Facebook and LinkedIn and any mention to our accounts on said social networks.
 
-=Tutorials=
-==Add Disseminations==
+### Tutorials
+#### Add Disseminations
 - Go to Dissemination > Add Dissemination.
 - Fill up all the fields.
 -- Lead Paragraph: Text associated with the dissemination that will appear in the report. (Explain what this dissemination is about...)
 -- Summary: Short version of the Headline, used to summarize the information and group disseminations, impacts and sm shares by the same summary.
 NOTE: Summary and URL fields are unique, you will not be able to add a dissemination if these fields are already in a different dissemination.
 
-==Add Impacts / Social Media Shares==
+#### Add Impacts / Social Media Shares
 - Go to Impacts > Add Media Impact or SM Shares > Add SM Share.
 - Fill up all the mandatory(*) fields.
 -- You can select a dissemination from the dropdown menu and some of the fields will be automatically added. If the impact does not refer to any dissemination, select "Other Dissemination" and add a Summary and select PR/NEWS.
@@ -165,7 +159,7 @@ NOTE: If you select "Other Dissemination", the impact will appear as "Other medi
 Metabase is an external business intelligence tool used to generate graphs in real time and display them in html iframes. It is used inside Communications-Reporting Tool inside "Stats". 
 The installation of this tool is not required for the rest of the application to work correctly, but it is recommended since it provides a visual representation of the data for users and makes it possible to export this graphs outside the tool.
 
-=Deployment=
+## Deployment
 NOTE: If you chose to install Communications-Reporting Tool via Docker (recommended), Metabase will be automatically installed for you. If not, follow the steps below.
 
 - Install Docker
@@ -176,11 +170,11 @@ docker run -d -p 5000:3000 --name metabase metabase/metabase
 - This will launch Metabase in the port 5000 and will allow you to access it through Communications-Reporting Tool.
 NOTE: There is a way to run Metabase without Docker, using a jar file (No tested)
 
-=Installation notes=
+### Installation notes
 Once Metabase is already running correctly, access it using Communications-Reporting Tool (Stats>Access to Metabase). The first time will prompt you to set up and admin user and the db connection. Follow the installation using the database connection parameters chosed during the installation. Remember to set it up as a "Postgres" database.
 NOTE: When asked for the database connection, use the machine's external ip for better results
 
-=Using Metabase=
+### Using Metabase
 Metabase allows you to execute SQL in a more visually and intuitive way, even for users with no SQL experience.
  - Create a dashboard and add graphs inside it. You will be able to embed this dashboard in any HTLM page.
  - Go to "Ask a question" and select "Custom".
@@ -191,7 +185,7 @@ Metabase allows you to execute SQL in a more visually and intuitive way, even fo
  - Position the graph in the desired location and save the dashboard.
  - Repeat for all the graphs needed.
 
-=Embedding Dashboards in HTML=
+### Embedding Dashboards in HTML
 The main purpose of making this dashboards is to embed it inside Communications-Reporting Tool (although it can be used in other web pages). 
  - Access Metabase.
  - Make sure that public sharing is enabled in: Settings > Admin Settings > Public Sharing (you must be Admin).
@@ -203,14 +197,14 @@ The main purpose of making this dashboards is to embed it inside Communications-
 
 ## Database design
 
-# Database Schema #
+# Database Schema
 {F1382231}
 
-# Connecting to the database # 
+# Connecting to the database
 You can use the connection details inside the .env file to connect to the database using a gui such as [[ https://eggerapps.at/postico/ | Postico ]] (macOS) or [[ https://www.pgadmin.org/ | pgAdmin4 ]] (All other OS).
 Once you have connected you will be able to edit the data inside the tables and backup if needed.
 
-# Backup/Restore via CLI #
+# Backup/Restore via CLI
 You will need to install psql.
 - Run:
 
@@ -226,13 +220,13 @@ pg_restore -h <db_host>  -p <db_port> --clean -U <db_username> -d <db_name> <pat
 ```
 IMPORTANT: The following guides are made as a pre-installation process. If the application is already running, you will have to make a backup of all data and restore it after you have made the changes (or use an external tool to access the database).
 
-# Edit Schema #
+# Edit Schema
 
 - Go to Models/Migrations/.
 - Search for the table you want to edit.
 - Change the columns and attributes.
 
-# Edit Seed Data #
+# Edit Seed Data
 
 There is some initial data that is inserted in the database to make it easier to start working with the application. If you want to change this information:
 - Go to Models/Seeders/
