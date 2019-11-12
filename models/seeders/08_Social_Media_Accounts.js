@@ -8,24 +8,9 @@ module.exports = {
     return queryInterface.bulkInsert("social_media_account", [
       {
         social_media: 1,
-        name: "@IMDEA_Networks",
-        url: "twitter.com/IMDEA_Networks"
-      },
-      {
-        social_media: 2,
-        name: "@imdea_networks",
-        url: "instagram.com/imdea_networks/"
-      },
-      {
-        social_media: 3,
-        name: "IMDEA Networks",
-        url: "facebook.com/imdea.networks/"
-      },
-      {
-        social_media: 4,
-        name: "IMDEA Networks",
-        url: "linkedin.com/company/imdea-networks"
-      },
+        name: "@example",
+        url: "twitter.com/"
+      }
     ]);
   },
   down: (queryInterface, Sequelize) => {
