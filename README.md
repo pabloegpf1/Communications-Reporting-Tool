@@ -195,11 +195,6 @@ The main purpose of making this dashboards is to embed it inside Communications-
  - Paste the HTML code in Communications-Reporting project: views/stats (replace the iframe).
  - Refresh the page and you will be able to see the dashboard from Communications-Reporting tool.
 
-## Database design
-
-### Database Schema
-{F1382231}
-
 ### Connecting to the database
 You can use the connection details inside the .env file to connect to the database using a gui such as [[ https://eggerapps.at/postico/ | Postico ]] (macOS) or [[ https://www.pgadmin.org/ | pgAdmin4 ]] (All other OS).
 Once you have connected you will be able to edit the data inside the tables and backup if needed.
