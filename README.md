@@ -1,6 +1,6 @@
 # News-Clipping
 
-News Clipping project is a web application created by IMDEA Networks that can be used to analyze the impact of researchers on the media. 
+News Clipping project is a web application that can be used to analyze the impact of scientific research on the media. 
 The main purpose for developing this tool is to provide a simple, yet powerful way of keeping track of all the information about the media impact of the institute and make it easy to extract statistics in real time.
 
 ## Installation 
@@ -133,7 +133,7 @@ NOTE: To change the generation of excel files, go to controllers/spreadsheet.js.
 
 ### Dictionary of terms 
 #### Disseminations
-Press Releases or News published on IMDEA Networks website. PR’s are uploaded to the following distribution media portals: AlphaGalileo, DiCYT, EurekAlert!, Globedia, Sciencex.com/Phys.org, Agencia SINC, Tendencias 21, Total Telecom and Blog “Sociedad de la Información”.
+Press Releases or News.
 #### Impacts
 Impacts that our dissemination activities (PR and News) through the mailing list, distribution portals and social media have on different media outlets. We also add “other media impacts” that are a result of our proactivity but they don’t relate to any Press Release or News.
 #### Social Media Shares (SM Shares)
